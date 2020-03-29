@@ -1,0 +1,30 @@
+.profile-wrapper {
+  padding: 5rem 0;
+}
+
+.profile-info {
+  height: 50rem;
+  background: yellow;
+
+  &__backdrop {
+    height: 33rem;
+    background: green;
+  }
+
+  &__container {
+    display: flex;
+  }
+
+  &-image {
+    width: 15%;
+    background: pink;
+    height: 20rem;
+    margin-top: -3rem;
+  }
+
+  &-name {
+  }
+
+  &-editbutton {
+  }
+}

@@ -1,0 +1,107 @@
+/*
+0 - 450px       Small Phone
+450 - 600px:    Phone
+600-900px:      Table portrait
+900-1200px:     Table landscape
+1200-1800px:    Is where our normal styles apply
+1800px + :      Big desktop
+
+$breakpoint argument choices:
+- phone
+- tab-portrait
+- tab-lanscape
+- big-desktop
+
+ORDER: Base + typography > general layout + grid > page layout > components
+
+1em = 16px
+*/
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; }
+
+html {
+  font-size: 62.5%; }
+  @media (max-width: 75em) {
+    html {
+      font-size: 56.25%; } }
+  @media (max-width: 56.25em) {
+    html {
+      font-size: 50%; } }
+  @media (max-width: 37.5em) {
+    html {
+      font-size: 43.75%; } }
+  @media (max-width: 28.125em) {
+    html {
+      font-size: 43.75%; } }
+  @media (min-width: 112.5em) {
+    html {
+      font-size: 75%; } }
+
+body {
+  box-sizing: border-box; }
+
+body {
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 1.7;
+  color: #000000; }
+
+.heading-primary {
+  font-size: 3.5rem;
+  font-weight: 900;
+  text-transform: uppercase; }
+
+.heading-secondary {
+  font-size: 2.3rem;
+  font-weight: bold; }
+
+.container {
+  padding: 0 1rem;
+  margin: 0 auto;
+  max-width: 1200px; }
+  @media (max-width: 56.25em) {
+    .container {
+      padding: 0 2rem; } }
+
+.container-fluid {
+  margin: 0 auto;
+  padding: 5rem; }
+
+.u-margin-bottom-sm {
+  margin-bottom: 1rem; }
+
+.u-margin-bottom-md {
+  margin-bottom: 3rem; }
+
+.u-margin-bottom-lg {
+  margin-bottom: 6rem; }
+
+.u-margin-top-sm {
+  margin-top: 1rem; }
+
+.u-margin-top-md {
+  margin-top: 3rem; }
+
+.u-margin-top-lg {
+  margin-top: 6rem; }
+
+.profile-wrapper {
+  padding: 5rem 0; }
+
+.profile-info {
+  height: 50rem;
+  background: yellow; }
+  .profile-info__backdrop {
+    height: 33rem;
+    background: green; }
+  .profile-info__container {
+    display: flex; }
+  .profile-info-image {
+    width: 15%;
+    background: pink;
+    height: 20rem;
+    margin-top: -3rem; }

@@ -1,0 +1,45 @@
+.container {
+  padding: 0 1rem;
+  margin: 0 auto;
+  max-width: 1200px;
+
+  // CHECK HOW THIS WORK, MAYBE DELETE THIS LATER
+  // @include respond(tab-portrait) {
+  //   max-width: 875px;
+  // }
+
+  @include respond(tab-portrait) {
+    padding: 0 2rem;
+  }
+}
+
+.container-fluid {
+  margin: 0 auto;
+  padding: 5rem;
+}
+
+// Bottom Margins
+.u-margin-bottom-sm {
+  margin-bottom: 1rem;
+}
+
+.u-margin-bottom-md {
+  margin-bottom: 3rem;
+}
+
+.u-margin-bottom-lg {
+  margin-bottom: 6rem;
+}
+
+// Top Margins
+.u-margin-top-sm {
+  margin-top: 1rem;
+}
+
+.u-margin-top-md {
+  margin-top: 3rem;
+}
+
+.u-margin-top-lg {
+  margin-top: 6rem;
+}

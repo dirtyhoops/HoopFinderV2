@@ -1,0 +1,42 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  // Default is 16px, so 62.5% of that is 10px
+  // This defines what 1rem is
+  font-size: 62.5%;
+
+  @include respond(tab-landscape) {
+    // width < 1200
+    font-size: 56.25%; // 1 rem = 9px   9/16 = 50%
+  }
+
+  @include respond(tab-portrait) {
+    // width < 900
+    font-size: 50%; // 1 rem = 8px    8/16 = 50%;
+  }
+
+  @include respond(phone) {
+    // width < 600
+    font-size: 43.75%; // 1 rem = 8px    7/16 = 43.75%;
+  }
+
+  @include respond(small-phone) {
+    // width < 600
+    font-size: 43.75%; // 1 rem = 8px    8/16 = 43.75%;
+  }
+
+  // Probably wont use this but just in case
+  @include respond(big-desktop) {
+    font-size: 75%; // 1rem = 12px     12/16 = 75%
+  }
+}
+
+body {
+  box-sizing: border-box;
+}
