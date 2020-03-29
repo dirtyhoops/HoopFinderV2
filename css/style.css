@@ -90,18 +90,66 @@ body {
   margin-top: 6rem; }
 
 .profile-wrapper {
-  padding: 5rem 0; }
+  padding: 5rem 0;
+  background-color: #fdfffc; }
 
 .profile-info {
-  height: 50rem;
-  background: yellow; }
+  height: 53rem; }
   .profile-info__backdrop {
-    height: 33rem;
-    background: green; }
+    height: 38rem;
+    background: green;
+    background-image: url(/img/backdrop1.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 10px; }
   .profile-info__container {
-    display: flex; }
+    display: flex;
+    height: 15rem; }
   .profile-info-image {
-    width: 15%;
-    background: pink;
-    height: 20rem;
-    margin-top: -3rem; }
+    width: 20%;
+    margin-top: -5rem;
+    padding: 0 2rem; }
+    .profile-info-image img {
+      width: 100%;
+      background: aqua;
+      border: 1px solid black;
+      border-radius: 50%; }
+  .profile-info-name {
+    width: 50%; }
+  .profile-info-editbutton {
+    width: 35%; }
+
+.text-name {
+  font-size: 3rem; }
+
+.text-place {
+  font-size: 2rem; }
+
+.profile-flex {
+  display: flex;
+  margin-top: 5rem;
+  justify-content: space-between; }
+
+.profile-friends {
+  width: 28%;
+  height: 45rem;
+  border-radius: 10px;
+  border: 1px solid #2ec4b6; }
+
+.profile-header {
+  border-bottom: 1px solid #2ec4b6;
+  text-align: center;
+  padding: 0.5rem 0; }
+
+.profile-wall {
+  width: 40%;
+  height: 45rem;
+  border-radius: 10px;
+  border: 1px solid #2ec4b6; }
+
+.profile-favorite {
+  width: 28%;
+  height: 45rem;
+  border-radius: 10px;
+  border: 1px solid #2ec4b6; }
