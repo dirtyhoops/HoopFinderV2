@@ -67,7 +67,7 @@ router.post(
       inches
     } = req.body;
 
-    // Build profile object
+    // Build new profile object
     const profileFields = {};
     profileFields.user = req.user.id;
 
@@ -144,7 +144,7 @@ router.get('/user/:user_id', async (req, res) => {
   } catch (err) {
     console.error(err.message);
     if (err.name == 'CastError') {
-      return res.status(400).json({ msg: 'Profile not found111' });
+      return res.status(400).json({ msg: 'Profile not found' });
     }
 
     res.status(500).send('Server Error');
