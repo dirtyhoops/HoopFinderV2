@@ -125,6 +125,61 @@ router.delete('/:id', auth, async (req, res) => {
   }
 });
 
+// @route       PUT api/posts/:id/like
+// @desc        Like a post (Edit the post)
+// @access      Private
+router.put('/:id/like', auth, async (req, res) => {
+  try {
+    const post = await Post.findById(req.params.id);
+
+    // Check if the post has been liked by the logged in user already
+    if (
+      post.likes.filter(like => like.user.toString() === req.user.id).length > 0
+    ) {
+      return res.status(400).json({ msg: 'Post has already been liked' });
+    }
+
+    post.likes.unshift({ user: req.user.id });
+
+    await post.save();
+    res.json(post.likes);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Server Error');
+  }
+});
+
+// @route       PUT api/posts/:id/like
+// @desc        Like a post (Edit the post)
+// @access      Private
+router.put('/:id/unlike', auth, async (req, res) => {
+  try {
+    const post = await Post.findById(req.params.id);
+
+    // Check if the post has been liked by the logged in user already
+    if (
+      post.likes.filter(like => like.user.toString() === req.user.id).length ===
+      0
+    ) {
+      return res.status(400).json({ msg: 'Post has not yet been liked' });
+    }
+
+    // Get remove index
+    const removeIndex = post.likes
+      .map(like => like.user.toString())
+      .indexOf(req.user.id);
+
+    // Splice the index in the likes array
+    post.likes.splice(removeIndex, 1);
+
+    await post.save();
+    res.json(post.likes);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Server Error');
+  }
+});
+
 // @TODO: in action, check the parameters if it's someone's profile, if it is then just use the parameters for the post userid call. if it's empty(if a logged in user is on his page), call the posts post api with the REQ.USER.ID
 
 module.exports = router;
