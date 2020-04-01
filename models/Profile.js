@@ -41,10 +41,10 @@ const ProfileSchema = new mongoose.Schema({
       type: Number
     }
   },
-  // favoriteCourt: {
-  //   type: mongoose.Schema.Types.ObjectId,
-  //   ref: 'court'
-  // },
+  favoriteCourt: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'court'
+  },
   dateCreated: {
     type: Date,
     default: Date.now
