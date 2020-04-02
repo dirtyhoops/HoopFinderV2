@@ -1,3 +1,0 @@
-TODO:
-1. maye make a "successful" msg in the API routes. along with the "error" messages. or maybe do this in the ACTION instead
- @TODO: in action, check the parameters if it's someone's profile, if it is then just use the parameters for the post userid call. if it's empty(if a logged in user is on his page), call the posts post api with the REQ.USER.ID

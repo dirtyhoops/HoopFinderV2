@@ -1,0 +1,5 @@
+TODO:
+1. maye make a "successful" msg in the API routes. along with the "error" messages. or maybe do this in the ACTION instead
+2. in action, check the parameters if it's someone's profile, if it is then just use the parameters for the post userid call. if it's empty(if a logged in user is on his page), call the posts post api with the REQ.USER.ID
+3. in  profile.js api route, in delete route, make sure to DELETE all the posts made by the user.
+4. in profile route, once the court api routes and model are done, make sure to add a route to edit the profile to add the user's favorite court (id=ref, name, main image, rate).

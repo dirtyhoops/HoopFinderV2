@@ -42,7 +42,10 @@ const PostSchema = new mongoose.Schema({
         type: String,
         required: true
       },
-      name: {
+      firstName: {
+        type: String
+      },
+      lastName: {
         type: String
       },
       avatar: {
