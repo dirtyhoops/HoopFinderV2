@@ -1,6 +1,25 @@
 TODO:
 1. maye make a "successful" msg in the API routes. along with the "error" messages. or maybe do this in the ACTION instead
 2. in action, check the parameters if it's someone's profile, if it is then just use the parameters for the post userid call. if it's empty(if a logged in user is on his page), call the posts post api with the REQ.USER.ID
-3. in  profile.js api route, in delete route, make sure to DELETE all the posts made by the user.
+3. !!!!!!!!!!!!!!!!!!!!!! in  profile.js api route, in delete route, make sure to DELETE all the posts made by the user.
 4. in profile route, once the court api routes and model are done, make sure to add a route to edit the profile to add the user's favorite court (id=ref, name, main image, rate).
 5. Once checked in, make sure that it deletes itself in 2 hours.
+6. Add a filter for players (position, location)
+7. Make sure every color is in variables (pick great colors for avatar background)
+8. make button componenets like bootstrap. same name and same color
+9. LEARN CSS GRID LAYOUT so I can use it for players list instead of flex because flex wrap space-between leaves a big gap in the last row
+10. Add a SEARCH bar in COURTS list and PLAYERS list
+11. if there's no review on the court. make sure that it displays the "WRITE THE FIRST REVIEW"
+
+COLORS FOR VARIABLES to SAVE
+
+// Border in posts
+$color-border: rgb(241, 233, 233);
+
+$color-inactive-button: rgb(226, 197, 197);
+
+Light grayish color for subtexts ( location in players list)
+
+for background color of the whole page
+#FAFAFA ---- greenish
+#f4f8fb; - light bluish
