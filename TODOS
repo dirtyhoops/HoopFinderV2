@@ -10,6 +10,8 @@ TODO:
 9. LEARN CSS GRID LAYOUT so I can use it for players list instead of flex because flex wrap space-between leaves a big gap in the last row
 10. Add a SEARCH bar in COURTS list and PLAYERS list
 11. if there's no review on the court. make sure that it displays the "WRITE THE FIRST REVIEW"
+12. CHANGE PROFILE POST ADD PROFILE TO THE SAME FORMAT AS OTHERS. NO IF
+13. ADD A CHECK IF THE USER ALREADY WROTE A REVIEW. A USER CAN ONLY WRITE ONE REVIEW PER COURT
 
 COLORS FOR VARIABLES to SAVE
 

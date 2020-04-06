@@ -12,14 +12,7 @@ const Post = require('../../models/Post');
 // @access      Private
 router.post(
   '/:user_id',
-  [
-    auth,
-    [
-      check('text', 'Text is required')
-        .not()
-        .isEmpty()
-    ]
-  ],
+  [auth, [check('text', 'Text is required').not().isEmpty()]],
   async (req, res) => {
     const errors = validationResult(req);
 
@@ -28,7 +21,7 @@ router.post(
     }
 
     const profile = await Profile.findOne({
-      user: req.user.id
+      user: req.user.id,
     }).populate('user', ['firstName', 'lastName']);
 
     // Build new post object
@@ -39,8 +32,8 @@ router.post(
         user: req.user.id,
         firstName: profile.user.firstName,
         lastName: profile.user.lastName,
-        avatar: profile.avatar
-      }
+        avatar: profile.avatar,
+      },
     });
 
     try {
@@ -73,7 +66,7 @@ router.post(
 router.get('/user/:user_id', async (req, res) => {
   try {
     const posts = await Post.find({ user: req.params.user_id }).sort({
-      date: -1
+      date: -1,
     });
 
     // If there are no posts
@@ -107,7 +100,7 @@ router.delete('/:id', auth, async (req, res) => {
     // Check if the current logged in user is not the poster of the post
     if (post.poster.user.toString() !== req.user.id) {
       return res.status(401).json({
-        msg: 'User not authorized to delete'
+        msg: 'User not authorized to delete',
       });
     }
 
@@ -134,7 +127,8 @@ router.put('/:id/like', auth, async (req, res) => {
 
     // Check if the post has been liked by the logged in user already
     if (
-      post.likes.filter(like => like.user.toString() === req.user.id).length > 0
+      post.likes.filter((like) => like.user.toString() === req.user.id).length >
+      0
     ) {
       return res.status(400).json({ msg: 'Post has already been liked' });
     }
@@ -158,15 +152,15 @@ router.put('/:id/unlike', auth, async (req, res) => {
 
     // Check if the post has been liked by the logged in user already
     if (
-      post.likes.filter(like => like.user.toString() === req.user.id).length ===
-      0
+      post.likes.filter((like) => like.user.toString() === req.user.id)
+        .length === 0
     ) {
       return res.status(400).json({ msg: 'Post has not yet been liked' });
     }
 
     // Get remove index
     const removeIndex = post.likes
-      .map(like => like.user.toString())
+      .map((like) => like.user.toString())
       .indexOf(req.user.id);
 
     // Splice the index in the likes array
@@ -185,14 +179,7 @@ router.put('/:id/unlike', auth, async (req, res) => {
 // @access      Private
 router.post(
   '/:id/comment',
-  [
-    auth,
-    [
-      check('text', 'Text is required')
-        .not()
-        .isEmpty()
-    ]
-  ],
+  [auth, [check('text', 'Text is required').not().isEmpty()]],
   async (req, res) => {
     const errors = validationResult(req);
 
@@ -202,7 +189,7 @@ router.post(
 
     // Look for logged in user's profile so we can pull out the avatar
     const profile = await Profile.findOne({
-      user: req.user.id
+      user: req.user.id,
     }).populate('user', ['firstName', 'lastName']);
 
     const commentFields = {
@@ -210,7 +197,7 @@ router.post(
       user: req.user.id,
       firstName: profile.user.firstName,
       lastName: profile.user.lastName,
-      avatar: profile.avatar
+      avatar: profile.avatar,
     };
 
     try {
@@ -228,6 +215,11 @@ router.post(
       res.json(post.comments);
     } catch (err) {
       console.error(err.message);
+
+      if (err.name === 'CastError') {
+        res.status(400).json({ msg: 'Post not found' });
+      }
+
       res.status(500).send('Server Error');
     }
   }
@@ -246,7 +238,7 @@ router.delete('/:id/comment/:comment_id', auth, async (req, res) => {
 
     // Pull out comment
     const comment = post.comments.find(
-      comment => comment.id === req.params.comment_id
+      (comment) => comment.id === req.params.comment_id
     );
 
     // Make sure comment exists
@@ -261,7 +253,7 @@ router.delete('/:id/comment/:comment_id', auth, async (req, res) => {
 
     // Get remove index
     const removeIndex = post.comments
-      .map(comment => comment.user.toString())
+      .map((comment) => comment.user.toString())
       .indexOf(req.user.id);
 
     post.comments.splice(removeIndex, 1);

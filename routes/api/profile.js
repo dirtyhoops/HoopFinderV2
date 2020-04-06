@@ -13,7 +13,7 @@ const Post = require('../../models/Post');
 router.get('/me', auth, async (req, res) => {
   try {
     const profile = await Profile.findOne({
-      user: req.user.id
+      user: req.user.id,
     }).populate('user', ['firstName', 'lastName']);
 
     if (!profile) {
@@ -35,19 +35,11 @@ router.post(
   [
     auth,
     [
-      check('nickname', 'Nickname is required')
-        .not()
-        .isEmpty(),
-      check('city', 'City is required')
-        .not()
-        .isEmpty(),
-      check('state', 'State is required')
-        .not()
-        .isEmpty(),
-      check('position', 'Position is required')
-        .not()
-        .isEmpty()
-    ]
+      check('nickname', 'Nickname is required').not().isEmpty(),
+      check('city', 'City is required').not().isEmpty(),
+      check('state', 'State is required').not().isEmpty(),
+      check('position', 'Position is required').not().isEmpty(),
+    ],
   ],
   async (req, res) => {
     const errors = validationResult(req);
@@ -65,7 +57,7 @@ router.post(
       city,
       position,
       feet,
-      inches
+      inches,
     } = req.body;
 
     // Build new profile object
@@ -119,7 +111,7 @@ router.get('/', async (req, res) => {
   try {
     const profiles = await Profile.find().populate('user', [
       'firstName',
-      'lastName'
+      'lastName',
     ]);
     res.json(profiles);
   } catch (err) {
@@ -134,7 +126,7 @@ router.get('/', async (req, res) => {
 router.get('/user/:user_id', async (req, res) => {
   try {
     const profile = await Profile.findOne({
-      user: req.params.user_id
+      user: req.params.user_id,
     }).populate('user', ['firstName', 'lastName']);
 
     if (!profile) {

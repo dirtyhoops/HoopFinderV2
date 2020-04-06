@@ -20,12 +20,8 @@ router.post(
       'password',
       'Please enter a password with 6 or more characters'
     ).isLength({ min: 6 }),
-    check('firstName', 'First Name is required')
-      .not()
-      .isEmpty(),
-    check('lastName', 'Last Name is required')
-      .not()
-      .isEmpty()
+    check('firstName', 'First Name is required').not().isEmpty(),
+    check('lastName', 'Last Name is required').not().isEmpty(),
   ],
   async (req, res) => {
     const errors = validationResult(req);
@@ -52,7 +48,7 @@ router.post(
         email,
         password,
         firstName,
-        lastName
+        lastName,
       });
 
       // Encrypt password
@@ -64,8 +60,8 @@ router.post(
       // return jsonwebtoken
       const payload = {
         user: {
-          id: user.id
-        }
+          id: user.id,
+        },
       };
 
       jwt.sign(
