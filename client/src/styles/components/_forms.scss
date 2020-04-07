@@ -1,0 +1,55 @@
+// The wrapper of the page
+.form-wrapper {
+  width: 100vw;
+  height: 100vh;
+  background: $color-auth-bg;
+  text-align: center;
+
+  // Change this padding later
+  padding: 10rem 0;
+}
+
+.form {
+  &-container {
+    width: 450px;
+    margin: 0 auto;
+    // background: red;
+  }
+
+  &-header {
+    color: $color-white;
+    font-size: 4rem;
+    margin-bottom: 2rem;
+  }
+
+  &-subheader {
+    color: $color-white;
+    font-size: 1.8rem;
+    margin-bottom: 5rem;
+  }
+
+  &-group {
+    margin: 2.5rem 0;
+
+    & input {
+      width: 80%;
+      height: 50px;
+      background: $color-auth-input;
+      font-family: 'Montserrat';
+      color: $color-white;
+      border-radius: 13px;
+      border: none;
+      padding: 0 2rem;
+      font-size: 14px;
+      outline: none;
+
+      &::placeholder {
+        color: $color-white;
+      }
+    }
+  }
+}
+
+.text-noaccount {
+  color: #0f9f6d;
+}

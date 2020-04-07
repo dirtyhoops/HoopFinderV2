@@ -133,8 +133,4 @@ router.post(
 
 // CHECK IN PLAYERS POST ROUTE --- HANDLE IS LIKE A 'LIKE POST ROUTE'. ALSO ADD AN AUTO DELETE AFTER 2 HOURS
 
-// REVIEW POST ROUTE
-
-// RATINGS POST ROUTE. pull out and add all the reviews.rating then divide it by the total numbers
-
 module.exports = router;
