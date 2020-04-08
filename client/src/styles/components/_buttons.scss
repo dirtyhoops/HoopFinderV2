@@ -1,9 +1,32 @@
-.btn-register {
-  width: 80%;
-  border-radius: 13px;
-  height: 45px;
-  border: none;
-  background: $color-auth-button;
-  color: white;
-  font-size: 18px;
+.btn {
+  cursor: pointer;
+  transition: all 0.3s;
+
+  &-register {
+    width: 90%;
+    border-radius: 13px;
+    height: 45px;
+    border: none;
+    background: $color-success;
+    color: white;
+    font-size: 18px;
+
+    &:hover {
+      background: $color-success-2;
+    }
+  }
+
+  &-login {
+    width: 90%;
+    border-radius: 13px;
+    height: 45px;
+    border: none;
+    background: $color-primary;
+    color: white;
+    font-size: 18px;
+
+    &:hover {
+      background: $color-primary-2;
+    }
+  }
 }

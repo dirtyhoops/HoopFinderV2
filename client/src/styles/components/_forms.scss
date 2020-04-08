@@ -1,17 +1,6 @@
-// The wrapper of the page
-.form-wrapper {
-  width: 100vw;
-  height: 100vh;
-  background: $color-auth-bg;
-  text-align: center;
-
-  // Change this padding later
-  padding: 10rem 0;
-}
-
-.form {
+.auth-form {
   &-container {
-    width: 450px;
+    width: 470px;
     margin: 0 auto;
     // background: red;
   }
@@ -31,8 +20,9 @@
   &-group {
     margin: 2.5rem 0;
 
-    & input {
-      width: 80%;
+    & input[type='text'],
+    & input[type='password'] {
+      width: 90%;
       height: 50px;
       background: $color-auth-input;
       font-family: 'Montserrat';
@@ -48,8 +38,4 @@
       }
     }
   }
-}
-
-.text-noaccount {
-  color: #0f9f6d;
 }

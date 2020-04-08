@@ -1,0 +1,36 @@
+// The wrapper of the page
+.auth-wrapper {
+  width: 100vw;
+  min-height: 97vh;
+  background: $color-auth-bg;
+  text-align: center;
+  position: relative;
+
+  // Change this padding later --- make it so it's absolute in the middle
+  padding: 10rem 0;
+}
+
+.auth-bottom-part {
+  height: 500px;
+  width: 100vw;
+  background-image: url(../../img/bottom.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  bottom: 0;
+  z-index: 0;
+}
+
+.text-login-link {
+  & a {
+    color: #0f9f6d;
+    text-decoration: none;
+  }
+}
+
+.text-register-link {
+  & a {
+    color: rgb(148, 148, 192);
+    text-decoration: none;
+  }
+}
