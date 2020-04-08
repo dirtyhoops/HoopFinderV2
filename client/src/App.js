@@ -7,6 +7,7 @@ import NavBar from './components/layout/NavBar';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 import Landing from './components/layout/Landing';
+import PlayerProfile from './components/pages/PlayerProfile/PlayerProfilePage';
 
 // Import the sass styling
 import './styles/main.scss';
@@ -20,6 +21,7 @@ const App = () => (
         <Switch>
           <Route exact path='/register' component={Register} />
           <Route exact path='/login' component={Login} />
+          <Route exact path='/player/me' component={PlayerProfile} />
         </Switch>
       </Fragment>
     </Router>

@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { register } from '../../actions/auth';
+import PropTypes from 'prop-types';
 
 // Maybe take out the FRAGMENT later
-const Register = () => {
+const Register = ({ register, isAuthenticated }) => {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -25,8 +28,13 @@ const Register = () => {
       console.log('Password do not match. make this an alert later');
     } else {
       console.log(formData);
+      register({ email, firstName, lastName, password });
     }
   };
+
+  if (isAuthenticated) {
+    return <Redirect to='/player/me' />;
+  }
 
   return (
     <div className='auth-wrapper'>
@@ -104,4 +112,12 @@ const Register = () => {
   );
 };
 
-export default Register;
+Register.propTypes = {
+  register: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+});
+
+export default connect(mapStateToProps, { register })(Register);
