@@ -97,7 +97,7 @@ const Register = ({ register, isAuthenticated }) => {
           <div className='auth-form-group'>
             <input
               type='submit'
-              className='btn btn-register'
+              className='btn btn-1 btn-1--register'
               value='Register'
             />
           </div>

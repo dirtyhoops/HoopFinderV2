@@ -51,11 +51,11 @@
     width: 500px;
     margin: 0 auto;
     // background: red;
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1;
+    // position: absolute;
+    // top: 40%;
+    // left: 50%;
+    // transform: translate(-50%, -50%);
+    // z-index: 1;
   }
 
   &-header {
@@ -72,8 +72,6 @@
 
   &-group {
     margin: 2.5rem 0;
-    display: flex;
-    justify-content: space-between;
 
     & input[type='text'],
     & input[type='password'] {
@@ -127,5 +125,32 @@
 
   &-control-3 {
     width: 30%;
+  }
+}
+
+.form-header-edit {
+  font-size: 20px;
+  color: rgb(180, 170, 170);
+  margin-bottom: 2rem;
+}
+
+.radio-box {
+  width: 20%;
+  // background: red;
+  display: inline-block;
+  margin-bottom: 1rem;
+  // float: left;
+
+  & label {
+    margin: 0 auto;
+    display: block;
+    height: 70px;
+    width: 70px;
+
+    & img {
+      width: 100%;
+      border-radius: 50%;
+      background: yellow;
+    }
   }
 }

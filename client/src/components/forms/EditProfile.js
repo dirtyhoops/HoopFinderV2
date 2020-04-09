@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 
+import avatar1 from '../../img/profile2.png';
+
 const EditProfile = () => {
   const [formData, setFormData] = useState({
     avatar: '',
@@ -45,7 +47,7 @@ const EditProfile = () => {
             className='edit-profile-form-register'
             onSubmit={(e) => onSubmit(e)}
           >
-            <div className='edit-profile-form-group'>
+            <div className='edit-profile-form-group u-flex-spacebetween'>
               <div className='edit-profile-form-control-2'>
                 <input
                   type='text'
@@ -120,7 +122,7 @@ const EditProfile = () => {
                 </select>
               </div>
             </div>
-            <div className='edit-profile-form-group'>
+            <div className='edit-profile-form-group u-flex-spacebetween '>
               <div className='edit-profile-form-control-3'>
                 <select
                   name='position'
@@ -178,6 +180,126 @@ const EditProfile = () => {
                   <option value='11'>11 inches</option>
                 </select>
               </div>
+            </div>
+            <div className='edit-profile-form-group'>
+              <p className='form-header-edit'>Select Avatar</p>
+              <div className='radio-box'>
+                <label htmlFor='avatar1'>
+                  <img src={avatar1} />
+                </label>
+                <input
+                  type='radio'
+                  id='avatar1'
+                  name='avatar'
+                  value='avatar1'
+                />
+              </div>
+              <div className='radio-box'>
+                <label htmlFor='avatar1'>
+                  <img src={avatar1} />
+                </label>
+                <input
+                  type='radio'
+                  id='avatar1'
+                  name='avatar'
+                  value='avatar1'
+                />
+              </div>
+              <div className='radio-box'>
+                <label htmlFor='avatar1'>
+                  <img src={avatar1} />
+                </label>
+                <input
+                  type='radio'
+                  id='avatar1'
+                  name='avatar'
+                  value='avatar1'
+                />
+              </div>
+              <div className='radio-box'>
+                <label htmlFor='avatar1'>
+                  <img src={avatar1} />
+                </label>
+                <input
+                  type='radio'
+                  id='avatar1'
+                  name='avatar'
+                  value='avatar1'
+                />
+              </div>
+              <div className='radio-box'>
+                <label htmlFor='avatar1'>
+                  <img src={avatar1} />
+                </label>
+                <input
+                  type='radio'
+                  id='avatar1'
+                  name='avatar'
+                  value='avatar1'
+                />
+              </div>
+              <div className='radio-box'>
+                <label htmlFor='avatar1'>
+                  <img src={avatar1} />
+                </label>
+                <input
+                  type='radio'
+                  id='avatar1'
+                  name='avatar'
+                  value='avatar1'
+                />
+              </div>
+              <div className='radio-box'>
+                <label htmlFor='avatar1'>
+                  <img src={avatar1} />
+                </label>
+                <input
+                  type='radio'
+                  id='avatar1'
+                  name='avatar'
+                  value='avatar1'
+                />
+              </div>
+              <div className='radio-box'>
+                <label htmlFor='avatar1'>
+                  <img src={avatar1} />
+                </label>
+                <input
+                  type='radio'
+                  id='avatar1'
+                  name='avatar'
+                  value='avatar1'
+                />
+              </div>
+              <div className='radio-box'>
+                <label htmlFor='avatar1'>
+                  <img src={avatar1} />
+                </label>
+                <input
+                  type='radio'
+                  id='avatar1'
+                  name='avatar'
+                  value='avatar1'
+                />
+              </div>
+              <div className='radio-box'>
+                <label htmlFor='avatar1'>
+                  <img src={avatar1} />
+                </label>
+                <input
+                  type='radio'
+                  id='avatar1'
+                  name='avatar'
+                  value='avatar1'
+                />
+              </div>
+            </div>
+            <div className='edit-profile-form-group'>
+              <input
+                type='submit'
+                className='btn btn-1 btn-1--saveprofile'
+                value='Save Profile'
+              />
             </div>
           </form>
         </div>

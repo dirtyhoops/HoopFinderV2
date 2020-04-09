@@ -59,7 +59,11 @@ const Login = ({ login, isAuthenticated }) => {
           </div>
 
           <div className='auth-form-group'>
-            <input type='submit' className='btn btn-login' value='Login' />
+            <input
+              type='submit'
+              className='btn btn-1 btn-1--login'
+              value='Login'
+            />
           </div>
 
           <p className='text-register-link'>

@@ -43,3 +43,9 @@
 .u-margin-top-lg {
   margin-top: 6rem;
 }
+
+// Flex display with space-between
+.u-flex-spacebetween {
+  display: flex;
+  justify-content: space-between;
+}
