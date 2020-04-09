@@ -3,52 +3,48 @@ const mongoose = require('mongoose');
 const ProfileSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'user'
-  },
-  nickname: {
-    type: String,
-    required: true
+    ref: 'user',
   },
   avatar: {
     type: String,
-    default: 'yyyyyeeeee.jpg'
+    default: 'yyyyyeeeee.jpg',
   },
   backdrop: {
     type: String,
-    default: 'baaaaaaaaackdrop.jpg'
+    default: 'baaaaaaaaackdrop.jpg',
   },
   avatar_bg: {
     type: String,
-    default: 'aqua'
+    default: 'aqua',
   },
   city: {
     type: String,
-    required: true
+    required: true,
   },
   state: {
     type: String,
-    required: true
+    required: true,
   },
   position: {
     type: String,
-    required: true
+    required: true,
   },
   height: {
     feet: {
-      type: Number
+      type: Number,
     },
     inches: {
-      type: Number
-    }
+      type: Number,
+    },
   },
   favoriteCourt: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'court'
+    ref: 'court',
   },
   dateCreated: {
     type: Date,
-    default: Date.now
-  }
+    default: Date.now,
+  },
 });
 
 module.exports = Profile = mongoose.model('profile', ProfileSchema);

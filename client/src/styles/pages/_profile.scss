@@ -1,93 +1,93 @@
-.profile-wrapper {
-  padding: 5rem 0;
-  background-color: $color-palette-2;
-}
+// .profile-wrapper {
+//   padding: 5rem 0;
+//   background-color: $color-palette-2;
+// }
 
-.profile-info {
-  height: 53rem;
-  // background: yellow;
+// .profile-info {
+//   height: 53rem;
+//   // background: yellow;
 
-  &__backdrop {
-    height: 38rem;
-    background: green;
-    background-image: url(/img/backdrop1.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    border-radius: 10px;
-  }
+//   &__backdrop {
+//     height: 38rem;
+//     background: green;
+//     background-image: url(/img/backdrop1.jpg);
+//     background-size: cover;
+//     background-repeat: no-repeat;
+//     background-position: center;
+//     border-radius: 10px;
+//   }
 
-  &__container {
-    display: flex;
-    height: 15rem;
-  }
+//   &__container {
+//     display: flex;
+//     height: 15rem;
+//   }
 
-  &-image {
-    width: 20%;
+//   &-image {
+//     width: 20%;
 
-    margin-top: -5rem;
-    padding: 0 2rem;
+//     margin-top: -5rem;
+//     padding: 0 2rem;
 
-    & img {
-      width: 100%;
-      background: aqua;
-      border: 1px solid black;
-      border-radius: 50%; // so it's circle
-    }
-  }
+//     & img {
+//       width: 100%;
+//       background: aqua;
+//       border: 1px solid black;
+//       border-radius: 50%; // so it's circle
+//     }
+//   }
 
-  &-name {
-    width: 50%;
-    // background: aqua;
-  }
+//   &-name {
+//     width: 50%;
+//     // background: aqua;
+//   }
 
-  &-editbutton {
-    // background: red;
-    width: 35%;
-  }
-}
+//   &-editbutton {
+//     // background: red;
+//     width: 35%;
+//   }
+// }
 
-.text-name {
-  font-size: 3rem;
-}
+// .text-name {
+//   font-size: 3rem;
+// }
 
-.text-place {
-  font-size: 2rem;
-}
+// .text-place {
+//   font-size: 2rem;
+// }
 
-.profile-flex {
-  display: flex;
-  margin-top: 5rem;
-  justify-content: space-between;
-  // background: red;
-}
+// .profile-flex {
+//   display: flex;
+//   margin-top: 5rem;
+//   justify-content: space-between;
+//   // background: red;
+// }
 
-.profile-friends {
-  width: 28%;
-  height: 45rem;
-  // background: pink;
-  border-radius: 10px;
-  border: 1px solid $color-palette-3;
-}
+// .profile-friends {
+//   width: 28%;
+//   height: 45rem;
+//   // background: pink;
+//   border-radius: 10px;
+//   border: 1px solid $color-palette-3;
+// }
 
-.profile-header {
-  // background: yellow;
-  border-bottom: 1px solid $color-palette-3;
-  text-align: center;
-  padding: 0.5rem 0;
-}
-.profile-wall {
-  width: 40%;
-  height: 45rem;
-  // background: green;
-  border-radius: 10px;
-  border: 1px solid $color-palette-3;
-}
+// .profile-header {
+//   // background: yellow;
+//   border-bottom: 1px solid $color-palette-3;
+//   text-align: center;
+//   padding: 0.5rem 0;
+// }
+// .profile-wall {
+//   width: 40%;
+//   height: 45rem;
+//   // background: green;
+//   border-radius: 10px;
+//   border: 1px solid $color-palette-3;
+// }
 
-.profile-favorite {
-  width: 28%;
-  height: 45rem;
-  // background: aqua;
-  border-radius: 10px;
-  border: 1px solid $color-palette-3;
-}
+// .profile-favorite {
+//   width: 28%;
+//   height: 45rem;
+//   // background: aqua;
+//   border-radius: 10px;
+//   border: 1px solid $color-palette-3;
+// }

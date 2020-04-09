@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { login } from '../../actions/auth';
 
-const Login = () => {
+const Login = ({ login, isAuthenticated }) => {
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -17,7 +20,13 @@ const Login = () => {
   // onSubmit handler
   const onSubmit = (e) => {
     e.preventDefault();
+    login(email, password);
   };
+
+  // Redirects to player's profile page after a successful login
+  if (isAuthenticated) {
+    return <Redirect to='/player/me' />;
+  }
 
   return (
     <div className='auth-wrapper'>
@@ -63,4 +72,13 @@ const Login = () => {
   );
 };
 
-export default Login;
+Login.propTypoes = {
+  login: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+});
+
+export default connect(mapStateToProps, { login })(Login);

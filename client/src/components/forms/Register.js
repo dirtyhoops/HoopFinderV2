@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { register } from '../../actions/auth';
 import PropTypes from 'prop-types';
 
-// Maybe take out the FRAGMENT later
 const Register = ({ register, isAuthenticated }) => {
   const [formData, setFormData] = useState({
     firstName: '',

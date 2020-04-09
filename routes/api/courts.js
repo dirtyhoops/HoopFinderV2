@@ -7,9 +7,14 @@ const User = require('../../models/User');
 const Court = require('../../models/Court');
 
 // @route       GET api/courts
-// @desc        Test route
+// @desc        Get all courts
 // @access      Public
 router.get('/', (req, res) => res.send('Courts route'));
+
+// @route       DELETE api/courts/:id
+// @desc        Delete court
+// @access      Private
+// router.get('/', (req, res) => res.send('Courts route'));
 
 // @route       POST api/courts
 // @desc        Create a court
@@ -132,5 +137,7 @@ router.post(
 );
 
 // CHECK IN PLAYERS POST ROUTE --- HANDLE IS LIKE A 'LIKE POST ROUTE'. ALSO ADD AN AUTO DELETE AFTER 2 HOURS
+// GET all courts route
+// DELETE route - delete reviews along with it
 
 module.exports = router;

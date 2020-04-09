@@ -35,7 +35,6 @@ router.post(
   [
     auth,
     [
-      check('nickname', 'Nickname is required').not().isEmpty(),
       check('city', 'City is required').not().isEmpty(),
       check('state', 'State is required').not().isEmpty(),
       check('position', 'Position is required').not().isEmpty(),
@@ -49,7 +48,6 @@ router.post(
     }
 
     const {
-      nickname,
       avatar,
       backdrop,
       avatar_bg,
@@ -64,7 +62,6 @@ router.post(
     const profileFields = {};
     profileFields.user = req.user.id;
 
-    if (nickname) profileFields.nickname = nickname;
     if (avatar) profileFields.avatar = avatar;
     if (backdrop) profileFields.backdrop = backdrop;
     if (avatar_bg) profileFields.avatar_bg = avatar_bg;

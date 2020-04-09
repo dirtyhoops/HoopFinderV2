@@ -1,5 +1,5 @@
 // The wrapper of the page
-.auth-wrapper {
+.edit-profile-wrapper {
   width: 100vw;
   min-height: 97vh;
   background: $color-auth-bg;
@@ -10,7 +10,7 @@
   padding: 10rem 0;
 }
 
-.auth-bottom-part {
+.edit-profile-bottom-part {
   height: 400px;
   width: 100vw;
   background-image: url(../../img/bottom.png);
@@ -19,18 +19,4 @@
   position: absolute;
   bottom: 0;
   z-index: 0;
-}
-
-.text-login-link {
-  & a {
-    color: #0f9f6d;
-    text-decoration: none;
-  }
-}
-
-.text-register-link {
-  & a {
-    color: rgb(148, 148, 192);
-    text-decoration: none;
-  }
 }

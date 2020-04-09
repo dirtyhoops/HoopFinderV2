@@ -4,10 +4,11 @@ import { Provider } from 'react-redux';
 import store from './store';
 
 import NavBar from './components/layout/NavBar';
-import Register from './components/auth/Register';
-import Login from './components/auth/Login';
+import Register from './components/forms/Register';
+import Login from './components/forms/Login';
 import Landing from './components/layout/Landing';
 import PlayerProfile from './components/pages/PlayerProfile/PlayerProfilePage';
+import EditProfile from './components/forms/EditProfile';
 
 // Import the sass styling
 import './styles/main.scss';
@@ -21,6 +22,7 @@ const App = () => (
         <Switch>
           <Route exact path='/register' component={Register} />
           <Route exact path='/login' component={Login} />
+          <Route exact path='/player/me/edit' component={EditProfile} />
           <Route exact path='/player/me' component={PlayerProfile} />
         </Switch>
       </Fragment>
