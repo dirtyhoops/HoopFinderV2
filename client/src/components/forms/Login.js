@@ -3,8 +3,14 @@ import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { login } from '../../actions/auth';
+import { getUserProfile } from '../../actions/profile';
 
-const Login = ({ login, isAuthenticated }) => {
+const Login = ({
+  login,
+  getUserProfile,
+  auth: { user, isAuthenticated },
+  profile: { user_profile, isUserProfileLoaded },
+}) => {
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -23,8 +29,18 @@ const Login = ({ login, isAuthenticated }) => {
     login(email, password);
   };
 
-  // Redirects to player's profile page after a successful login
-  if (isAuthenticated) {
+  // Get the user profile as soon as the login is successful
+  if (isAuthenticated && !isUserProfileLoaded) {
+    getUserProfile();
+  }
+
+  // Redirects to create profile page if profile is empty after logging in
+  if (isUserProfileLoaded && user_profile === null) {
+    return <Redirect to='/player/me/edit' />;
+  }
+
+  // Redirects to the player's profile page if there's a profile after logging in
+  if (isUserProfileLoaded && user_profile !== null) {
     return <Redirect to='/player/me' />;
   }
 
@@ -78,11 +94,14 @@ const Login = ({ login, isAuthenticated }) => {
 
 Login.propTypoes = {
   login: PropTypes.func.isRequired,
-  isAuthenticated: PropTypes.bool.isRequired,
+  // isAuthenticated: PropTypes.bool.isRequired,
+  getUserProfile: PropTypes.func.isRequired,
+  // isUserProfileLoaded: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  isAuthenticated: state.auth.isAuthenticated,
+  auth: state.auth,
+  profile: state.profile,
 });
 
-export default connect(mapStateToProps, { login })(Login);
+export default connect(mapStateToProps, { login, getUserProfile })(Login);

@@ -238,61 +238,6 @@ const EditProfile = () => {
                   value='avatar1'
                 />
               </div>
-              <div className='radio-box'>
-                <label htmlFor='avatar1'>
-                  <img src={avatar1} />
-                </label>
-                <input
-                  type='radio'
-                  id='avatar1'
-                  name='avatar'
-                  value='avatar1'
-                />
-              </div>
-              <div className='radio-box'>
-                <label htmlFor='avatar1'>
-                  <img src={avatar1} />
-                </label>
-                <input
-                  type='radio'
-                  id='avatar1'
-                  name='avatar'
-                  value='avatar1'
-                />
-              </div>
-              <div className='radio-box'>
-                <label htmlFor='avatar1'>
-                  <img src={avatar1} />
-                </label>
-                <input
-                  type='radio'
-                  id='avatar1'
-                  name='avatar'
-                  value='avatar1'
-                />
-              </div>
-              <div className='radio-box'>
-                <label htmlFor='avatar1'>
-                  <img src={avatar1} />
-                </label>
-                <input
-                  type='radio'
-                  id='avatar1'
-                  name='avatar'
-                  value='avatar1'
-                />
-              </div>
-              <div className='radio-box'>
-                <label htmlFor='avatar1'>
-                  <img src={avatar1} />
-                </label>
-                <input
-                  type='radio'
-                  id='avatar1'
-                  name='avatar'
-                  value='avatar1'
-                />
-              </div>
             </div>
             <div className='edit-profile-form-group'>
               <input
