@@ -26,8 +26,9 @@ const Register = ({ register, isAuthenticated }) => {
     if (password !== password2) {
       console.log('Password do not match. make this an alert later');
     } else {
+      // TAKE THIS CONSOLE LOG LATER WHEN EVERYTTHING IS FINALIZED
       console.log(formData);
-      register({ email, firstName, lastName, password });
+      register({ formData });
     }
   };
 

@@ -6,15 +6,16 @@ import { Redirect, Link } from 'react-router-dom';
 import { getUserProfile } from '../../../actions/profile';
 
 const PlayerProfilePage = ({ getUserProfile, profile, auth }) => {
-  // if (auth.isAuthenticated && !profile.isUserProfileLoaded) {
-  //   getUserProfile();
-  // }
+  if (auth.isAuthenticated && !profile.isUserProfileLoaded) {
+    getUserProfile();
+  }
 
   return (
     <>
       {profile.user_profile === null ? (
         <div>
           <p>no profile click here to fill up your profile</p>
+          <Link to={'/player/me/edit'}>Go complete your profile</Link>
         </div>
       ) : (
         <div>

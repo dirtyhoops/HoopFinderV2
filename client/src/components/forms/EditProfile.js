@@ -1,9 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
+import { createProfile, resetProfileLoaded } from '../../actions/profile';
 
-import avatar1 from '../../img/profile2.png';
+import imageLoader from '../../img/images';
 
-const EditProfile = () => {
+const EditProfile = ({
+  createProfile,
+  resetProfileLoaded,
+  profile: { isCreatingProfileSuccessful },
+}) => {
+  useEffect(() => {
+    resetProfileLoaded();
+  }, []);
+
   const [formData, setFormData] = useState({
     avatar: '',
     avatar_bg: '',
@@ -14,6 +23,8 @@ const EditProfile = () => {
     feet: '',
     inches: '',
   });
+
+  const avatarImages = imageLoader();
 
   // Deconstruct
   const {
@@ -32,6 +43,12 @@ const EditProfile = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
+    console.log(formData);
+    createProfile({ formData });
+  };
+
+  const onOptionChange = (e) => {
+    setFormData({ ...formData, avatar: e.target.value });
   };
 
   return (
@@ -65,7 +82,7 @@ const EditProfile = () => {
                   onChange={(e) => onChange(e)}
                   required
                 >
-                  <option value='' selected>
+                  <option value='' defaultValue>
                     Select state or region
                   </option>
                   <option value='AL'>Alabama</option>
@@ -130,13 +147,13 @@ const EditProfile = () => {
                   onChange={(e) => onChange(e)}
                   required
                 >
-                  <option value='' selected>
+                  <option value='' defaultValue>
                     Select position
                   </option>
-                  <option value='pointguard'>Point Guard</option>
-                  <option value='shootingguard'>Shooting Guard</option>
-                  <option value='smallforward'>Small Forward</option>
-                  <option value='powerforward'>Power Forward</option>
+                  <option value='point guard'>Point Guard</option>
+                  <option value='shooting guard'>Shooting Guard</option>
+                  <option value='small forward'>Small Forward</option>
+                  <option value='power forward'>Power Forward</option>
                   <option value='center'>Center</option>
                 </select>
               </div>
@@ -147,7 +164,7 @@ const EditProfile = () => {
                   onChange={(e) => onChange(e)}
                   required
                 >
-                  <option value='' selected>
+                  <option value='' defaultValue>
                     Height (feet)
                   </option>
                   <option value='4'>4 feet</option>
@@ -163,7 +180,7 @@ const EditProfile = () => {
                   onChange={(e) => onChange(e)}
                   required
                 >
-                  <option value='' selected>
+                  <option value='' defaultValue>
                     Height (inches)
                   </option>
                   <option value='0'>0 inches</option>
@@ -183,61 +200,38 @@ const EditProfile = () => {
             </div>
             <div className='edit-profile-form-group'>
               <p className='form-header-edit'>Select Avatar</p>
-              <div className='radio-box'>
-                <label htmlFor='avatar1'>
-                  <img src={avatar1} />
-                </label>
-                <input
-                  type='radio'
-                  id='avatar1'
-                  name='avatar'
-                  value='avatar1'
-                />
-              </div>
-              <div className='radio-box'>
-                <label htmlFor='avatar1'>
-                  <img src={avatar1} />
-                </label>
-                <input
-                  type='radio'
-                  id='avatar1'
-                  name='avatar'
-                  value='avatar1'
-                />
-              </div>
-              <div className='radio-box'>
-                <label htmlFor='avatar1'>
-                  <img src={avatar1} />
-                </label>
-                <input
-                  type='radio'
-                  id='avatar1'
-                  name='avatar'
-                  value='avatar1'
-                />
-              </div>
-              <div className='radio-box'>
-                <label htmlFor='avatar1'>
-                  <img src={avatar1} />
-                </label>
-                <input
-                  type='radio'
-                  id='avatar1'
-                  name='avatar'
-                  value='avatar1'
-                />
-              </div>
-              <div className='radio-box'>
-                <label htmlFor='avatar1'>
-                  <img src={avatar1} />
-                </label>
-                <input
-                  type='radio'
-                  id='avatar1'
-                  name='avatar'
-                  value='avatar1'
-                />
-              </div>
+              {/* avatar selection */}
+              {avatarImages.map((avatar1) => (
+                <div key={avatar1.id} className='radio-box'>
+                  <label>
+                    <img src={avatar1.src} className={avatar_bg} />
+                    <input
+                      type='radio'
+                      name='avatar'
+                      value={avatar1.src}
+                      checked={avatar === `${avatar1.src}`}
+                      onChange={(e) => onOptionChange(e)}
+                      required
+                    />
+                  </label>
+                </div>
+              ))}
+            </div>
+
+            <div className='edit-profile-form-group'>
+              <select
+                name='avatar_bg'
+                value={avatar_bg}
+                onChange={(e) => onChange(e)}
+                required
+              >
+                <option value='' defaultValue>
+                  Avatar Background
+                </option>
+                <option value='bg-red'>Red</option>
+                <option value='bg-yellow'>Yellow</option>
+                <option value='bg-pink'>Pink</option>
+              </select>
             </div>
             <div className='edit-profile-form-group'>
               <input
@@ -254,4 +248,10 @@ const EditProfile = () => {
   );
 };
 
-export default EditProfile;
+const mapStateToProps = (state) => ({
+  profile: state.profile,
+});
+
+export default connect(mapStateToProps, { createProfile, resetProfileLoaded })(
+  EditProfile
+);

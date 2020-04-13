@@ -26,23 +26,27 @@ const Login = ({
   // onSubmit handler
   const onSubmit = (e) => {
     e.preventDefault();
-    login(email, password);
+    login({ formData });
   };
 
-  // Get the user profile as soon as the login is successful
-  if (isAuthenticated && !isUserProfileLoaded) {
-    getUserProfile();
-  }
-
-  // Redirects to create profile page if profile is empty after logging in
-  if (isUserProfileLoaded && user_profile === null) {
-    return <Redirect to='/player/me/edit' />;
-  }
-
-  // Redirects to the player's profile page if there's a profile after logging in
-  if (isUserProfileLoaded && user_profile !== null) {
+  if (isAuthenticated) {
     return <Redirect to='/player/me' />;
   }
+
+  // // Get the user profile as soon as the login is successful
+  // if (isAuthenticated && !isUserProfileLoaded) {
+  //   getUserProfile();
+  // }
+
+  // // Redirects to create profile page if profile is empty after logging in
+  // if (isUserProfileLoaded && user_profile === null) {
+  //   return <Redirect to='/player/me/edit' />;
+  // }
+
+  // // Redirects to the player's profile page if there's a profile after logging in
+  // if (isUserProfileLoaded && user_profile !== null) {
+  //   return <Redirect to='/player/me' />;
+  // }
 
   return (
     <div className='auth-wrapper'>

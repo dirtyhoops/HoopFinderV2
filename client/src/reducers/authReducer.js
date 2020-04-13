@@ -29,7 +29,6 @@ export default function (state = initialState, action) {
       localStorage.setItem('token', payload.token);
       return {
         ...state,
-
         ...payload,
       };
     case REGISTER_FAIL:
