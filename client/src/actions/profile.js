@@ -8,13 +8,29 @@ import {
 } from './types';
 
 // Load Profiles
-export const getProfiles = () => async (dispatch) => {
+export const getProfiles = (playerposition) => async (dispatch) => {
   try {
     const res = await axios.get('/api/profile');
 
+    // Unfiltered list of players
+    const players1 = res.data;
+
+    if (playerposition !== 'all players') {
+      const filteredPlayers = res.data.filter(
+        (player) => player.position === playerposition
+      );
+
+      // Replace the unfiltered players inside the array with the filtered result
+      players1.splice(0, players1.length, ...filteredPlayers);
+    }
+
+    // const filteredPlayersByPostion = res.data.filter(
+    //   (player) => player.position === playerposition
+    // );
+
     dispatch({
       type: GET_PROFILES,
-      payload: res.data,
+      payload: players1,
     });
   } catch (err) {
     console.log('error change this later');

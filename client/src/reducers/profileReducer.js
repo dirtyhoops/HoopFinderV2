@@ -7,8 +7,9 @@ import {
 } from '../actions/types';
 
 const initialState = {
-  profiles: [],
+  players: [],
   user_profile: null,
+  selectedProfile: null,
   loadingProfiles: true,
   isUserProfileLoaded: false,
   isCreatingProfileSuccessful: false,
@@ -27,7 +28,7 @@ export default function (state = initialState, action) {
     case GET_PROFILES:
       return {
         ...state,
-        profiles: payload,
+        players: payload,
       };
     case GET_USER_PROFILE_FAIL:
       return {
