@@ -7,7 +7,7 @@ const ProfileSchema = new mongoose.Schema({
   },
   avatar: {
     type: String,
-    default: 'yyyyyeeeee.jpg',
+    default: '',
   },
   backdrop: {
     type: String,
