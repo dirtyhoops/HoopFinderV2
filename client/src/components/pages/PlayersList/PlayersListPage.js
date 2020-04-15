@@ -70,7 +70,7 @@ const PlayersListPage = ({ profile: { players }, getProfiles }) => {
                       </p>
                     </div>
                     <div className='players-grid__box__content__button'>
-                      <button className='btn-block btn-inline-success'>
+                      <button className='btn btn-block btn-3-inline-success'>
                         Add Player
                       </button>
                     </div>

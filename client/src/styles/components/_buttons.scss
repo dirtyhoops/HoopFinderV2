@@ -1,43 +1,71 @@
 .btn {
   cursor: pointer;
   transition: all 0.3s;
+}
 
-  &-1 {
-    width: 100%;
-    border-radius: 13px;
-    height: 45px;
-    border: none;
-    color: white;
-    font-size: 18px;
+// Buttons for Register and Login
+.btn-1 {
+  width: 100%;
+  border-radius: 13px;
+  height: 45px;
+  border: none;
+  color: white;
+  font-size: 18px;
 
-    &--register {
-      background: $color-success;
+  &--register {
+    background: $color-success;
 
-      &:hover {
-        background: $color-success-2;
-      }
+    &:hover {
+      background: $color-success-2;
     }
+  }
 
-    &--login {
-      background: $color-primary;
+  &--login {
+    background: $color-primary;
 
-      &:hover {
-        background: $color-primary-2;
-      }
+    &:hover {
+      background: $color-primary-2;
     }
+  }
 
-    &--saveprofile {
-      background: $color-info;
+  &--saveprofile {
+    background: $color-info;
 
-      &:hover {
-        background: $color-info-2;
-      }
+    &:hover {
+      background: $color-info-2;
     }
   }
 }
 
-//fix this later
-.btn {
+// Buttons for wall posts inside the player profile's page
+.btn-2 {
+  padding: 9px 20px;
+  border-radius: 3px;
+
+  &-primary {
+    background-color: #4a95e4;
+    border: none;
+    color: white;
+  }
+
+  &-success {
+    background-color: #28a745;
+    border: none;
+    color: white;
+  }
+
+  &-transparent {
+    color: black;
+    background-color: transparent;
+    padding: 9px 0px;
+    font-size: 13px;
+    border: none;
+
+    &-inactive {
+      color: $color-inactive-button;
+    }
+  }
+
   // for the dropdown in the post component
   &-transparent-dropdown {
     color: black;
@@ -45,7 +73,10 @@
     padding: 15px 5px 15px 35px;
     border: none;
   }
+}
 
+// Button for player's list
+.btn-3 {
   // For players list
   &-inline-success {
     background-color: transparent;
@@ -62,6 +93,7 @@
   }
 }
 
+// Just the button takes 90% of the width of the parent container
 .btn-block {
   width: 90%;
   padding: 1rem;
