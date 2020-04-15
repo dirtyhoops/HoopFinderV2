@@ -5,7 +5,32 @@ import {
   GET_USER_PROFILE_FAIL,
   CREATE_PROFILE_SUCCESS,
   RESET_PROFILE_LOADED,
+  GET_PROFILE,
 } from './types';
+
+// Create profile
+export const createProfile = ({ formData }) => async (dispatch) => {
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  };
+
+  try {
+    const res = await axios.post('/api/profile', formData, config);
+
+    dispatch({ type: CREATE_PROFILE_SUCCESS });
+
+    // dispatch(setAlert(res.data.msg, 'success'));
+  } catch (err) {
+    const errors = err.response.data.errors;
+
+    if (errors) {
+      // errors.forEach((error) => dispatch(setAelert(error.msg, 'danger')));
+      console.log(errors);
+    }
+  }
+};
 
 // Load Profiles
 export const getProfiles = (playerposition) => async (dispatch) => {
@@ -37,7 +62,7 @@ export const getProfiles = (playerposition) => async (dispatch) => {
   }
 };
 
-// Load User's Profile
+// Get Logged in User's Profile
 export const getUserProfile = () => async (dispatch) => {
   try {
     const res = await axios.get('/api/profile/me');
@@ -55,26 +80,19 @@ export const getUserProfile = () => async (dispatch) => {
   }
 };
 
-export const createProfile = ({ formData }) => async (dispatch) => {
-  const config = {
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  };
-
+// Get player's profile by user ID
+export const getProfile = (id) => async (dispatch) => {
   try {
-    const res = await axios.post('/api/profile', formData, config);
+    const res = await axios.get(`/api/profile/user/${id}`);
 
-    dispatch({ type: CREATE_PROFILE_SUCCESS });
-
-    // dispatch(setAlert(res.data.msg, 'success'));
+    dispatch({
+      type: GET_PROFILE,
+      payload: res.data,
+    });
   } catch (err) {
-    const errors = err.response.data.errors;
-
-    if (errors) {
-      // errors.forEach((error) => dispatch(setAelert(error.msg, 'danger')));
-      console.log(errors);
-    }
+    console.log(
+      'cant load profile ---- change this later and take this console log out'
+    );
   }
 };
 

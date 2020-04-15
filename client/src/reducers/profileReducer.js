@@ -4,6 +4,7 @@ import {
   GET_USER_PROFILE_FAIL,
   CREATE_PROFILE_SUCCESS,
   RESET_PROFILE_LOADED,
+  GET_PROFILE,
 } from '../actions/types';
 
 const initialState = {
@@ -13,6 +14,7 @@ const initialState = {
   loadingProfiles: true,
   isUserProfileLoaded: false,
   isCreatingProfileSuccessful: false,
+  playerProfileLoaded: false,
 };
 
 export default function (state = initialState, action) {
@@ -29,6 +31,12 @@ export default function (state = initialState, action) {
       return {
         ...state,
         players: payload,
+      };
+    case GET_PROFILE:
+      return {
+        ...state,
+        selectedProfile: payload,
+        playerProfileLoaded: true,
       };
     case GET_USER_PROFILE_FAIL:
       return {

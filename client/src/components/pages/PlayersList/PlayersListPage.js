@@ -48,30 +48,34 @@ const PlayersListPage = ({ profile: { players }, getProfiles }) => {
         {players.length > 0 ? (
           <div className='players-grid'>
             {players.map((player) => (
-              <div className='players-grid__box'>
-                <div key={player._id} className='players-grid__box__content'>
-                  <div className='players-grid__box__content__image'>
-                    <img
-                      src={player.avatar === '' ? defaultAvatar : player.avatar}
-                      className={`players-grid__box__content__image__img ${player.avatar_bg}`}
-                    />
+              <div key={player._id} className='players-grid__box'>
+                <Link className='link' to={`/player/${player.user._id}`}>
+                  <div className='players-grid__box__content'>
+                    <div className='players-grid__box__content__image'>
+                      <img
+                        src={
+                          player.avatar === '' ? defaultAvatar : player.avatar
+                        }
+                        className={`players-grid__box__content__image__img ${player.avatar_bg}`}
+                      />
+                    </div>
+                    <div className='players-grid__box__content__info'>
+                      <p className='players-text-name'>
+                        {player.user.firstName} {player.user.lastName}
+                      </p>
+                      <p className='players-text-position'>{player.position}</p>
+                      <p className='players-text-location'>
+                        <i className='fa fa-map-marker'></i> {player.city},{' '}
+                        {player.state}
+                      </p>
+                    </div>
+                    <div className='players-grid__box__content__button'>
+                      <button className='btn-block btn-inline-success'>
+                        Add Player
+                      </button>
+                    </div>
                   </div>
-                  <div className='players-grid__box__content__info'>
-                    <p className='players-text-name'>
-                      {player.user.firstName} {player.user.lastName}
-                    </p>
-                    <p className='players-text-position'>{player.position}</p>
-                    <p className='players-text-location'>
-                      <i className='fa fa-map-marker'></i> {player.city},{' '}
-                      {player.state}
-                    </p>
-                  </div>
-                  <div className='players-grid__box__content__button'>
-                    <button className='btn-block btn-inline-success'>
-                      Add Player
-                    </button>
-                  </div>
-                </div>
+                </Link>
               </div>
             ))}
           </div>

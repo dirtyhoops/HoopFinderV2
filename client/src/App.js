@@ -10,6 +10,7 @@ import Landing from './components/layout/Landing';
 import PlayerProfilePage from './components/pages/PlayerProfile/PlayerProfilePage';
 import EditProfile from './components/forms/EditProfile';
 import PlayersListPage from './components/pages/PlayersList/PlayersListPage';
+import PlayerPage from './components/pages/PlayerProfile/PlayerPage';
 
 // Import the sass styling
 import './styles/main.scss';
@@ -26,6 +27,7 @@ const App = () => (
           <Route exact path='/player/me/edit' component={EditProfile} />
           <Route exact path='/player/me' component={PlayerProfilePage} />
           <Route exact path='/players' component={PlayersListPage} />
+          <Route exact path='/player/:id' component={PlayerPage} />
         </Switch>
       </Fragment>
     </Router>
