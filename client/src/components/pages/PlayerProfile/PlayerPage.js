@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import Moment from 'react-moment';
 
 import { getProfile } from '../../../actions/profile';
 import { getAllWallPosts } from '../../../actions/post';
@@ -12,26 +13,16 @@ const PlayerPage = ({
   profile: { selectedProfile, playerProfileLoaded },
   getProfile,
   getAllWallPosts,
-  post: { posts, isPostsLoaded },
+  post: { posts },
   match: {
     params: { id },
   },
 }) => {
   useEffect(() => {
     getProfile(id);
+    getAllWallPosts(id);
   }, []);
 
-  // const {
-  //   _id,
-  //   avatar,
-  //   avatar_bg,
-  //   backdrop,
-  //   state,
-  //   city,
-  //   position,
-  //   user: { firstName, lastName },
-  //   height: { feet, inches },
-  // } = selectedProfile;
   return (
     <>
       {playerProfileLoaded ? (
@@ -70,6 +61,7 @@ const PlayerPage = ({
                   <p className='text-header'>Friends</p>
                 </div>
               </div>
+
               <div className='profile-wall'>
                 <div className='profile-wall-form u-margin-bottom-md'>
                   <form>
@@ -95,53 +87,64 @@ const PlayerPage = ({
                   </form>
                 </div>
 
-                {/* <!-- PROFILE WALL POST #1 (GOING TO NEED JUST ONE OF THESE LATER ONCE WERE PULLING REAL DATAS) --> */}
-                <div className='profile-wall-post u-margin-bottom-md'>
-                  <div className='profile-wall-post-header'>
-                    <div className='profile-wall-post-header__image'>
-                      <div className='profile-wall-post-header__image__img'></div>
-                    </div>
-                    <div className='profile-wall-post-header__info'>
-                      <p className='text-post-name'>Daryll Osis</p>
-                      <p className='text-post-location'>San Jose, CA</p>
-                    </div>
-                    <div className='profile-wall-post-header__dropdown'>
-                      <button className='btn btn-2 btn-2-transparent-dropdown'>
-                        <i className='fa fa-chevron-down'></i>
-                      </button>
-                    </div>
+                {/* <!-- GOING TO LOAD REAL DATAS, DELETE HARD CODED SHIT AFTER --> */}
+                {posts.length > 0 ? (
+                  <div className='profile-wall-post-container'>
+                    {posts.map((post) => (
+                      <div
+                        key={post._id}
+                        className='profile-wall-post u-margin-bottom-md'
+                      >
+                        {/* No header if it's the loggedin user's own post */}
+                        {!post.ownPost ? (
+                          <div className='profile-wall-post-header'>
+                            <div className='profile-wall-post-header__image'>
+                              <img
+                                className={`profile-wall-post-header__image__img ${post.poster.avatar_bg}`}
+                                src={post.poster.avatar}
+                              />
+                            </div>
+                            <div className='profile-wall-post-header__info'>
+                              <p className='text-post-name'>
+                                {post.poster.firstName} {post.poster.lastName}
+                              </p>
+                              <p className='text-post-location'>
+                                {post.poster.city}, {post.poster.state}
+                              </p>
+                            </div>
+                            <div className='profile-wall-post-header__dropdown'>
+                              <button className='btn btn-2 btn-2-transparent-dropdown'>
+                                <i className='fa fa-chevron-down'></i>
+                              </button>
+                            </div>
+                          </div>
+                        ) : null}
+                        <div className='profile-wall-post-content'>
+                          <p className='text-post-content'>{post.text}</p>
+                        </div>
+                        <div className='profile-wall-post-footer'>
+                          <div className='profile-wall-post-footer__left'>
+                            <button className='btn btn-2 btn-2-transparent u-margin-right-sm'>
+                              <i className='fa fa-heart icon-heart-inactive'></i>{' '}
+                              Like
+                            </button>
+                            <button className='btn btn-2 btn-2-transparent'>
+                              <i className='fa fa-comment'></i> Comment
+                            </button>
+                          </div>
+                          <div className='profile-wall-post-foot__right'>
+                            <p className='text-post-date'>
+                              {/* Moment to format the date to count the date from when it's posted */}
+                              <Moment fromNow>{post.dateCreated}</Moment>
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
                   </div>
-                  <div className='profile-wall-post-content'>
-                    <p className='text-post-content'>
-                      It is a long established fact that a reader will be
-                      distracted by the readable content of a page when looking
-                      at its layout. The point of using Lorem Ipsum is that it
-                      has a more-or-less normal distribution of letters, as
-                      opposed to using 'Content here, content here', making it
-                      look like readable English. Many desktop publishing
-                      packages and web page editors now use Lorem Ipsum as their
-                      default model text, and a search for 'lorem ipsum' will
-                      uncover many web sites still in their infancy. Various
-                      versions have evolved over the years, sometimes by
-                      accident, sometimes on purpose (injected humour and the
-                      like).
-                    </p>
-                  </div>
-                  <div className='profile-wall-post-footer'>
-                    <div className='profile-wall-post-footer__left'>
-                      <button className='btn btn-2 btn-2-transparent u-margin-right-sm'>
-                        <i className='fa fa-heart icon-heart-inactive'></i> Like
-                      </button>
-                      <button className='btn btn-2 btn-2-transparent'>
-                        <i className='fa fa-comment'></i> Comment
-                      </button>
-                    </div>
-                    <div className='profile-wall-post-foot__right'>
-                      <p className='text-post-date'>April 1st 2020, 11:12 pm</p>
-                    </div>
-                  </div>
-                </div>
+                ) : null}
               </div>
+
               <div className='profile-favorite'>
                 <div className='profile-header'>
                   <p className='text-header'>Favorite Court</p>

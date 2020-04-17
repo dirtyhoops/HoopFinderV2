@@ -1,5 +1,5 @@
 import {
-  GET_POSTS,
+  GET_POSTS_FOR_HOMEPAGE,
   GET_POSTS_WITH_ID,
   CREATE_COMMENT,
   DELETE_COMMENT,
@@ -8,7 +8,6 @@ import {
 const initialState = {
   posts: [],
   postsHome: [],
-  isPostLoaded: false,
   isPostLoadedHome: false,
   isCommentSuccessful: false,
 };
@@ -17,7 +16,7 @@ export default function (state = initialState, action) {
   const { type, payload } = action;
 
   switch (type) {
-    case GET_POSTS:
+    case GET_POSTS_FOR_HOMEPAGE:
       return {
         ...state,
         postsHome: payload,
@@ -27,7 +26,6 @@ export default function (state = initialState, action) {
       return {
         ...state,
         posts: payload,
-        isPostLoaded: true,
       };
     default:
       return state;

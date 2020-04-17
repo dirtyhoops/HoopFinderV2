@@ -23,6 +23,15 @@ const PostSchema = new mongoose.Schema({
     avatar: {
       type: String,
     },
+    avatar_bg: {
+      type: String,
+    },
+    city: {
+      type: String,
+    },
+    state: {
+      type: String,
+    },
   },
   ownPost: {
     type: Boolean,

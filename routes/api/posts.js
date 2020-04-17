@@ -33,6 +33,9 @@ router.post(
         firstName: profile.user.firstName,
         lastName: profile.user.lastName,
         avatar: profile.avatar,
+        avatar_bg: profile.avatar_bg,
+        city: profile.city,
+        state: profile.state,
       },
       ownPost: false,
     });
@@ -72,7 +75,7 @@ router.post(
 router.get('/user/:user_id', async (req, res) => {
   try {
     const posts = await Post.find({ user: req.params.user_id }).sort({
-      date: -1,
+      dateCreated: -1,
     });
 
     // If there are no posts
