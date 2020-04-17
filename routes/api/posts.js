@@ -34,6 +34,7 @@ router.post(
         lastName: profile.user.lastName,
         avatar: profile.avatar,
       },
+      ownPost: false,
     });
 
     try {
@@ -44,6 +45,11 @@ router.post(
         return res
           .status(404)
           .json({ msg: 'User not found, cannot make a post' });
+      }
+
+      // Just checking if the logged in user is posting on his/her own wall
+      if (req.params.user_id === req.user.id) {
+        postFields.ownPost = true;
       }
 
       const post = await postFields.save();
@@ -61,7 +67,7 @@ router.post(
 );
 
 // @route       GET api/posts/user/:user_id
-// @desc        Get all user's posts by user_id
+// @desc        Get all user's posts for user_id
 // @access      Public
 router.get('/user/:user_id', async (req, res) => {
   try {

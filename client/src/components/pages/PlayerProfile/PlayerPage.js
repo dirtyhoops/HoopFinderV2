@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { getProfile } from '../../../actions/profile';
+import { getAllWallPosts } from '../../../actions/post';
 
 // Import then remove later once it's not hardcoded
 import defaultAvatar from '../../../img/defaultavatar.png';
@@ -10,6 +11,8 @@ import defaultAvatar from '../../../img/defaultavatar.png';
 const PlayerPage = ({
   profile: { selectedProfile, playerProfileLoaded },
   getProfile,
+  getAllWallPosts,
+  post: { posts, isPostsLoaded },
   match: {
     params: { id },
   },
@@ -156,6 +159,9 @@ const PlayerPage = ({
 
 const mapStateToProps = (state) => ({
   profile: state.profile,
+  post: state.post,
 });
 
-export default connect(mapStateToProps, { getProfile })(PlayerPage);
+export default connect(mapStateToProps, { getProfile, getAllWallPosts })(
+  PlayerPage
+);
