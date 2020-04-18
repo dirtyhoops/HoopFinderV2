@@ -21,5 +21,6 @@ export const GET_PROFILE = 'GET_PROFILE';
 // FOR POST
 export const GET_POSTS_FOR_HOMEPAGE = 'GET_POSTS_FOR_HOMEPAGE'; // maybe this will be for the home page
 export const GET_POSTS_WITH_ID = 'GET_POSTS_WITH_ID';
+export const CREATE_POST_SUCCESS = 'CREATE_POST_SUCCESS';
 export const CREATE_COMMENT = 'CREATE_COMMENT';
 export const DELETE_COMMENT = 'DELETE_COMMENT';

@@ -7,7 +7,6 @@ import NavBar from './components/layout/NavBar';
 import Register from './components/forms/Register';
 import Login from './components/forms/Login';
 import Landing from './components/layout/Landing';
-import PlayerProfilePage from './components/pages/PlayerProfile/PlayerProfilePage';
 import EditProfile from './components/forms/EditProfile';
 import PlayersListPage from './components/pages/PlayersList/PlayersListPage';
 import PlayerPage from './components/pages/PlayerProfile/PlayerPage';
@@ -25,7 +24,6 @@ const App = () => (
           <Route exact path='/register' component={Register} />
           <Route exact path='/login' component={Login} />
           <Route exact path='/player/me/edit' component={EditProfile} />
-          <Route exact path='/player/me' component={PlayerProfilePage} />
           <Route exact path='/players' component={PlayersListPage} />
           <Route exact path='/player/:id' component={PlayerPage} />
         </Switch>

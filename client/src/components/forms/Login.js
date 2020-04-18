@@ -29,8 +29,9 @@ const Login = ({
     login({ formData });
   };
 
+  // CHANGE THIS LATER TO REDIRECT TO THE HOME PAGE WITH ALL THE FEEDS
   if (isAuthenticated) {
-    return <Redirect to='/player/me' />;
+    return <Redirect to='/players' />;
   }
 
   // // Get the user profile as soon as the login is successful

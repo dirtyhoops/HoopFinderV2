@@ -4,7 +4,9 @@ import { Link } from 'react-router-dom';
 import Moment from 'react-moment';
 
 import { getProfile } from '../../../actions/profile';
-import { getAllWallPosts } from '../../../actions/post';
+import { getAllWallPosts, createPost } from '../../../actions/post';
+
+import WallPostForm from './WallPostForm';
 
 // Import then remove later once it's not hardcoded
 import defaultAvatar from '../../../img/defaultavatar.png';
@@ -13,7 +15,8 @@ const PlayerPage = ({
   profile: { selectedProfile, playerProfileLoaded },
   getProfile,
   getAllWallPosts,
-  post: { posts },
+  createPost,
+  post: { posts, isCreatingPostSuccessful },
   match: {
     params: { id },
   },
@@ -22,6 +25,10 @@ const PlayerPage = ({
     getProfile(id);
     getAllWallPosts(id);
   }, []);
+
+  if (isCreatingPostSuccessful) {
+    getAllWallPosts(id);
+  }
 
   return (
     <>
@@ -63,8 +70,9 @@ const PlayerPage = ({
               </div>
 
               <div className='profile-wall'>
-                <div className='profile-wall-form u-margin-bottom-md'>
-                  <form>
+                <WallPostForm createPost={createPost} user_id={id} />
+                {/* <div className='profile-wall-form u-margin-bottom-md'>
+                  <form onSubmit={e => onSubmit(e)}>
                     <textarea
                       className='form-textarea'
                       placeholder='What do you want to talk about?'
@@ -85,7 +93,7 @@ const PlayerPage = ({
                       </div>
                     </div>
                   </form>
-                </div>
+                </div> */}
 
                 {/* <!-- GOING TO LOAD REAL DATAS, DELETE HARD CODED SHIT AFTER --> */}
                 {posts.length > 0 ? (
@@ -165,6 +173,8 @@ const mapStateToProps = (state) => ({
   post: state.post,
 });
 
-export default connect(mapStateToProps, { getProfile, getAllWallPosts })(
-  PlayerPage
-);
+export default connect(mapStateToProps, {
+  getProfile,
+  getAllWallPosts,
+  createPost,
+})(PlayerPage);

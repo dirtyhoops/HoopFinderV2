@@ -2,6 +2,7 @@ import axios from 'axios';
 import {
   GET_POSTS_FOR_HOMEPAGE,
   GET_POSTS_WITH_ID,
+  CREATE_POST_SUCCESS,
   CREATE_COMMENT,
   DELETE_COMMENT,
 } from './types';
@@ -22,5 +23,26 @@ export const getAllWallPosts = (user_id) => async (dispatch) => {
     // dispatch({
     //   type: GET_POSTS_FAIL,
     // });
+  }
+};
+
+// Create Post
+export const createPost = (user_id, { text }) => async (dispatch) => {
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  };
+
+  try {
+    const res = await axios.post(`/api/posts/${user_id}`, { text }, config);
+    dispatch({ type: CREATE_POST_SUCCESS });
+  } catch (err) {
+    const errors = err.response.data.errors;
+
+    if (errors) {
+      // errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
+      console.log(errors);
+    }
   }
 };

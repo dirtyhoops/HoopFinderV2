@@ -1,6 +1,7 @@
 import {
   GET_POSTS_FOR_HOMEPAGE,
   GET_POSTS_WITH_ID,
+  CREATE_POST_SUCCESS,
   CREATE_COMMENT,
   DELETE_COMMENT,
 } from '../actions/types';
@@ -8,6 +9,7 @@ import {
 const initialState = {
   posts: [],
   postsHome: [],
+  isCreatingPostSuccessful: false,
   isPostLoadedHome: false,
   isCommentSuccessful: false,
 };
@@ -26,6 +28,12 @@ export default function (state = initialState, action) {
       return {
         ...state,
         posts: payload,
+        isCreatingPostSuccessful: false,
+      };
+    case CREATE_POST_SUCCESS:
+      return {
+        ...state,
+        isCreatingPostSuccessful: true,
       };
     default:
       return state;

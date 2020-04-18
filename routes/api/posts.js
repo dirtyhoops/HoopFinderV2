@@ -7,7 +7,7 @@ const Profile = require('../../models/Profile');
 const User = require('../../models/User');
 const Post = require('../../models/Post');
 
-// @route       POST api/posts
+// @route       POST api/posts/:user_id
 // @desc        Create a post
 // @access      Private
 router.post(
