@@ -12,7 +12,7 @@ import WallPostForm from './WallPostForm';
 import defaultAvatar from '../../../img/defaultavatar.png';
 
 const PlayerPage = ({
-  profile: { selectedProfile, playerProfileLoaded },
+  profile: { selectedProfile, playerProfileLoaded, user_profile },
   getProfile,
   getAllWallPosts,
   createPost,
@@ -132,7 +132,41 @@ const PlayerPage = ({
                         {/* COMMENTS and COLLAPSIBLE WITH A CLICK */}
                         <div className='post-comment'>
                           <div className='post-comment-container'>
-                            <p>yeeeeeeeeeee</p>
+                            {/* {user_profile !== null ? ( */}
+                            <div className='post-comment-form'>
+                              <div className='post-comment-form__image'>
+                                <img
+                                  src=''
+                                  className='post-comment-form__image__img bg-pink'
+                                />
+                                {/* <img
+                                  src={user_profile.avatar}
+                                  className={`post-comment-form__image__img ${user_profile.avatar_bg}`}
+                                /> */}
+                              </div>
+                              <div className='post-comment-form__textarea'>
+                                <form>
+                                  <textarea></textarea>
+                                  <input
+                                    className='btn btn-comment post-comment-form-button'
+                                    type='submit'
+                                    value='Post'
+                                  ></input>
+                                </form>
+                              </div>
+                            </div>
+                            {/* ) : null} */}
+                            <div className='post-comment-box'>
+                              <div className='post-comment-box__image'>
+                                <img
+                                  src=''
+                                  className='post-comment-form__image__img bg-pink'
+                                />
+                              </div>
+                              <div className='post-comment-box__content'>
+                                <p>aaaaaaaaaaaaa</p>
+                              </div>
+                            </div>
                           </div>
                         </div>
                       </div>

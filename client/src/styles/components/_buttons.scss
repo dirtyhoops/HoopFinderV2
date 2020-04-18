@@ -43,9 +43,13 @@
   border-radius: 3px;
 
   &-primary {
-    background-color: #4a95e4;
+    background-color: $color-primary;
     border: none;
     color: white;
+
+    &:hover {
+      background-color: $color-primary-2;
+    }
   }
 
   &-success {
@@ -98,4 +102,16 @@
   width: 90%;
   padding: 1rem;
   border-radius: 7px;
+}
+
+.btn-comment {
+  background-color: $color-info;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 9px 20px;
+
+  &:hover {
+    background-color: $color-info-2;
+  }
 }
