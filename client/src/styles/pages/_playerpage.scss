@@ -234,6 +234,7 @@
 
   &-content {
     font-size: 13px;
+    line-height: normal;
   }
 
   &-date {
@@ -306,6 +307,7 @@
 
   &-box {
     display: flex;
+    margin-top: 1rem;
 
     &__image {
       flex: 0 0 12%;
@@ -314,9 +316,21 @@
     &__content {
       flex: 0 0 88%;
       border-radius: 15px;
-      background-color: rgb(236, 229, 229);
-      padding: 2px 5px;
-      font-size: 13px;
+      background-color: rgb(247, 241, 241);
+      padding: 7px 10px;
     }
+  }
+}
+
+.text-comment {
+  &-name {
+    color: rgb(12, 134, 182);
+    font-size: 13px;
+    font-weight: bold;
+  }
+
+  &-content {
+    font-size: 13px;
+    line-height: normal;
   }
 }

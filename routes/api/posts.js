@@ -207,6 +207,7 @@ router.post(
       firstName: profile.user.firstName,
       lastName: profile.user.lastName,
       avatar: profile.avatar,
+      avatar_bg: profile.avatar_bg,
     };
 
     try {

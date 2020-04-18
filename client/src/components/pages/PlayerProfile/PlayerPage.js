@@ -30,6 +30,10 @@ const PlayerPage = ({
     getAllWallPosts(id);
   }
 
+  const toggleComments = () => {
+    console.log('toggle');
+  };
+
   return (
     <>
       {playerProfileLoaded ? (
@@ -82,31 +86,29 @@ const PlayerPage = ({
                         className='profile-wall-post u-margin-bottom-md'
                       >
                         <div className='profile-wall-post-top'>
-                          {/* No header if it's the loggedin user's own post */}
-                          {!post.ownPost ? (
-                            <div className='profile-wall-post-header'>
-                              <div className='profile-wall-post-header__image'>
-                                <img
-                                  className={`profile-wall-post-header__image__img ${post.poster.avatar_bg}`}
-                                  src={post.poster.avatar}
-                                />
-                              </div>
-                              <div className='profile-wall-post-header__info'>
-                                <p className='text-post-name'>
-                                  {post.poster.firstName} {post.poster.lastName}
-                                </p>
-                                <p className='text-post-location'>
-                                  {post.poster.city}, {post.poster.state}
-                                </p>
-                                <p className='text-post-location'></p>
-                              </div>
-                              <div className='profile-wall-post-header__dropdown'>
-                                <button className='btn btn-2 btn-2-transparent-dropdown'>
-                                  <i className='fa fa-chevron-down'></i>
-                                </button>
-                              </div>
+                          <div className='profile-wall-post-header'>
+                            <div className='profile-wall-post-header__image'>
+                              <img
+                                className={`profile-wall-post-header__image__img ${post.poster.avatar_bg}`}
+                                src={post.poster.avatar}
+                              />
                             </div>
-                          ) : null}
+                            <div className='profile-wall-post-header__info'>
+                              <p className='text-post-name'>
+                                {post.poster.firstName} {post.poster.lastName}
+                              </p>
+                              <p className='text-post-location'>
+                                {post.poster.city}, {post.poster.state}
+                              </p>
+                              <p className='text-post-location'></p>
+                            </div>
+                            <div className='profile-wall-post-header__dropdown'>
+                              <button className='btn btn-2 btn-2-transparent-dropdown'>
+                                <i className='fa fa-chevron-down'></i>
+                              </button>
+                            </div>
+                          </div>
+
                           <div className='profile-wall-post-content'>
                             <p className='text-post-content'>{post.text}</p>
                           </div>
@@ -117,7 +119,10 @@ const PlayerPage = ({
                                 Like
                               </button>
                               <button className='btn btn-2 btn-2-transparent'>
-                                <i className='fa fa-comment'></i> Comment
+                                <i className='fa fa-comment'></i> Comment{' '}
+                                {post.comments.length > 0 ? (
+                                  <span>({post.comments.length})</span>
+                                ) : null}{' '}
                               </button>
                             </div>
                             <div className='profile-wall-post-foot__right'>
@@ -156,7 +161,30 @@ const PlayerPage = ({
                               </div>
                             </div>
                             {/* ) : null} */}
-                            <div className='post-comment-box'>
+                            {post.comments.length > 0 ? (
+                              <>
+                                {post.comments.map((comment) => (
+                                  <div className='post-comment-box'>
+                                    <div className='post-comment-box__image'>
+                                      <img
+                                        src={comment.avatar}
+                                        className={`post-comment-form__image__img ${comment.avatar_bg}`}
+                                      />
+                                    </div>
+                                    <div className='post-comment-box__content'>
+                                      <p className='text-comment-name'>
+                                        {comment.firstName} {comment.lastName}
+                                      </p>
+                                      <p className='text-comment-content'>
+                                        {comment.text}
+                                      </p>
+                                    </div>
+                                  </div>
+                                ))}
+                              </>
+                            ) : null}
+
+                            {/* <div className='post-comment-box'>
                               <div className='post-comment-box__image'>
                                 <img
                                   src=''
@@ -164,9 +192,16 @@ const PlayerPage = ({
                                 />
                               </div>
                               <div className='post-comment-box__content'>
-                                <p>aaaaaaaaaaaaa</p>
+                                <p className='text-comment-name'>Daryll Osis</p>
+                                <p className='text-comment-content'>
+                                  Lorem ipsum dolor sit amet consectetur
+                                  adipisicing elit. Totam nam nulla minima
+                                  facere rerum. Iste ipsa quam sit! Molestias
+                                  sapiente a ad placeat! Nam minus vitae modi
+                                  magnam accusantium amet.
+                                </p>
                               </div>
-                            </div>
+                            </div> */}
                           </div>
                         </div>
                       </div>

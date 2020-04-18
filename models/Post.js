@@ -63,6 +63,9 @@ const PostSchema = new mongoose.Schema({
       avatar: {
         type: String,
       },
+      avatar_bg: {
+        type: String,
+      },
       dateCreated: {
         type: Date,
         default: Date.now,
