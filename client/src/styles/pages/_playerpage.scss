@@ -96,9 +96,6 @@
 // THIS IS FOR THE WALL ////////////////////////////////
 .profile-wall {
   width: 40%;
-  // background: white;
-  // border-radius: 10px;
-  // border: 1px solid $color-palette-3;
 
   // The form
   &-form {
@@ -123,11 +120,13 @@
   // The post
   &-post {
     width: 100%;
-    padding: 0 2rem;
     background-color: $color-white;
     border-radius: 5px;
     box-shadow: 0 3px 4px rgba(0, 0, 0, 0.1);
 
+    &-top {
+      padding: 0 2rem;
+    }
     // This is nothing, just a container for posts - maybe delete this later
     &-container {
       width: 100%;
@@ -250,4 +249,13 @@
 
 .icon-heart-active {
   color: red;
+}
+
+// For the comments in the wall post
+.post-comment {
+  border-top: 1px solid $color-border-2;
+
+  &-container {
+    padding: 0 2rem;
+  }
 }

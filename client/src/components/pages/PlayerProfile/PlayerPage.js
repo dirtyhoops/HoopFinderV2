@@ -70,32 +70,10 @@ const PlayerPage = ({
               </div>
 
               <div className='profile-wall'>
+                {/* For the Wall Post form */}
                 <WallPostForm createPost={createPost} user_id={id} />
-                {/* <div className='profile-wall-form u-margin-bottom-md'>
-                  <form onSubmit={e => onSubmit(e)}>
-                    <textarea
-                      className='form-textarea'
-                      placeholder='What do you want to talk about?'
-                    ></textarea>
-                    <div className='form-group-flex'>
-                      <div className='form-group-flex-left'>
-                        <button className='btn btn-2 btn-2-transparent u-margin-right-sm'>
-                          <i className='fa fa-pencil'></i> Write a Post
-                        </button>
-                        <button className='btn btn-2 btn-2-transparent btn-transparent-inactive'>
-                          <i className='fa fa-paperclip'></i> Add image
-                        </button>
-                      </div>
-                      <div className='form-group-flex-right'>
-                        <button className='btn btn-2 btn-2-primary'>
-                          Post
-                        </button>
-                      </div>
-                    </div>
-                  </form>
-                </div> */}
 
-                {/* <!-- GOING TO LOAD REAL DATAS, DELETE HARD CODED SHIT AFTER --> */}
+                {/* The Wall Posts */}
                 {posts.length > 0 ? (
                   <div className='profile-wall-post-container'>
                     {posts.map((post) => (
@@ -103,48 +81,58 @@ const PlayerPage = ({
                         key={post._id}
                         className='profile-wall-post u-margin-bottom-md'
                       >
-                        {/* No header if it's the loggedin user's own post */}
-                        {!post.ownPost ? (
-                          <div className='profile-wall-post-header'>
-                            <div className='profile-wall-post-header__image'>
-                              <img
-                                className={`profile-wall-post-header__image__img ${post.poster.avatar_bg}`}
-                                src={post.poster.avatar}
-                              />
+                        <div className='profile-wall-post-top'>
+                          {/* No header if it's the loggedin user's own post */}
+                          {!post.ownPost ? (
+                            <div className='profile-wall-post-header'>
+                              <div className='profile-wall-post-header__image'>
+                                <img
+                                  className={`profile-wall-post-header__image__img ${post.poster.avatar_bg}`}
+                                  src={post.poster.avatar}
+                                />
+                              </div>
+                              <div className='profile-wall-post-header__info'>
+                                <p className='text-post-name'>
+                                  {post.poster.firstName} {post.poster.lastName}
+                                </p>
+                                <p className='text-post-location'>
+                                  {post.poster.city}, {post.poster.state}
+                                </p>
+                                <p className='text-post-location'></p>
+                              </div>
+                              <div className='profile-wall-post-header__dropdown'>
+                                <button className='btn btn-2 btn-2-transparent-dropdown'>
+                                  <i className='fa fa-chevron-down'></i>
+                                </button>
+                              </div>
                             </div>
-                            <div className='profile-wall-post-header__info'>
-                              <p className='text-post-name'>
-                                {post.poster.firstName} {post.poster.lastName}
-                              </p>
-                              <p className='text-post-location'>
-                                {post.poster.city}, {post.poster.state}
-                              </p>
-                            </div>
-                            <div className='profile-wall-post-header__dropdown'>
-                              <button className='btn btn-2 btn-2-transparent-dropdown'>
-                                <i className='fa fa-chevron-down'></i>
+                          ) : null}
+                          <div className='profile-wall-post-content'>
+                            <p className='text-post-content'>{post.text}</p>
+                          </div>
+                          <div className='profile-wall-post-footer'>
+                            <div className='profile-wall-post-footer__left'>
+                              <button className='btn btn-2 btn-2-transparent u-margin-right-sm'>
+                                <i className='fa fa-heart icon-heart-inactive'></i>{' '}
+                                Like
+                              </button>
+                              <button className='btn btn-2 btn-2-transparent'>
+                                <i className='fa fa-comment'></i> Comment
                               </button>
                             </div>
+                            <div className='profile-wall-post-foot__right'>
+                              <p className='text-post-date'>
+                                {/* Moment to format the date to count the date from when it's posted */}
+                                <Moment fromNow>{post.dateCreated}</Moment>
+                              </p>
+                            </div>
                           </div>
-                        ) : null}
-                        <div className='profile-wall-post-content'>
-                          <p className='text-post-content'>{post.text}</p>
                         </div>
-                        <div className='profile-wall-post-footer'>
-                          <div className='profile-wall-post-footer__left'>
-                            <button className='btn btn-2 btn-2-transparent u-margin-right-sm'>
-                              <i className='fa fa-heart icon-heart-inactive'></i>{' '}
-                              Like
-                            </button>
-                            <button className='btn btn-2 btn-2-transparent'>
-                              <i className='fa fa-comment'></i> Comment
-                            </button>
-                          </div>
-                          <div className='profile-wall-post-foot__right'>
-                            <p className='text-post-date'>
-                              {/* Moment to format the date to count the date from when it's posted */}
-                              <Moment fromNow>{post.dateCreated}</Moment>
-                            </p>
+
+                        {/* COMMENTS and COLLAPSIBLE WITH A CLICK */}
+                        <div className='post-comment'>
+                          <div className='post-comment-container'>
+                            <p>yeeeeeeeeeee</p>
                           </div>
                         </div>
                       </div>
