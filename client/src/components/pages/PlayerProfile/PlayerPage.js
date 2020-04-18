@@ -30,8 +30,14 @@ const PlayerPage = ({
     getAllWallPosts(id);
   }
 
-  const toggleComments = () => {
-    console.log('toggle');
+  const [active, setActive] = useState(null);
+
+  const onClickToggle = (i) => {
+    setActive(i);
+    if (active === i) {
+      setActive(null);
+    }
+    console.log('clicking toggle');
   };
 
   return (
@@ -118,7 +124,10 @@ const PlayerPage = ({
                                 <i className='fa fa-heart icon-heart-inactive'></i>{' '}
                                 Like
                               </button>
-                              <button className='btn btn-2 btn-2-transparent'>
+                              <button
+                                className='btn btn-2 btn-2-transparent'
+                                onClick={() => onClickToggle(post._id)}
+                              >
                                 <i className='fa fa-comment'></i> Comment{' '}
                                 {post.comments.length > 0 ? (
                                   <span>({post.comments.length})</span>
@@ -135,7 +144,11 @@ const PlayerPage = ({
                         </div>
 
                         {/* COMMENTS and COLLAPSIBLE WITH A CLICK */}
-                        <div className='post-comment'>
+                        <div
+                          className={`post-comment ${
+                            active === post._id ? 'show' : 'hide'
+                          }`}
+                        >
                           <div className='post-comment-container'>
                             {/* {user_profile !== null ? ( */}
                             <div className='post-comment-form'>
