@@ -54,11 +54,17 @@ const ProfileWall = (props) => {
                 <div className='profile-wall-post-footer'>
                   <div className='profile-wall-post-footer__left'>
                     <button className='btn btn-2 btn-2-transparent u-margin-right-sm'>
-                      <i className='fa fa-heart icon-heart-inactive'></i> Like
+                      <i className='fa fa-heart '></i> Like{' '}
+                      {post.likes.length > 0 ? (
+                        <span>({post.likes.length})</span>
+                      ) : null}{' '}
                     </button>
                     <button
                       className='btn btn-2 btn-2-transparent'
                       onClick={() => onClickToggle(post._id)}
+                      disabled={
+                        post.comments.length < 1 && !isUserProfileLoaded
+                      }
                     >
                       <i className='fa fa-comment'></i> Comment{' '}
                       {post.comments.length > 0 ? (

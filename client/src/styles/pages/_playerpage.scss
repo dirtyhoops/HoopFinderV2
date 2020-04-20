@@ -243,15 +243,6 @@
   }
 }
 
-// For ICON in the posts color
-.icon-heart-inactive {
-  color: $color-inactive-button;
-}
-
-.icon-heart-active {
-  color: red;
-}
-
 // For the comments in the wall post
 .post-comment {
   border-top: 1px solid $color-border-2;
@@ -315,9 +306,16 @@
 
     &__content {
       flex: 0 0 88%;
-      border-radius: 15px;
-      background-color: rgb(247, 241, 241);
-      padding: 7px 10px;
+
+      &__top {
+        border-radius: 15px;
+        background-color: rgb(247, 241, 241);
+        padding: 7px 10px;
+      }
+
+      &__bottom {
+        padding: 0 7px;
+      }
     }
   }
 }
@@ -332,6 +330,11 @@
   &-content {
     font-size: 13px;
     line-height: normal;
+  }
+
+  &-dateCreated {
+    color: rgb(175, 163, 163);
+    font-size: 11px;
   }
 }
 

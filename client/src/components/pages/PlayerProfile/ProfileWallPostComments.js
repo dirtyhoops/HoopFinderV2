@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Moment from 'react-moment';
 
 const ProfileWallPostComments = (props) => {
   const { post, loggedInUser, createComment, isUserProfileLoaded } = props;
@@ -12,7 +13,6 @@ const ProfileWallPostComments = (props) => {
   const onSubmit = (e) => {
     e.preventDefault();
     createComment(post._id, { text });
-    console.log(text);
     setText('');
   };
 
@@ -55,10 +55,17 @@ const ProfileWallPostComments = (props) => {
                   />
                 </div>
                 <div className='post-comment-box__content'>
-                  <p className='text-comment-name'>
-                    {comment.firstName} {comment.lastName}
-                  </p>
-                  <p className='text-comment-content'>{comment.text}</p>
+                  <div className='post-comment-box__content__top'>
+                    <p className='text-comment-name'>
+                      {comment.firstName} {comment.lastName}
+                    </p>
+                    <p className='text-comment-content'>{comment.text}</p>
+                  </div>
+                  <div className='post-comment-box__content__bottom'>
+                    <p className='text-comment-dateCreated'>
+                      <Moment fromNow>{comment.dateCreated}</Moment>
+                    </p>
+                  </div>
                 </div>
               </div>
             ))}
