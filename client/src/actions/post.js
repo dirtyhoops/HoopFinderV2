@@ -47,7 +47,7 @@ export const createPost = (user_id, { text }) => async (dispatch) => {
   }
 };
 
-export const createComment = (comment_id, { text }) => async (dispatch) => {
+export const createComment = (post_id, { text }) => async (dispatch) => {
   const config = {
     headers: {
       'Content-Type': 'application/json',
@@ -55,6 +55,12 @@ export const createComment = (comment_id, { text }) => async (dispatch) => {
   };
 
   try {
+    const res = await axios.post(
+      `/api/posts/${post_id}/comment`,
+      { text },
+      config
+    );
+    dispatch({ type: CREATE_COMMENT_SUCCESS });
   } catch (err) {
     const errors = err.response.data.errors;
 

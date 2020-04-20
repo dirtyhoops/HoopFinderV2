@@ -1,18 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { getProfiles, getUserProfile } from '../../../actions/profile';
+import { getProfiles } from '../../../actions/profile';
 
 import defaultAvatar from '../../../img/defaultavatar.png';
 
-const PlayersListPage = ({
-  profile: { players },
-  getProfiles,
-  getUserProfile,
-}) => {
+const PlayersListPage = ({ profile: { players }, getProfiles }) => {
   useEffect(() => {
     getProfiles(filterPosition);
-    getUserProfile();
+    // getUserProfile();
   }, []);
 
   const [filterPosition, setFilterPosition] = useState('all players');
@@ -94,6 +90,4 @@ const mapStateToProps = (state) => ({
   profile: state.profile,
 });
 
-export default connect(mapStateToProps, { getProfiles, getUserProfile })(
-  PlayersListPage
-);
+export default connect(mapStateToProps, { getProfiles })(PlayersListPage);

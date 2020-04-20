@@ -38,6 +38,10 @@ const PlayerPage = ({
     getAllWallPosts(id);
   }
 
+  // if (isCreatingCommentSuccessful) {
+
+  // }
+
   return (
     <>
       {playerProfileLoaded ? (
@@ -54,7 +58,11 @@ const PlayerPage = ({
 
               <div className='profile-wall'>
                 {/* For the Wall Post form */}
-                <WallPostForm createPost={createPost} user_id={id} />
+                <WallPostForm
+                  createPost={createPost}
+                  user_id={id}
+                  isUserProfileLoaded={isUserProfileLoaded}
+                />
                 <ProfileWall
                   posts={posts}
                   loggedInUser={user_profile}
