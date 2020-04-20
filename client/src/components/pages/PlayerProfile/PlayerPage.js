@@ -3,17 +3,27 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { getProfile } from '../../../actions/profile';
-import { getAllWallPosts, createPost } from '../../../actions/post';
+import {
+  getAllWallPosts,
+  createPost,
+  createComment,
+} from '../../../actions/post';
 
 import WallPostForm from './WallPostForm';
 import ProfileInfo from './ProfileInfo';
 import ProfileWall from './ProfileWall';
 
 const PlayerPage = ({
-  profile: { selectedProfile, playerProfileLoaded, user_profile },
+  profile: {
+    selectedProfile,
+    playerProfileLoaded,
+    user_profile,
+    isUserProfileLoaded,
+  },
   getProfile,
   getAllWallPosts,
   createPost,
+  createComment,
   post: { posts, isCreatingPostSuccessful },
   match: {
     params: { id },
@@ -45,7 +55,12 @@ const PlayerPage = ({
               <div className='profile-wall'>
                 {/* For the Wall Post form */}
                 <WallPostForm createPost={createPost} user_id={id} />
-                <ProfileWall posts={posts} />
+                <ProfileWall
+                  posts={posts}
+                  loggedInUser={user_profile}
+                  createComment={createComment}
+                  isUserProfileLoaded={isUserProfileLoaded}
+                />
               </div>
 
               <div className='profile-favorite'>
@@ -72,4 +87,5 @@ export default connect(mapStateToProps, {
   getProfile,
   getAllWallPosts,
   createPost,
+  createComment,
 })(PlayerPage);

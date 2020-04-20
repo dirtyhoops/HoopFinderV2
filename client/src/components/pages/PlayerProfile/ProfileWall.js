@@ -3,7 +3,7 @@ import Moment from 'react-moment';
 import ProfileWallPostComments from './ProfileWallPostComments';
 
 const ProfileWall = (props) => {
-  const { posts } = props;
+  const { posts, loggedInUser, createComment, isUserProfileLoaded } = props;
 
   const [active, setActive] = useState(null);
 
@@ -74,14 +74,19 @@ const ProfileWall = (props) => {
                   </div>
                 </div>
               </div>
+              {/* This is the commenct box */}
               <div
                 className={`post-comment ${
                   active === post._id ? 'show' : 'hide'
                 }`}
               >
-                <ProfileWallPostComments post={post} />
+                <ProfileWallPostComments
+                  post={post}
+                  createComment={createComment}
+                  loggedInUser={loggedInUser}
+                  isUserProfileLoaded={isUserProfileLoaded}
+                />
               </div>
-              {/* PUT THE COMMENT BOX HERE */}
             </div>
           ))}
         </div>

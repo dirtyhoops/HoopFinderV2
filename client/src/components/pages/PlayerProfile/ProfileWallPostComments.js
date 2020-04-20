@@ -1,34 +1,35 @@
 import React from 'react';
 
 const ProfileWallPostComments = (props) => {
-  const { post } = props;
+  const { post, loggedInUser, createComment, isUserProfileLoaded } = props;
 
   return (
     <div>
       {/* COMMENTS and COLLAPSIBLE WITH A CLICK */}
 
       <div className='post-comment-container'>
-        {/* {user_profile !== null ? ( */}
-        <div className='post-comment-form'>
-          <div className='post-comment-form__image'>
-            <img src='' className='post-comment-form__image__img bg-pink' />
-            {/* <img
-                                  src={user_profile.avatar}
-                                  className={`post-comment-form__image__img ${user_profile.avatar_bg}`}
-                                /> */}
+        {isUserProfileLoaded ? (
+          <div className='post-comment-form'>
+            <div className='post-comment-form__image'>
+              {/* <img src='' className='post-comment-form__image__img bg-pink' /> */}
+              <img
+                src={loggedInUser.avatar}
+                className={`post-comment-form__image__img ${loggedInUser.avatar_bg}`}
+              />
+            </div>
+            <div className='post-comment-form__textarea'>
+              <form>
+                <textarea></textarea>
+                <input
+                  className='btn btn-comment post-comment-form-button'
+                  type='submit'
+                  value='Post'
+                ></input>
+              </form>
+            </div>
           </div>
-          <div className='post-comment-form__textarea'>
-            <form>
-              <textarea></textarea>
-              <input
-                className='btn btn-comment post-comment-form-button'
-                type='submit'
-                value='Post'
-              ></input>
-            </form>
-          </div>
-        </div>
-        {/* ) : null} */}
+        ) : null}
+
         {post.comments.length > 0 ? (
           <>
             {post.comments.map((comment) => (

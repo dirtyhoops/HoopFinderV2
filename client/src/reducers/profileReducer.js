@@ -21,7 +21,7 @@ export default function (state = initialState, action) {
   const { type, payload } = action;
 
   switch (type) {
-    case GET_USER_PROFILE:
+    case GET_USER_PROFILE: //Change this to LOGGEDIN USER PROFILE
       return {
         ...state,
         user_profile: payload,

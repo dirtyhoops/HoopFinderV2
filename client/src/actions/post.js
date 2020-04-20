@@ -3,7 +3,7 @@ import {
   GET_POSTS_FOR_HOMEPAGE,
   GET_POSTS_WITH_ID,
   CREATE_POST_SUCCESS,
-  CREATE_COMMENT,
+  CREATE_COMMENT_SUCCESS,
   DELETE_COMMENT,
 } from './types';
 
@@ -37,6 +37,24 @@ export const createPost = (user_id, { text }) => async (dispatch) => {
   try {
     const res = await axios.post(`/api/posts/${user_id}`, { text }, config);
     dispatch({ type: CREATE_POST_SUCCESS });
+  } catch (err) {
+    const errors = err.response.data.errors;
+
+    if (errors) {
+      // errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
+      console.log(errors);
+    }
+  }
+};
+
+export const createComment = (comment_id, { text }) => async (dispatch) => {
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  };
+
+  try {
   } catch (err) {
     const errors = err.response.data.errors;
 
