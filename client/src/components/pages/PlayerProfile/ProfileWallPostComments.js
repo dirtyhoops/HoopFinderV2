@@ -1,8 +1,15 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import Moment from 'react-moment';
 
 const ProfileWallPostComments = (props) => {
-  const { post, loggedInUser, createComment, isUserProfileLoaded } = props;
+  const {
+    post,
+    loggedInUser,
+    createComment,
+    isUserProfileLoaded,
+    selectPlayer,
+  } = props;
 
   const [text, setText] = useState('');
 
@@ -49,16 +56,28 @@ const ProfileWallPostComments = (props) => {
             {post.comments.map((comment) => (
               <div className='post-comment-box'>
                 <div className='post-comment-box__image'>
-                  <img
-                    src={comment.avatar}
-                    className={`post-comment-form__image__img ${comment.avatar_bg}`}
-                  />
+                  <Link
+                    to={`/player/${comment.user}`}
+                    className='link'
+                    onClick={() => selectPlayer(comment.user)}
+                  >
+                    <img
+                      src={comment.avatar}
+                      className={`post-comment-form__image__img ${comment.avatar_bg}`}
+                    />
+                  </Link>
                 </div>
                 <div className='post-comment-box__content'>
                   <div className='post-comment-box__content__top'>
-                    <p className='text-comment-name'>
-                      {comment.firstName} {comment.lastName}
-                    </p>
+                    <Link
+                      to={`/player/${comment.user}`}
+                      className='link'
+                      onClick={() => selectPlayer(comment.user)}
+                    >
+                      <p className='text-comment-name'>
+                        {comment.firstName} {comment.lastName}
+                      </p>
+                    </Link>
                     <p className='text-comment-content'>{comment.text}</p>
                   </div>
                   <div className='post-comment-box__content__bottom'>

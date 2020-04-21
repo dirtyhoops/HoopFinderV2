@@ -89,21 +89,19 @@
       font-weight: 600;
       font-size: 1.6rem;
       text-transform: capitalize;
+      color: $color-black;
     }
 
     &-position {
       font-size: 1.3rem;
       text-transform: capitalize;
+      color: $color-black;
     }
 
     &-location {
       font-size: 1.1rem;
       text-transform: capitalize;
+      color: $color-black;
     }
   }
-}
-
-.link {
-  color: $color-black;
-  text-decoration: none;
 }

@@ -34,15 +34,22 @@ const ProfileWall = (props) => {
               <div className='profile-wall-post-top'>
                 <div className='profile-wall-post-header'>
                   <div className='profile-wall-post-header__image'>
-                    <img
-                      className={`profile-wall-post-header__image__img ${post.poster.avatar_bg}`}
-                      src={post.poster.avatar}
-                    />
+                    <Link
+                      to={`/player/${post.poster.user}`}
+                      onClick={() => selectPlayer(post.poster.user)}
+                      className='link'
+                    >
+                      <img
+                        className={`profile-wall-post-header__image__img ${post.poster.avatar_bg}`}
+                        src={post.poster.avatar}
+                      />
+                    </Link>
                   </div>
                   <div className='profile-wall-post-header__info'>
                     <Link
                       to={`/player/${post.poster.user}`}
                       onClick={() => selectPlayer(post.poster.user)}
+                      className='link'
                     >
                       <p className='text-post-name'>
                         {post.poster.firstName} {post.poster.lastName}
@@ -103,6 +110,7 @@ const ProfileWall = (props) => {
                   createComment={createComment}
                   loggedInUser={loggedInUser}
                   isUserProfileLoaded={isUserProfileLoaded}
+                  selectPlayer={selectPlayer}
                 />
               </div>
             </div>
