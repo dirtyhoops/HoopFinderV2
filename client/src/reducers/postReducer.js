@@ -5,6 +5,8 @@ import {
   CREATE_COMMENT_SUCCESS,
   DELETE_COMMENT,
   CLEAR_WALL_POSTS_WITH_ID,
+  LIKE_POST,
+  DISLIKE_POST,
 } from '../actions/types';
 
 const initialState = {

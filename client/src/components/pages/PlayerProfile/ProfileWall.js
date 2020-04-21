@@ -10,6 +10,7 @@ const ProfileWall = (props) => {
     createComment,
     isUserProfileLoaded,
     selectPlayer,
+    likePost,
   } = props;
 
   const [active, setActive] = useState(null);
@@ -72,7 +73,10 @@ const ProfileWall = (props) => {
                 </div>
                 <div className='profile-wall-post-footer'>
                   <div className='profile-wall-post-footer__left'>
-                    <button className='btn btn-2 btn-2-transparent u-margin-right-sm'>
+                    <button
+                      className='btn btn-2 btn-2-transparent u-margin-right-sm'
+                      onClick={() => likePost(post._id)}
+                    >
                       <i className='fa fa-heart '></i> Like{' '}
                       {post.likes.length > 0 ? (
                         <span>({post.likes.length})</span>

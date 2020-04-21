@@ -8,6 +8,7 @@ import {
   createPost,
   createComment,
   clearPosts,
+  likePost,
 } from '../../../actions/post';
 
 import WallPostForm from './WallPostForm';
@@ -27,6 +28,7 @@ const PlayerPage = ({
   createPost,
   createComment,
   clearPosts,
+  likePost,
   post: { posts, isCreatingPostSuccessful },
   match: {
     params: { id },
@@ -79,6 +81,7 @@ const PlayerPage = ({
                   createComment={createComment}
                   isUserProfileLoaded={isUserProfileLoaded}
                   selectPlayer={selectPlayer}
+                  likePost={likePost}
                 />
               </div>
 
@@ -109,4 +112,5 @@ export default connect(mapStateToProps, {
   createComment,
   clearSelectedPlayer,
   clearPosts,
+  likePost,
 })(PlayerPage);

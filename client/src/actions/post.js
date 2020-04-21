@@ -6,6 +6,8 @@ import {
   CREATE_COMMENT_SUCCESS,
   DELETE_COMMENT,
   CLEAR_WALL_POSTS_WITH_ID,
+  LIKE_POST,
+  DISLIKE_POST,
 } from './types';
 
 // Get all the posts in the player's wall
@@ -72,6 +74,24 @@ export const createComment = (post_id, { text }) => async (dispatch) => {
   }
 };
 
+export const likePost = (post_id) => async (dispatch) => {
+  try {
+    const res = await axios.put(`/api/posts/${post_id}/like`);
+
+    // CHANGE THIS LATER, FIGURE OUT WHAT TO DISPATCH
+    dispatch({ type: LIKE_POST });
+  } catch (err) {
+    const errors = err.response.data.errors;
+
+    if (errors) {
+      // errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
+      console.log(errors);
+      console.log('not logged in cant do anything'); // CHANGE THIS LATER
+    }
+  }
+};
+
+// Clears the posts so it's easier when the selected user changes
 export const clearPosts = () => async (dispatch) => {
   dispatch({ type: CLEAR_WALL_POSTS_WITH_ID });
 };
