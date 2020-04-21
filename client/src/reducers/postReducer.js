@@ -4,6 +4,7 @@ import {
   CREATE_POST_SUCCESS,
   CREATE_COMMENT_SUCCESS,
   DELETE_COMMENT,
+  CLEAR_WALL_POSTS_WITH_ID,
 } from '../actions/types';
 
 const initialState = {
@@ -39,6 +40,11 @@ export default function (state = initialState, action) {
       return {
         ...state,
         isCreatingCommentSuccessful: true,
+      };
+    case CLEAR_WALL_POSTS_WITH_ID:
+      return {
+        ...state,
+        posts: [],
       };
     default:
       return state;

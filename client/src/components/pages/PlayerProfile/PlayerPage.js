@@ -2,11 +2,12 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { getProfile } from '../../../actions/profile';
+import { getProfile, clearSelectedPlayer } from '../../../actions/profile';
 import {
   getAllWallPosts,
   createPost,
   createComment,
+  clearPosts,
 } from '../../../actions/post';
 
 import WallPostForm from './WallPostForm';
@@ -21,18 +22,27 @@ const PlayerPage = ({
     isUserProfileLoaded,
   },
   getProfile,
+  clearSelectedPlayer,
   getAllWallPosts,
   createPost,
   createComment,
+  clearPosts,
   post: { posts, isCreatingPostSuccessful },
   match: {
     params: { id },
   },
 }) => {
   useEffect(() => {
-    getProfile(id);
-    getAllWallPosts(id);
+    selectPlayer(id);
   }, []);
+
+  // Clear the redux state of selectedPlayer then get the profile and all the wall post in the selected profile
+  const selectPlayer = (id) => {
+    clearSelectedPlayer();
+    getProfile(id);
+    clearPosts();
+    getAllWallPosts(id);
+  };
 
   if (isCreatingPostSuccessful) {
     getAllWallPosts(id);
@@ -68,6 +78,7 @@ const PlayerPage = ({
                   loggedInUser={user_profile}
                   createComment={createComment}
                   isUserProfileLoaded={isUserProfileLoaded}
+                  selectPlayer={selectPlayer}
                 />
               </div>
 
@@ -96,4 +107,6 @@ export default connect(mapStateToProps, {
   getAllWallPosts,
   createPost,
   createComment,
+  clearSelectedPlayer,
+  clearPosts,
 })(PlayerPage);

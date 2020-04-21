@@ -6,6 +6,7 @@ import {
   CREATE_PROFILE_SUCCESS,
   RESET_PROFILE_LOADED,
   GET_PROFILE,
+  CLEAR_SELECTED_PLAYER,
 } from './types';
 
 // Create profile
@@ -99,4 +100,8 @@ export const getProfile = (id) => async (dispatch) => {
 // Just resets the isUserProfileLoaded to false
 export const resetProfileLoaded = () => async (dispatch) => {
   dispatch({ type: RESET_PROFILE_LOADED });
+};
+
+export const clearSelectedPlayer = () => async (dispatch) => {
+  dispatch({ type: CLEAR_SELECTED_PLAYER });
 };

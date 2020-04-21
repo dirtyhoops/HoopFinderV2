@@ -5,6 +5,7 @@ import {
   CREATE_POST_SUCCESS,
   CREATE_COMMENT_SUCCESS,
   DELETE_COMMENT,
+  CLEAR_WALL_POSTS_WITH_ID,
 } from './types';
 
 // Get all the posts in the player's wall
@@ -69,4 +70,8 @@ export const createComment = (post_id, { text }) => async (dispatch) => {
       console.log(errors);
     }
   }
+};
+
+export const clearPosts = () => async (dispatch) => {
+  dispatch({ type: CLEAR_WALL_POSTS_WITH_ID });
 };

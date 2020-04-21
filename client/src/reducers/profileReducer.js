@@ -5,6 +5,7 @@ import {
   CREATE_PROFILE_SUCCESS,
   RESET_PROFILE_LOADED,
   GET_PROFILE,
+  CLEAR_SELECTED_PLAYER,
 } from '../actions/types';
 
 const initialState = {
@@ -52,6 +53,12 @@ export default function (state = initialState, action) {
       return {
         ...state,
         isUserProfileLoaded: false,
+      };
+    case CLEAR_SELECTED_PLAYER:
+      return {
+        ...state,
+        selectedProfile: null,
+        playerProfileLoaded: false,
       };
     default:
       return state;

@@ -4,7 +4,13 @@ import Moment from 'react-moment';
 import ProfileWallPostComments from './ProfileWallPostComments';
 
 const ProfileWall = (props) => {
-  const { posts, loggedInUser, createComment, isUserProfileLoaded } = props;
+  const {
+    posts,
+    loggedInUser,
+    createComment,
+    isUserProfileLoaded,
+    selectPlayer,
+  } = props;
 
   const [active, setActive] = useState(null);
 
@@ -34,10 +40,14 @@ const ProfileWall = (props) => {
                     />
                   </div>
                   <div className='profile-wall-post-header__info'>
-                    <p className='text-post-name'>
-                      {post.poster.firstName} {post.poster.lastName}
-                    </p>
-
+                    <Link
+                      to={`/player/${post.poster.user}`}
+                      onClick={() => selectPlayer(post.poster.user)}
+                    >
+                      <p className='text-post-name'>
+                        {post.poster.firstName} {post.poster.lastName}
+                      </p>
+                    </Link>
                     <p className='text-post-location'>
                       {post.poster.city}, {post.poster.state}
                     </p>
