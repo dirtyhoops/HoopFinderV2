@@ -54,9 +54,23 @@
   }
 
   &-success {
-    background-color: #28a745;
+    background-color: $color-success;
     border: none;
     color: white;
+
+    &:hover {
+      background-color: $color-success-2;
+    }
+  }
+
+  &-info {
+    background-color: $color-info;
+    border: none;
+    color: white;
+
+    &:hover {
+      background-color: $color-info-2;
+    }
   }
 
   &-transparent {

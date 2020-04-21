@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import Moment from 'react-moment';
 import ProfileWallPostComments from './ProfileWallPostComments';
 
@@ -36,6 +37,7 @@ const ProfileWall = (props) => {
                     <p className='text-post-name'>
                       {post.poster.firstName} {post.poster.lastName}
                     </p>
+
                     <p className='text-post-location'>
                       {post.poster.city}, {post.poster.state}
                     </p>
