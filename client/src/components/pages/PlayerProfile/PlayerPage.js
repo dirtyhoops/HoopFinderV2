@@ -9,6 +9,7 @@ import {
   createComment,
   clearPosts,
   likePost,
+  unlikePost,
 } from '../../../actions/post';
 
 import WallPostForm from './WallPostForm';
@@ -29,7 +30,8 @@ const PlayerPage = ({
   createComment,
   clearPosts,
   likePost,
-  post: { posts, isCreatingPostSuccessful },
+  unlikePost,
+  post: { posts },
   match: {
     params: { id },
   },
@@ -45,14 +47,6 @@ const PlayerPage = ({
     clearPosts();
     getAllWallPosts(id);
   };
-
-  if (isCreatingPostSuccessful) {
-    getAllWallPosts(id);
-  }
-
-  // if (isCreatingCommentSuccessful) {
-
-  // }
 
   return (
     <>
@@ -82,6 +76,7 @@ const PlayerPage = ({
                   isUserProfileLoaded={isUserProfileLoaded}
                   selectPlayer={selectPlayer}
                   likePost={likePost}
+                  unlikePost={unlikePost}
                 />
               </div>
 
@@ -113,4 +108,5 @@ export default connect(mapStateToProps, {
   clearSelectedPlayer,
   clearPosts,
   likePost,
+  unlikePost,
 })(PlayerPage);

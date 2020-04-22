@@ -152,7 +152,7 @@ router.put('/:id/like', auth, async (req, res) => {
   }
 });
 
-// @route       PUT api/posts/:id/like
+// @route       PUT api/posts/:id/unlike
 // @desc        Like a post (Edit the post)
 // @access      Private
 router.put('/:id/unlike', auth, async (req, res) => {

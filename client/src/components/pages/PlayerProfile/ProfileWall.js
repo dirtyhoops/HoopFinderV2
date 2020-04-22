@@ -11,6 +11,7 @@ const ProfileWall = (props) => {
     isUserProfileLoaded,
     selectPlayer,
     likePost,
+    unlikePost,
   } = props;
 
   const [active, setActive] = useState(null);

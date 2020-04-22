@@ -2,12 +2,11 @@ import axios from 'axios';
 import {
   GET_POSTS_FOR_HOMEPAGE,
   GET_POSTS_WITH_ID,
-  CREATE_POST_SUCCESS,
-  CREATE_COMMENT_SUCCESS,
+  CREATE_POST,
+  CREATE_COMMENT,
   DELETE_COMMENT,
   CLEAR_WALL_POSTS_WITH_ID,
-  LIKE_POST,
-  DISLIKE_POST,
+  UPDATE_LIKES,
 } from './types';
 
 // Get all the posts in the player's wall
@@ -39,7 +38,7 @@ export const createPost = (user_id, { text }) => async (dispatch) => {
 
   try {
     const res = await axios.post(`/api/posts/${user_id}`, { text }, config);
-    dispatch({ type: CREATE_POST_SUCCESS });
+    dispatch({ type: CREATE_POST, payload: res.data });
   } catch (err) {
     const errors = err.response.data.errors;
 
@@ -63,7 +62,10 @@ export const createComment = (post_id, { text }) => async (dispatch) => {
       { text },
       config
     );
-    dispatch({ type: CREATE_COMMENT_SUCCESS });
+    dispatch({
+      type: CREATE_COMMENT,
+      payload: { post_id, comments: res.data },
+    });
   } catch (err) {
     const errors = err.response.data.errors;
 
@@ -74,20 +76,35 @@ export const createComment = (post_id, { text }) => async (dispatch) => {
   }
 };
 
+// Like a post
 export const likePost = (post_id) => async (dispatch) => {
   try {
     const res = await axios.put(`/api/posts/${post_id}/like`);
 
-    // CHANGE THIS LATER, FIGURE OUT WHAT TO DISPATCH
-    dispatch({ type: LIKE_POST });
+    dispatch({ type: UPDATE_LIKES, payload: { post_id, likes: res.data } });
   } catch (err) {
-    const errors = err.response.data.errors;
+    // dispatch({
+    //   type: POST_ERROR,
+    //   payload: { msg: err.response.statusText, status: err.response.status },
+    // });
 
-    if (errors) {
-      // errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
-      console.log(errors);
-      console.log('not logged in cant do anything'); // CHANGE THIS LATER
-    }
+    console.log('not logged in cant do anything'); // CHANGE THIS LATER
+  }
+};
+
+// Unlike a post
+export const unlikePost = (post_id) => async (dispatch) => {
+  try {
+    const res = await axios.put(`/api/posts/${post_id}/unlike`);
+
+    dispatch({ type: UPDATE_LIKES, payload: { post_id, likes: res.data } });
+  } catch (err) {
+    // dispatch({
+    //   type: POST_ERROR,
+    //   payload: { msg: err.response.statusText, status: err.response.status },
+    // });
+
+    console.log('not logged in cant do anything'); // CHANGE THIS LATER
   }
 };
 
