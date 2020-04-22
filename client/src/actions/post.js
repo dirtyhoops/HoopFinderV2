@@ -11,6 +11,9 @@ import {
 
 // Get all the posts in the player's wall
 export const getAllWallPosts = (user_id) => async (dispatch) => {
+  // Clear all the post before loading all posts for a user with the given ID
+  dispatch({ type: CLEAR_WALL_POSTS_WITH_ID });
+
   try {
     const res = await axios.get(`/api/posts/user/${user_id}`);
 
@@ -106,9 +109,4 @@ export const unlikePost = (post_id) => async (dispatch) => {
 
     console.log('not logged in cant do anything'); // CHANGE THIS LATER
   }
-};
-
-// Clears the posts so it's easier when the selected user changes
-export const clearPosts = () => async (dispatch) => {
-  dispatch({ type: CLEAR_WALL_POSTS_WITH_ID });
 };

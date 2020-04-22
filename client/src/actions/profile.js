@@ -35,6 +35,9 @@ export const createProfile = ({ formData }) => async (dispatch) => {
 
 // Load Profiles
 export const getProfiles = (playerposition) => async (dispatch) => {
+  // Clear the profile
+  dispatch({ type: CLEAR_SELECTED_PLAYER });
+
   try {
     const res = await axios.get('/api/profile');
 
@@ -83,6 +86,7 @@ export const getUserProfile = () => async (dispatch) => {
 
 // Get player's profile by user ID
 export const getProfile = (id) => async (dispatch) => {
+  dispatch({ type: CLEAR_SELECTED_PLAYER });
   try {
     const res = await axios.get(`/api/profile/user/${id}`);
 
@@ -100,8 +104,4 @@ export const getProfile = (id) => async (dispatch) => {
 // Just resets the isUserProfileLoaded to false
 export const resetProfileLoaded = () => async (dispatch) => {
   dispatch({ type: RESET_PROFILE_LOADED });
-};
-
-export const clearSelectedPlayer = () => async (dispatch) => {
-  dispatch({ type: CLEAR_SELECTED_PLAYER });
 };

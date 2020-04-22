@@ -24,11 +24,9 @@ const PlayerPage = ({
     isUserProfileLoaded,
   },
   getProfile,
-  clearSelectedPlayer,
   getAllWallPosts,
   createPost,
   createComment,
-  clearPosts,
   likePost,
   unlikePost,
   post: { posts },
@@ -42,9 +40,7 @@ const PlayerPage = ({
 
   // Clear the redux state of selectedPlayer then get the profile and all the wall post in the selected profile
   const selectPlayer = (id) => {
-    clearSelectedPlayer();
     getProfile(id);
-    clearPosts();
     getAllWallPosts(id);
   };
 
@@ -105,8 +101,6 @@ export default connect(mapStateToProps, {
   getAllWallPosts,
   createPost,
   createComment,
-  clearSelectedPlayer,
-  clearPosts,
   likePost,
   unlikePost,
 })(PlayerPage);

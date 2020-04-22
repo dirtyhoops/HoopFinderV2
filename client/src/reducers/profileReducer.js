@@ -14,7 +14,6 @@ const initialState = {
   selectedProfile: null,
   loadingProfiles: true,
   isUserProfileLoaded: false,
-  isCreatingProfileSuccessful: false,
   playerProfileLoaded: false,
 };
 
@@ -44,10 +43,9 @@ export default function (state = initialState, action) {
         ...state,
         isUserProfileLoaded: true,
       };
-    case CREATE_PROFILE_SUCCESS:
+    case CREATE_PROFILE_SUCCESS: // DELETE "SUCCESS" AND THE ADD A PAYLOAD AND PUT IT AS A USER_PROFILE AND SELECTED PROFILE AND TAKE OUT "isCreatingProfileSuccessful"
       return {
         ...state,
-        isCreatingProfileSuccessful: true,
       };
     case RESET_PROFILE_LOADED:
       return {

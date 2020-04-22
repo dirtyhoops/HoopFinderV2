@@ -4,11 +4,7 @@ import { createProfile, resetProfileLoaded } from '../../actions/profile';
 
 import imageLoader from '../../img/images';
 
-const EditProfile = ({
-  createProfile,
-  resetProfileLoaded,
-  profile: { isCreatingProfileSuccessful },
-}) => {
+const EditProfile = ({ createProfile, resetProfileLoaded, profile }) => {
   useEffect(() => {
     resetProfileLoaded();
   }, []);
