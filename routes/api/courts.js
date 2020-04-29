@@ -9,12 +9,36 @@ const Court = require('../../models/Court');
 // @route       GET api/courts
 // @desc        Get all courts
 // @access      Public
-router.get('/', (req, res) => res.send('Courts route'));
+router.get('/', async (req, res) => {
+  try {
+    const courts = await Court.find().sort({ dateCreated: -1 });
+    res.json(courts);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
 
-// @route       DELETE api/courts/:id
-// @desc        Delete court
-// @access      Private
-// router.get('/', (req, res) => res.send('Courts route'));
+// @route       GET api/courts/:id
+// @desc        Get a court with id
+// @access      Public
+router.get('/:id', async (req, res) => {
+  try {
+    let selectedCourt = await Court.findById(req.params.id);
+
+    if (!selectedCourt) {
+      return res.status(400).json({ msg: 'Court not found' });
+    }
+
+    res.json(selectedCourt);
+  } catch (err) {
+    if (err.name === 'CastError') {
+      return res.status(400).json({ msg: 'Court not found' });
+    }
+
+    res.status(500).send('Server Error');
+  }
+});
 
 // @route       POST api/courts
 // @desc        Create a court

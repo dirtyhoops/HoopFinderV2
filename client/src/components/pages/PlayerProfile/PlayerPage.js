@@ -2,12 +2,11 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { getProfile, clearSelectedPlayer } from '../../../actions/profile';
+import { getProfile } from '../../../actions/profile';
 import {
   getAllWallPosts,
   createPost,
   createComment,
-  clearPosts,
   likePost,
   unlikePost,
 } from '../../../actions/post';
