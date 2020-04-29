@@ -160,8 +160,39 @@ router.post(
   }
 );
 
+// @route       DELETE api/courts/:id
+// @desc        Delete a court by id (gotta be an admin to do so)
+// @access      Private
+router.delete('/:id', auth, async (req, res) => {
+  try {
+    const court = await Court.findById(req.params.id);
+
+    if (!court) {
+      return res.status(404).json({ msg: 'Court not found' });
+    }
+
+    // Check if the current logged in user is not the poster of the post
+    if (req.user.isAdmin === false) {
+      return res.status(401).json({
+        msg: 'User not authorized to delete, not an admin',
+      });
+    }
+
+    // Delete the court
+    await court.remove();
+    res.json({ msg: 'Court is successfully deleted' });
+  } catch (err) {
+    console.error(err.message);
+
+    if (err.name === 'CastError') {
+      res.status(400).json({ msg: 'Court not found' });
+    }
+
+    res.status(500).send('Server Error');
+  }
+});
+
 // CHECK IN PLAYERS POST ROUTE --- HANDLE IS LIKE A 'LIKE POST ROUTE'. ALSO ADD AN AUTO DELETE AFTER 2 HOURS
-// GET all courts route
 // DELETE route - delete reviews along with it
 
 module.exports = router;
