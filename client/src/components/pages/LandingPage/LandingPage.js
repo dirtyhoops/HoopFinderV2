@@ -5,13 +5,22 @@ const LandingPage = () => {
     <div className='hero-image-wrapper'>
       <div className='hero-image-container'>
         <div className='hero-image-header container'>
-          <div className='hero-image-header__text'>
+          <div className='hero-image-header__text u-margin-bottom-sm'>
             <h2>FIND YOUR BASKETBALL COURT</h2>
           </div>
           <div className='hero-image-header__search'>
             <form>
-              <input type='text'></input>
-              <input type='submit' value='SEARCH'></input>
+              <div className='header-form-group'>
+                <label>
+                  <i class='fa fa-search'></i>
+                </label>
+                <input type='text' placeholder='Enter City'></input>
+                <input
+                  className='btn btn-search-header'
+                  type='submit'
+                  value='SEARCH'
+                ></input>
+              </div>
             </form>
           </div>
         </div>

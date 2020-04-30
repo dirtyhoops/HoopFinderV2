@@ -2,6 +2,7 @@
   cursor: pointer;
   transition: all 0.3s;
   outline: none;
+  font-family: 'Montserrat';
 }
 
 // Buttons for Register and Login
@@ -128,5 +129,19 @@
 
   &:hover {
     background-color: $color-info-2;
+  }
+}
+
+.btn-search-header {
+  width: 100px;
+  height: 40px;
+  padding: 5px;
+  background-color: $color-primary;
+  color: $color-white;
+  font-size: 12px;
+  border: none;
+
+  &:hover {
+    background-color: $color-primary-2;
   }
 }
