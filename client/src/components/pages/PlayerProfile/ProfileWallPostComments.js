@@ -54,7 +54,7 @@ const ProfileWallPostComments = (props) => {
         {post.comments.length > 0 ? (
           <>
             {post.comments.map((comment) => (
-              <div className='post-comment-box'>
+              <div key={comment._id} className='post-comment-box'>
                 <div className='post-comment-box__image'>
                   <Link
                     to={`/player/${comment.user}`}

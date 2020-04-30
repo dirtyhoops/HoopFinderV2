@@ -76,10 +76,8 @@ router.post(
     });
 
     try {
-      // Check if user is an admin (only adming can add courts)
-      const user = await User.findById(req.user.id);
-
-      if (user.isAdmin === false) {
+      // Check if user is an admin (only admin can add courts)
+      if (req.user.isAdmin === false) {
         return res
           .status(401)
           .json({ msg: 'User is not an admin, not authorized to add a court' });
@@ -127,6 +125,7 @@ router.post(
       firstName: profile.user.firstName,
       lastName: profile.user.lastName,
       avatar: profile.avatar,
+      avatar_bg: profile.avatar_bg,
     };
 
     try {

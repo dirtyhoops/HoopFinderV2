@@ -3,91 +3,97 @@ const mongoose = require('mongoose');
 const CourtSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: true
+    required: true,
   },
   images: {
-    type: [String]
+    type: [String],
   },
   description: {
     type: String,
-    required: true
+    required: true,
   },
   address: {
     street: {
       type: String,
-      require: true
+      require: true,
     },
     city: {
       type: String,
-      require: true
+      require: true,
     },
     state: {
       type: String,
-      require: true
+      require: true,
     },
     zipcode: {
       type: Number,
-      require: true
-    }
+      require: true,
+    },
   },
   rating: {
     type: Number,
-    default: 0
+    default: 0,
   },
   reviews: [
     {
       user: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'users'
+        ref: 'users',
       },
       rating: {
         type: Number,
-        required: true
+        required: true,
       },
       text: {
         type: String,
-        required: true
+        required: true,
       },
       firstName: {
-        type: String
+        type: String,
       },
       lastName: {
-        type: String
+        type: String,
       },
       avatar: {
-        type: String
+        type: String,
+      },
+      avatar_bg: {
+        type: String,
       },
       dateCreated: {
         type: Date,
-        default: Date.now
-      }
-    }
+        default: Date.now,
+      },
+    },
   ],
   CheckedInPlayers: [
     {
       user: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'users'
+        ref: 'users',
       },
       firstName: {
-        type: String
+        type: String,
       },
       lastName: {
-        type: String
+        type: String,
       },
       avatar: {
-        type: String
+        type: String,
+      },
+      avatar_bg: {
+        type: String,
       },
       dateCheckedIn: {
         type: Date,
-        default: Date.now
-      }
-    }
+        default: Date.now,
+      },
+    },
   ],
   dateCreated: {
     type: Date,
-    default: Date.now
-  }
+    default: Date.now,
+  },
 });
 
 module.exports = Court = mongoose.model('court', CourtSchema);
