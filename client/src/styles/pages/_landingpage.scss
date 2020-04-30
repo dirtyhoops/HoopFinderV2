@@ -1,17 +1,18 @@
-.hero-image-wrapper {
+.landing-page-wrapper {
   min-height: 100vh;
+  width: 100vw;
+  background-color: $color-white;
 }
 
+// FOR THE HERO IMAGE HEADER
 .hero-image {
-  &-container {
-    width: 100vw;
-    height: 800px;
-    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-      url('../../img/heroimage.jpg') center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: relative;
-  }
+  width: 100vw;
+  height: 620px;
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    url('../../img/heroimage.jpg') center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
 
   &-header {
     position: absolute;
@@ -33,5 +34,28 @@
       width: 500px;
       background: yellow;
     }
+  }
+}
+
+// FOR FEATURED COURTS
+.featured-courts {
+  &-wrapper {
+    background-color: $color-main-background-darker;
+    padding: 3rem 0;
+  }
+
+  &-header {
+    text-align: center;
+  }
+}
+
+// FOR RECENT POSTS
+.recent-posts {
+  &-wrapper {
+    padding: 3rem 0;
+  }
+
+  &-header {
+    text-align: center;
   }
 }

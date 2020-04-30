@@ -1,30 +1,22 @@
 import React from 'react';
 
+import HeroHeader from './HeroHeader';
+import FeaturedCourts from './FeaturedCourts';
+import RecentPosts from './RecentPosts';
+
 const LandingPage = () => {
   return (
-    <div className='hero-image-wrapper'>
-      <div className='hero-image-container'>
-        <div className='hero-image-header container'>
-          <div className='hero-image-header__text u-margin-bottom-sm'>
-            <h2>FIND YOUR BASKETBALL COURT</h2>
-          </div>
-          <div className='hero-image-header__search'>
-            <form>
-              <div className='header-form-group'>
-                <label>
-                  <i class='fa fa-search'></i>
-                </label>
-                <input type='text' placeholder='Enter City'></input>
-                <input
-                  className='btn btn-search-header'
-                  type='submit'
-                  value='SEARCH'
-                ></input>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
+    <div className='landing-page-wrapper'>
+      <HeroHeader />
+
+      {/* FEATURED BASKETBALL LOCATIONS pass props of courts */}
+      <FeaturedCourts />
+      {/* BASKETBALL NEAR YOUR PLACE */}
+      {/* PLAYERS NEAR YOUR PLACE */}
+      {/* RECENT POSTS BY PLAYERS */}
+      <RecentPosts />
+      {/* RECENT REVIEWS */}
+      {/* FOOTER */}
     </div>
   );
 };
