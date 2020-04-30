@@ -6,10 +6,11 @@ import store from './store';
 import NavBar from './components/layout/NavBar';
 import Register from './components/forms/Register';
 import Login from './components/forms/Login';
-import Landing from './components/layout/Landing';
+
 import EditProfile from './components/forms/EditProfile';
 import PlayersListPage from './components/pages/PlayersList/PlayersListPage';
 import PlayerPage from './components/pages/PlayerProfile/PlayerPage';
+import LandingPage from './components/pages/LandingPage/LandingPage';
 
 // Import the sass styling
 import './styles/main.scss';
@@ -19,7 +20,7 @@ const App = () => (
     <Router>
       <Fragment>
         <NavBar />
-        <Route exact path='/' component={Landing} />
+        <Route exact path='/' component={LandingPage} />
         <Switch>
           <Route exact path='/register' component={Register} />
           <Route exact path='/login' component={Login} />
