@@ -69,6 +69,22 @@ router.post(
   }
 );
 
+// @route       GET api/posts
+// @desc        Get all 12 most current user's post on their own wall
+// @access      Public
+router.get('/', async (req, res) => {
+  try {
+    const posts = await Post.find({ ownPost: 'true' }).limit(12).sort({
+      dateCreated: -1,
+    });
+
+    res.json(posts);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
+
 // @route       GET api/posts/user/:user_id
 // @desc        Get all user's posts for user_id
 // @access      Public

@@ -6,10 +6,20 @@ import FeaturedCourts from './FeaturedCourts';
 import RecentPosts from './RecentPosts';
 
 import { getAllCourts } from '../../../actions/court';
+import { getAllPosts } from '../../../actions/post';
 
-const LandingPage = ({ court: { courts }, getAllCourts }) => {
+const LandingPage = ({
+  court: { courts },
+  post: { postsHome },
+  getAllCourts,
+  getAllPosts,
+}) => {
   useEffect(() => {
     getAllCourts();
+  }, []);
+
+  useEffect(() => {
+    getAllPosts();
   }, []);
 
   return (
@@ -21,7 +31,7 @@ const LandingPage = ({ court: { courts }, getAllCourts }) => {
       {/* BASKETBALL NEAR YOUR PLACE */}
       {/* PLAYERS NEAR YOUR PLACE */}
       {/* RECENT POSTS BY PLAYERS */}
-      <RecentPosts />
+      <RecentPosts postsHome={postsHome} />
       {/* RECENT REVIEWS */}
       {/* FOOTER */}
     </div>
@@ -30,9 +40,12 @@ const LandingPage = ({ court: { courts }, getAllCourts }) => {
 
 const mapStateToProps = (state) => ({
   court: state.court,
+  post: state.post,
 });
 
-export default connect(mapStateToProps, { getAllCourts })(LandingPage);
+export default connect(mapStateToProps, { getAllCourts, getAllPosts })(
+  LandingPage
+);
 
 // // !@TODO -- separate components
 // 1. hero image with Search capabilities in the middle of the image

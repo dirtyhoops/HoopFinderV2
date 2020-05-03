@@ -11,7 +11,7 @@ const HeroHeader = () => {
           <form>
             <div className='header-form-group'>
               <label>
-                <i class='fa fa-search'></i>
+                <i className='fa fa-search'></i>
               </label>
               <input type='text' placeholder='Enter City'></input>
               <input

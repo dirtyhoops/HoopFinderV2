@@ -28,3 +28,9 @@ Light grayish color for subtexts ( location in players list)
 for background color of the whole page
 #FAFAFA ---- greenish
 #f4f8fb; - light bluish
+
+
+
+
+TO SLICE -- -maybe use this later for comments
+db.posts.find( {}, { comments: { $slice: [ -20, 10 ] } } )

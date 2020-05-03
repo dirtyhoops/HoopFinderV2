@@ -9,6 +9,25 @@ import {
   UPDATE_LIKES,
 } from './types';
 
+// Get all the posts(12 this time)
+export const getAllPosts = () => async (dispatch) => {
+  try {
+    const res = await axios.get('/api/posts');
+
+    // sort it the newest one on top - fix this in the api route date:-1
+    dispatch({
+      type: GET_POSTS_FOR_HOMEPAGE,
+      payload: res.data,
+    });
+  } catch (err) {
+    console.log('cant get posts ---fix this later');
+
+    // dispatch({
+    //   type: GET_POSTS_FAIL,
+    // });
+  }
+};
+
 // Get all the posts in the player's wall
 export const getAllWallPosts = (user_id) => async (dispatch) => {
   // Clear all the post before loading all posts for a user with the given ID

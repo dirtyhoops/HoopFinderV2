@@ -58,4 +58,15 @@
   &-header {
     text-align: center;
   }
+
+  &-grid {
+    display: flex;
+    justify-content: space-between;
+
+    &-cols {
+      flex: 0 0 33%;
+      background: yellow;
+      height: 20px;
+    }
+  }
 }
