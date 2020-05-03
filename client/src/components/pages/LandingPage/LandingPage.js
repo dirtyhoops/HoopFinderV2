@@ -1,16 +1,23 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
 
 import HeroHeader from './HeroHeader';
 import FeaturedCourts from './FeaturedCourts';
 import RecentPosts from './RecentPosts';
 
-const LandingPage = () => {
+import { getAllCourts } from '../../../actions/court';
+
+const LandingPage = ({ court: { courts }, getAllCourts }) => {
+  useEffect(() => {
+    getAllCourts();
+  }, []);
+
   return (
     <div className='landing-page-wrapper'>
       <HeroHeader />
 
       {/* FEATURED BASKETBALL LOCATIONS pass props of courts */}
-      <FeaturedCourts />
+      <FeaturedCourts courts={courts} />
       {/* BASKETBALL NEAR YOUR PLACE */}
       {/* PLAYERS NEAR YOUR PLACE */}
       {/* RECENT POSTS BY PLAYERS */}
@@ -21,7 +28,11 @@ const LandingPage = () => {
   );
 };
 
-export default LandingPage;
+const mapStateToProps = (state) => ({
+  court: state.court,
+});
+
+export default connect(mapStateToProps, { getAllCourts })(LandingPage);
 
 // // !@TODO -- separate components
 // 1. hero image with Search capabilities in the middle of the image

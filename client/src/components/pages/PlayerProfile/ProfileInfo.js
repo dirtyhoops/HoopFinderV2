@@ -24,7 +24,7 @@ const ProfileInfo = (props) => {
             alt='profile avatar'
           />
         </div>
-        <div className='profile-info-name'>
+        <div className='profile-info-name u-text-capitalize'>
           <p className='text-name'>
             {firstName} {lastName}
           </p>

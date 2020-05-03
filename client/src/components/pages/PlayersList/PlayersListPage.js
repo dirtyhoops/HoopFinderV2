@@ -61,11 +61,13 @@ const PlayersListPage = ({ profile: { players }, getProfiles }) => {
                       />
                     </div>
                     <div className='players-grid__box__content__info'>
-                      <p className='players-text-name'>
+                      <p className='players-text-name u-text-capitalize'>
                         {player.user.firstName} {player.user.lastName}
                       </p>
-                      <p className='players-text-position'>{player.position}</p>
-                      <p className='players-text-location'>
+                      <p className='players-text-position u-text-capitalize'>
+                        {player.position}
+                      </p>
+                      <p className='players-text-location u-text-capitalize'>
                         <i className='fa fa-map-marker'></i> {player.city},{' '}
                         {player.state}
                       </p>

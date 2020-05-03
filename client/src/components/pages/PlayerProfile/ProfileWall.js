@@ -47,7 +47,7 @@ const ProfileWall = (props) => {
                       />
                     </Link>
                   </div>
-                  <div className='profile-wall-post-header__info'>
+                  <div className='profile-wall-post-header__info u-text-capitalize'>
                     <Link
                       to={`/player/${post.poster.user}`}
                       onClick={() => selectPlayer(post.poster.user)}

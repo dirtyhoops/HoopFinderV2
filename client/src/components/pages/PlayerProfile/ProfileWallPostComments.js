@@ -74,7 +74,7 @@ const ProfileWallPostComments = (props) => {
                       className='link'
                       onClick={() => selectPlayer(comment.user)}
                     >
-                      <p className='text-comment-name'>
+                      <p className='text-comment-name u-text-capitalize'>
                         {comment.firstName} {comment.lastName}
                       </p>
                     </Link>
