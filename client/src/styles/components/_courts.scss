@@ -5,6 +5,12 @@
     justify-content: space-between;
     margin-top: 1rem;
 
+    // So when it's less than the full box in a row, it adds a imaginary box to fill it up
+    &::after {
+      content: '';
+      width: 23%;
+    }
+
     &-box {
       flex: 0 0 23%;
       display: flex;
@@ -19,7 +25,6 @@
       cursor: pointer;
 
       &__image {
-        flex: 0 0 100%;
         height: 170px;
         // background: yellow;
         border-top-left-radius: 5px;
@@ -36,13 +41,13 @@
       }
 
       &__info {
-        flex: 0 0 100%;
         height: 100px;
         // background: red;
         padding: 1rem;
       }
 
       &__footer {
+        display: flex;
         &__left {
           flex: 0 0 50%;
           text-align: left;
