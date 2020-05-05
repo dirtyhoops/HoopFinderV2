@@ -1,27 +1,68 @@
 import React from 'react';
+import Moment from 'react-moment';
+import { Link } from 'react-router-dom';
+
+import ProfileWall from '../PlayerProfile/ProfileWall';
 
 const RecentPosts = (props) => {
-  const { postsHome } = props;
+  const {
+    postsHome,
+    createPost,
+    createComment,
+    likePost,
+    unlikePost,
+    isUserProfileLoaded,
+    profileUserLoaded,
+    user_profile,
+    selectPlayer,
+  } = props;
+
+  // make a fuction where it checks how many postshome are, and splice it depending on it
+  const postscol1 = postsHome.slice(0, 3);
+  const postscol2 = postsHome.slice(3, 6);
+  const postscol3 = postsHome.slice(6, 9);
+
   return (
     <div className='recent-posts-wrapper'>
       <div className='recent-posts container'>
         <div className='recent-posts-header'>
           <p className='heading-secondary'>recent posts</p>
         </div>
-        {postsHome.length > 0 ? (
-          <div className='recent-posts-grid'>
-            {/* {postsHome.map((post) => (
-              <div className='recent-posts-grid-box'>{post.text}</div>
-            ))} */}
-            <div className='recent-posts-grid-cols'>
-              {postsHome.map((post) => (
-                <div className='recent-posts-grid-box'>{post.text}</div>
-              ))}
-            </div>
-            <div className='recent-posts-grid-cols'></div>
-            <div className='recent-posts-grid-cols'></div>
+        <div className='recent-posts-grid'>
+          <div className='recent-posts-grid-cols'>
+            <ProfileWall
+              posts={postscol1}
+              loggedInUser={user_profile}
+              createComment={createComment}
+              isUserProfileLoaded={isUserProfileLoaded}
+              selectPlayer={selectPlayer}
+              likePost={likePost}
+              unlikePost={unlikePost}
+            />
           </div>
-        ) : null}
+          <div className='recent-posts-grid-cols'>
+            <ProfileWall
+              posts={postscol2}
+              loggedInUser={user_profile}
+              createComment={createComment}
+              isUserProfileLoaded={isUserProfileLoaded}
+              selectPlayer={selectPlayer}
+              likePost={likePost}
+              unlikePost={unlikePost}
+            />
+          </div>
+          <div className='recent-posts-grid-cols'>
+            <ProfileWall
+              posts={postscol3}
+              loggedInUser={user_profile}
+              createComment={createComment}
+              isUserProfileLoaded={isUserProfileLoaded}
+              selectPlayer={selectPlayer}
+              likePost={likePost}
+              unlikePost={unlikePost}
+            />
+          </div>
+        </div>
       </div>
     </div>
   );

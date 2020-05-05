@@ -6,13 +6,24 @@ import FeaturedCourts from './FeaturedCourts';
 import RecentPosts from './RecentPosts';
 
 import { getAllCourts } from '../../../actions/court';
-import { getAllPosts } from '../../../actions/post';
+import {
+  getAllPosts,
+  createPost,
+  createComment,
+  likePost,
+  unlikePost,
+} from '../../../actions/post';
 
 const LandingPage = ({
+  profile: { user_profile, isUserProfileLoaded },
   court: { courts },
   post: { postsHome },
   getAllCourts,
   getAllPosts,
+  createPost,
+  createComment,
+  likePost,
+  unlikePost,
 }) => {
   useEffect(() => {
     getAllCourts();
@@ -21,6 +32,10 @@ const LandingPage = ({
   useEffect(() => {
     getAllPosts();
   }, []);
+
+  const selectPlayer = (id) => {
+    // DO NOTHING, WILL DELETE LATER ONCE WE FIX PROFILE WALL WITH AL LTHE FUNCTION SO WE DONT HAVE TO PASS ANYTHING
+  };
 
   return (
     <div className='landing-page-wrapper'>
@@ -31,7 +46,16 @@ const LandingPage = ({
       {/* BASKETBALL NEAR YOUR PLACE */}
       {/* PLAYERS NEAR YOUR PLACE */}
       {/* RECENT POSTS BY PLAYERS */}
-      <RecentPosts postsHome={postsHome} />
+      <RecentPosts
+        postsHome={postsHome}
+        createPost={createPost}
+        createComment={createComment}
+        likePost={likePost}
+        unlikePost={unlikePost}
+        isUserProfileLoaded={isUserProfileLoaded}
+        loggedInUser={user_profile}
+        selectPlayer={selectPlayer}
+      />
       {/* RECENT REVIEWS */}
       {/* FOOTER */}
     </div>
@@ -41,11 +65,17 @@ const LandingPage = ({
 const mapStateToProps = (state) => ({
   court: state.court,
   post: state.post,
+  profile: state.profile,
 });
 
-export default connect(mapStateToProps, { getAllCourts, getAllPosts })(
-  LandingPage
-);
+export default connect(mapStateToProps, {
+  getAllCourts,
+  getAllPosts,
+  createPost,
+  createComment,
+  likePost,
+  unlikePost,
+})(LandingPage);
 
 // // !@TODO -- separate components
 // 1. hero image with Search capabilities in the middle of the image

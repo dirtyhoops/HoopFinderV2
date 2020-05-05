@@ -34,3 +34,89 @@ for background color of the whole page
 
 TO SLICE -- -maybe use this later for comments
 db.posts.find( {}, { comments: { $slice: [ -20, 10 ] } } )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ {postsHome.length > 0 ? (
+          <div className='recent-posts-grid'>
+            {/* {postsHome.map((post) => (
+              <div className='recent-posts-grid-box'>{post.text}</div>
+            ))} */}
+            <div className='recent-posts-grid-cols'>
+              {postsHome.map((post) => (
+                <div
+                  key={post._id}
+                  className='recent-posts-grid-box u-margin-bottom-md'
+                >
+                  <div className='recent-posts-grid-box__header'>
+                    <div className='recent-posts-grid-box-header__image'>
+                      <img
+                        className={`recent-posts-grid-box-header__image__img ${post.poster.avatar_bg}`}
+                        alt='poster profile image'
+                        src={post.poster.avatar}
+                      />
+                    </div>
+                    <div className='recent-posts-grid-box-header__info u-text-capitalize'>
+                      <p className='text-post-name'>
+                        {post.poster.firstName} {post.poster.lastName}
+                      </p>
+                      <p className='text-post-location'>
+                        {post.poster.city}, {post.poster.state}
+                      </p>
+                    </div>
+                  </div>
+                  <div className='recent-posts-grid-box-content'>
+                    <p className='text-post-content'>{post.text}</p>
+                  </div>
+                  <div className='recent-posts-grid-box-footer'>
+                    <div className='recent-posts-grid-box-footer__left'>
+                      <button
+                        className='btn btn-2 btn-2-transparent u-margin-right-sm'
+                        onClick={() => likePost(post._id)}
+                      >
+                        <i className='fa fa-heart '></i> Like{' '}
+                        {post.likes.length > 0 ? (
+                          <span>({post.likes.length})</span>
+                        ) : null}{' '}
+                      </button>
+                      <button
+                        className='btn btn-2 btn-2-transparent'
+                        onClick={() => onClickToggle(post._id)}
+                        disabled={
+                          post.comments.length < 1 && !isUserProfileLoaded
+                        }
+                      >
+                        <i className='fa fa-comment'></i> Comment{' '}
+                        {post.comments.length > 0 ? (
+                          <span>({post.comments.length})</span>
+                        ) : null}{' '}
+                      </button>
+                    </div>
+                    <div className='recent-posts-grid-box-footer__right'>
+                      <p className='text-post-date'>
+                        {/* Moment to format the date to count the date from when it's posted */}
+                        <Moment fromNow>{post.dateCreated}</Moment>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className='recent-posts-grid-cols'></div>
+            <div className='recent-posts-grid-cols'></div>
+          </div>
+        ) : null}

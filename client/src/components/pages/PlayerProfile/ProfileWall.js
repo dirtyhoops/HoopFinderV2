@@ -60,7 +60,6 @@ const ProfileWall = (props) => {
                     <p className='text-post-location'>
                       {post.poster.city}, {post.poster.state}
                     </p>
-                    <p className='text-post-location'></p>
                   </div>
                   <div className='profile-wall-post-header__dropdown'>
                     <button className='btn btn-2 btn-2-transparent-dropdown'>
@@ -96,7 +95,7 @@ const ProfileWall = (props) => {
                       ) : null}{' '}
                     </button>
                   </div>
-                  <div className='profile-wall-post-foot__right'>
+                  <div className='profile-wall-post-footer__right'>
                     <p className='text-post-date'>
                       {/* Moment to format the date to count the date from when it's posted */}
                       <Moment fromNow>{post.dateCreated}</Moment>
@@ -104,7 +103,7 @@ const ProfileWall = (props) => {
                   </div>
                 </div>
               </div>
-              {/* This is the commenct box */}
+              {/* This is the comment box */}
               <div
                 className={`post-comment ${
                   active === post._id ? 'show' : 'hide'
