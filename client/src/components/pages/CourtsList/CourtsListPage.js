@@ -1,11 +1,28 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { getAllCourts } from '../../../actions/court';
 
-const CourtsListPage = () => {
+import Courts from '../../courts/Courts';
+
+const CourtsListPage = ({ court: { courts }, getAllCourts }) => {
+  useEffect(() => {
+    getAllCourts();
+  }, []);
+
   return (
-    <div>
-      <p>courts list page</p>
+    <div className='courts-list-wrapper'>
+      <div className='courts-list container'>
+        <div className='courts-list-header'>
+          <p>ALL COURTS</p>
+        </div>
+        <Courts courts={courts} />
+      </div>
     </div>
   );
 };
 
-export default CourtsListPage;
+const mapStateToProps = (state) => ({
+  court: state.court,
+});
+
+export default connect(mapStateToProps, { getAllCourts })(CourtsListPage);

@@ -24,3 +24,5 @@ export const getAllCourts = () => async (dispatch) => {
     // });
   }
 };
+
+// CREATE A CALL THAT ONLY PULLS UP 4 COURTS FOR LANDING PAGE

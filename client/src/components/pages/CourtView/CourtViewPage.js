@@ -1,6 +1,6 @@
 import React from 'react';
 
-const CourtsViewPage = () => {
+const CourtViewPage = () => {
   return (
     <div>
       <p>courts view page</p>
@@ -8,4 +8,4 @@ const CourtsViewPage = () => {
   );
 };
 
-export default CourtsViewPage;
+export default CourtViewPage;

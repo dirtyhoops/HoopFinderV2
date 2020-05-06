@@ -12,7 +12,8 @@ import PlayersListPage from './components/pages/PlayersList/PlayersListPage';
 import PlayerPage from './components/pages/PlayerProfile/PlayerPage';
 import LandingPage from './components/pages/LandingPage/LandingPage';
 import CourtsListPage from './components/pages/CourtsList/CourtsListPage';
-import CourtsViewPage from './components/pages/CourtsView/CourtsViewPage';
+import CourtViewPage from './components/pages/CourtView/CourtViewPage';
+import AdminPage from './components/pages/AdminPage/AdminPage';
 
 // Import the sass styling
 import './styles/main.scss';
@@ -30,7 +31,10 @@ const App = () => (
           <Route exact path='/players' component={PlayersListPage} />
           <Route exact path='/player/:id' component={PlayerPage} />
           <Route exact path='/courts' component={CourtsListPage} />
-          <Route exact path='/court/:id' component={CourtsViewPage} />
+          <Route exact path='/court/:id' component={CourtViewPage} />
+
+          {/* MAKE SURE isAdmin is true to go here */}
+          <Route exact path='/account/admin' component={AdminPage} />
         </Switch>
       </Fragment>
     </Router>
