@@ -25,7 +25,7 @@ const RecentPosts = (props) => {
   return (
     <div className='recent-posts-wrapper'>
       <div className='recent-posts container'>
-        <div className='recent-posts-header'>
+        <div className='recent-posts-header u-margin-bottom-md'>
           <p className='heading-secondary'>recent posts</p>
         </div>
         <div className='recent-posts-grid'>

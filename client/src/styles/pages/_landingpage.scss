@@ -42,7 +42,7 @@
 .featured-courts {
   &-wrapper {
     background-color: $color-main-background-darker;
-    padding: 3rem 0;
+    padding: 4rem 0;
   }
 
   &-header {
@@ -53,7 +53,7 @@
 // FOR RECENT POSTS
 .recent-posts {
   &-wrapper {
-    padding: 3rem 0;
+    padding: 4rem 0;
     height: 100%;
   }
 
@@ -69,7 +69,7 @@
     flex-wrap: wrap;
 
     &-cols {
-      flex: 0 0 30%;
+      flex: 0 0 32%;
     }
   }
 }

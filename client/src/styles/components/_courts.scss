@@ -3,7 +3,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin-top: 1rem;
+    // margin-top: 1rem;
 
     // So when it's less than the full box in a row, it adds a imaginary box to fill it up
     &::after {
@@ -17,7 +17,7 @@
       border-radius: 5px;
       box-shadow: 0 3px 4px rgba(0, 0, 0, 0.1);
       border: 1px solid #ffe3e3;
-      margin: 2rem 0;
+      margin: 0 0 2rem 0;
       text-align: center;
       cursor: pointer;
 

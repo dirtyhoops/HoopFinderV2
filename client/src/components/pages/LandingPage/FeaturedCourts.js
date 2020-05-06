@@ -6,7 +6,7 @@ const FeaturedCourts = (props) => {
   return (
     <div className='featured-courts-wrapper'>
       <div className='featured-courts container'>
-        <div className='featured-courts-header'>
+        <div className='featured-courts-header u-margin-bottom-md'>
           <p className='heading-secondary'>featured courts</p>
         </div>
         {courts.length > 0 ? (
