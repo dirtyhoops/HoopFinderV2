@@ -13,14 +13,18 @@ const FeaturedCourts = (props) => {
           <div className='courts-grid'>
             {courts.map((court) => (
               <div key={court._id} className='courts-grid-box'>
-                <div className='courts-grid-box__image'>
-                  <img
-                    src={court.images[0]}
-                    className='courts-grid-box__image__img'
-                  />
-                </div>
+                <Link className='link' to={`/court/${court._id}`}>
+                  <div className='courts-grid-box__image'>
+                    <img
+                      src={court.images[0]}
+                      className='courts-grid-box__image__img'
+                    />
+                  </div>
+                </Link>
                 <div className='courts-grid-box__info u-text-capitalize'>
-                  <p className='text-courtinfo-name'>{court.name}</p>
+                  <Link className='link' to={`/court/${court._id}`}>
+                    <p className='text-courtinfo-name'>{court.name}</p>
+                  </Link>
                   <p className='text-courtinfo-location'>
                     {court.address.street}, {court.address.city},{' '}
                     {court.address.state} {court.address.zipcode}

@@ -11,6 +11,8 @@ import EditProfile from './components/forms/EditProfile';
 import PlayersListPage from './components/pages/PlayersList/PlayersListPage';
 import PlayerPage from './components/pages/PlayerProfile/PlayerPage';
 import LandingPage from './components/pages/LandingPage/LandingPage';
+import CourtsListPage from './components/pages/CourtsList/CourtsListPage';
+import CourtsViewPage from './components/pages/CourtsView/CourtsViewPage';
 
 // Import the sass styling
 import './styles/main.scss';
@@ -27,6 +29,8 @@ const App = () => (
           <Route exact path='/player/me/edit' component={EditProfile} />
           <Route exact path='/players' component={PlayersListPage} />
           <Route exact path='/player/:id' component={PlayerPage} />
+          <Route exact path='/courts' component={CourtsListPage} />
+          <Route exact path='/court/:id' component={CourtsViewPage} />
         </Switch>
       </Fragment>
     </Router>
