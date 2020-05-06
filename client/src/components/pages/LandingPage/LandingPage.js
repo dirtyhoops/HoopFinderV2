@@ -6,13 +6,7 @@ import FeaturedCourts from './FeaturedCourts';
 import RecentPosts from './RecentPosts';
 
 import { getAllCourts } from '../../../actions/court';
-import {
-  getAllPosts,
-  createPost,
-  createComment,
-  likePost,
-  unlikePost,
-} from '../../../actions/post';
+import { getAllPosts } from '../../../actions/post';
 
 const LandingPage = ({
   profile: { user_profile, isUserProfileLoaded },
@@ -20,10 +14,6 @@ const LandingPage = ({
   post: { postsHome },
   getAllCourts,
   getAllPosts,
-  createPost,
-  createComment,
-  likePost,
-  unlikePost,
 }) => {
   useEffect(() => {
     getAllCourts();
@@ -48,10 +38,6 @@ const LandingPage = ({
       {/* RECENT POSTS BY PLAYERS */}
       <RecentPosts
         postsHome={postsHome}
-        createPost={createPost}
-        createComment={createComment}
-        likePost={likePost}
-        unlikePost={unlikePost}
         isUserProfileLoaded={isUserProfileLoaded}
         loggedInUser={user_profile}
         selectPlayer={selectPlayer}
@@ -71,10 +57,6 @@ const mapStateToProps = (state) => ({
 export default connect(mapStateToProps, {
   getAllCourts,
   getAllPosts,
-  createPost,
-  createComment,
-  likePost,
-  unlikePost,
 })(LandingPage);
 
 // // !@TODO -- separate components

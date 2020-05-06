@@ -176,12 +176,12 @@
       padding: 0.2rem 0;
       align-items: center;
       &__left {
-        flex: 50%;
+        flex: 65%;
         text-align: left;
       }
 
       &__right {
-        flex: 50%;
+        flex: 35%;
         text-align: right;
       }
     }

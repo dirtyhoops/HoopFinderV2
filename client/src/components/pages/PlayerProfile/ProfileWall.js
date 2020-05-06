@@ -1,18 +1,13 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Moment from 'react-moment';
+import { connect } from 'react-redux';
+import { createComment, likePost, unlikePost } from '../../../actions/post';
+
 import ProfileWallPostComments from './ProfileWallPostComments';
 
-const ProfileWall = (props) => {
-  const {
-    posts,
-    loggedInUser,
-    createComment,
-    isUserProfileLoaded,
-    selectPlayer,
-    likePost,
-    unlikePost,
-  } = props;
+const ProfileWall = ({ props, createComment, likePost, unlikePost }) => {
+  const { posts, loggedInUser, isUserProfileLoaded, selectPlayer } = props;
 
   const [active, setActive] = useState(null);
 
@@ -23,6 +18,7 @@ const ProfileWall = (props) => {
     }
     console.log('clicking toggle');
   };
+
   return (
     <div>
       {/* The Wall Posts */}
@@ -125,4 +121,12 @@ const ProfileWall = (props) => {
   );
 };
 
-export default ProfileWall;
+const mapStateToProps = (state, ownProps) => ({
+  props: ownProps,
+});
+
+export default connect(mapStateToProps, {
+  createComment,
+  likePost,
+  unlikePost,
+})(ProfileWall);

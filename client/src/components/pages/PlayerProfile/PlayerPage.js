@@ -3,13 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { getProfile } from '../../../actions/profile';
-import {
-  getAllWallPosts,
-  createPost,
-  createComment,
-  likePost,
-  unlikePost,
-} from '../../../actions/post';
+import { getAllWallPosts, createPost } from '../../../actions/post';
 
 import WallPostForm from './WallPostForm';
 import ProfileInfo from './ProfileInfo';
@@ -25,9 +19,6 @@ const PlayerPage = ({
   getProfile,
   getAllWallPosts,
   createPost,
-  createComment,
-  likePost,
-  unlikePost,
   post: { posts },
   match: {
     params: { id },
@@ -67,11 +58,8 @@ const PlayerPage = ({
                 <ProfileWall
                   posts={posts}
                   loggedInUser={user_profile}
-                  createComment={createComment}
                   isUserProfileLoaded={isUserProfileLoaded}
                   selectPlayer={selectPlayer}
-                  likePost={likePost}
-                  unlikePost={unlikePost}
                 />
               </div>
 
@@ -99,7 +87,4 @@ export default connect(mapStateToProps, {
   getProfile,
   getAllWallPosts,
   createPost,
-  createComment,
-  likePost,
-  unlikePost,
 })(PlayerPage);

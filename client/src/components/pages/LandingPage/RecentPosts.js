@@ -7,14 +7,11 @@ import ProfileWall from '../PlayerProfile/ProfileWall';
 const RecentPosts = (props) => {
   const {
     postsHome,
-    createPost,
-    createComment,
-    likePost,
-    unlikePost,
     isUserProfileLoaded,
     profileUserLoaded,
     user_profile,
     selectPlayer,
+    loggedInUser,
   } = props;
 
   // make a fuction where it checks how many postshome are, and splice it depending on it
@@ -32,34 +29,25 @@ const RecentPosts = (props) => {
           <div className='recent-posts-grid-cols'>
             <ProfileWall
               posts={postscol1}
-              loggedInUser={user_profile}
-              createComment={createComment}
+              loggedInUser={loggedInUser}
               isUserProfileLoaded={isUserProfileLoaded}
               selectPlayer={selectPlayer}
-              likePost={likePost}
-              unlikePost={unlikePost}
             />
           </div>
           <div className='recent-posts-grid-cols'>
             <ProfileWall
               posts={postscol2}
-              loggedInUser={user_profile}
-              createComment={createComment}
+              loggedInUser={loggedInUser}
               isUserProfileLoaded={isUserProfileLoaded}
               selectPlayer={selectPlayer}
-              likePost={likePost}
-              unlikePost={unlikePost}
             />
           </div>
           <div className='recent-posts-grid-cols'>
             <ProfileWall
               posts={postscol3}
-              loggedInUser={user_profile}
-              createComment={createComment}
+              loggedInUser={loggedInUser}
               isUserProfileLoaded={isUserProfileLoaded}
               selectPlayer={selectPlayer}
-              likePost={likePost}
-              unlikePost={unlikePost}
             />
           </div>
         </div>

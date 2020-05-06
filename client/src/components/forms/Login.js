@@ -32,7 +32,7 @@ const Login = ({
   // CHANGE THIS LATER TO REDIRECT TO THE HOME PAGE WITH ALL THE FEEDS
   if (isAuthenticated) {
     getUserProfile();
-    return <Redirect to='/players' />;
+    return <Redirect to='/' />;
   }
 
   // // Get the user profile as soon as the login is successful

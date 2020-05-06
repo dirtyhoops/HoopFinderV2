@@ -56,6 +56,11 @@ export default function (state = initialState, action) {
             ? { ...post, likes: payload.likes }
             : post
         ),
+        postsHome: state.postsHome.map((post) =>
+          post._id === payload.post_id
+            ? { ...post, likes: payload.likes }
+            : post
+        ),
       };
     default:
       return state;
