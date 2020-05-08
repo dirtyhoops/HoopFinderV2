@@ -1,23 +1,39 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 
 import { getAllCourts } from '../../../actions/court';
 
 import CourtsTable from './CourtsTable';
-import AdminPageHeader from './AdminPageHeader';
+import AddCourt from '../../forms/AddCourt';
 
 const AdminPage = ({ court: { courts }, getAllCourts }) => {
   useEffect(() => {
     getAllCourts();
   }, []);
 
+  const [toggleForm, setToggleForm] = useState(false);
+
+  const toggleHandler = () => {
+    setToggleForm(!toggleForm);
+  };
+
   return (
     <div className='admin-page-wrapper'>
       <div className='admin-page container'>
-        {/* <div className='admin-page-header'>
-          <p className='heading-secondary'>Admin Content Manager</p>
-        </div> */}
-        <AdminPageHeader />
+        <div className='admin-page-header'>
+          <div className='admin-page-header__left'>
+            <p className='heading-primary'>admin content manager</p>
+          </div>
+          <div className='admin-page-header__right'>
+            <button
+              className='btn btn--success'
+              onClick={() => toggleHandler()}
+            >
+              Add Court
+            </button>
+          </div>
+        </div>
+        <AddCourt toggleForm={toggleForm} />
         <CourtsTable courts={courts} />
       </div>
     </div>

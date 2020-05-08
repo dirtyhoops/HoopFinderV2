@@ -1,3 +1,4 @@
+// LOGIN and REGISTER FORM
 .auth-form {
   &-container {
     width: 450px;
@@ -46,6 +47,7 @@
   }
 }
 
+// EDIT PROFILE FORM
 .edit-profile-form {
   &-container {
     width: 500px;
@@ -127,12 +129,14 @@
   }
 }
 
+// STILL FOR EDIT PROFILE FORM
 .form-header-edit {
   font-size: 18px;
   color: rgb(180, 170, 170);
   margin-bottom: 2rem;
 }
 
+// STILL FOR EDIT PROFILE FORM
 .radio-box {
   width: 20%;
   display: inline-block;
@@ -152,6 +156,7 @@
   }
 }
 
+// STILL FOR EDIT PROFILE FORM
 .header-form {
   &-group {
     position: relative;
@@ -192,4 +197,27 @@
       box-shadow: 2px 5px 10px rgba($color-black, 0.3);
     }
   }
+}
+
+// ADD COURT FORM
+.add-court {
+  &-wrapper {
+    border: 1px solid rgba($color-black, 0.1);
+    margin-bottom: 1rem;
+    transition: all 0.6s ease;
+    overflow: hidden;
+  }
+}
+
+// SHOWS and HIDE THE ADD-COURT FORM
+.hideform {
+  height: 0;
+  opacity: 0;
+  padding: 0;
+}
+
+.showform {
+  height: auto;
+  opacity: 1;
+  padding: 2rem;
 }

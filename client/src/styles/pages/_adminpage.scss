@@ -7,24 +7,19 @@
 
   // For the Admin Page Header section
   &-header {
-    &__top {
-      display: flex;
-      flex-wrap: wrap;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 1rem;
 
-      &__left {
-        flex: 0 0 50%;
-        text-align: left;
-      }
-
-      &__right {
-        flex: 0 0 50%;
-        text-align: right;
-      }
+    &__left {
+      flex: 0 0 50%;
+      text-align: left;
     }
 
-    &__bottom {
-      padding: 2rem;
-      border: 1px solid rgba($color-black, 0.1);
+    &__right {
+      flex: 0 0 50%;
+      text-align: right;
     }
   }
 
