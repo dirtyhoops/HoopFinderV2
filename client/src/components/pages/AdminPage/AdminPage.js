@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { getAllCourts } from '../../../actions/court';
 
 import CourtsTable from './CourtsTable';
+import AdminPageHeader from './AdminPageHeader';
 
 const AdminPage = ({ court: { courts }, getAllCourts }) => {
   useEffect(() => {
@@ -13,12 +14,10 @@ const AdminPage = ({ court: { courts }, getAllCourts }) => {
   return (
     <div className='admin-page-wrapper'>
       <div className='admin-page container'>
-        <div className='admin-page-header'>
+        {/* <div className='admin-page-header'>
           <p className='heading-secondary'>Admin Content Manager</p>
-        </div>
-        <div className='admin-page-form'>
-          <form>sss</form>
-        </div>
+        </div> */}
+        <AdminPageHeader />
         <CourtsTable courts={courts} />
       </div>
     </div>

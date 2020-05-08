@@ -9,11 +9,17 @@ body {
 .heading-primary {
   font-size: 3.5rem;
   font-weight: 900;
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 
 .heading-secondary {
   font-size: 2rem;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.heading-tertiary {
+  font-size: 1.7rem;
   font-weight: bold;
   text-transform: capitalize;
 }
