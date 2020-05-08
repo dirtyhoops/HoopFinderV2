@@ -1,0 +1,16 @@
+.admin-page {
+  &-wrapper {
+    padding: 3rem 0;
+    min-height: 100vh;
+    background-color: $color-main-background-darker;
+  }
+
+  &-header {
+    text-align: center;
+  }
+
+  &-section {
+    padding: 2rem;
+    border: 1px solid rgba($color-black, 0.1);
+  }
+}
