@@ -20,6 +20,30 @@
   }
 }
 
+.btn-sm {
+  padding: 0.5rem 1rem;
+  color: $color-white;
+  border: none;
+  border-radius: 3px;
+  font-size: 12px;
+
+  &--primary {
+    background: $color-primary;
+
+    &:hover {
+      background: $color-primary-2;
+    }
+  }
+
+  &--danger {
+    background: $color-danger;
+
+    &:hover {
+      background: $color-danger-2;
+    }
+  }
+}
+
 // Buttons for Register and Login
 .btn-1 {
   width: 100%;

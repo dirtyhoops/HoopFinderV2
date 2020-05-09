@@ -29,11 +29,13 @@ const Courts = (props) => {
               </div>
               <div className='courts-grid-box__footer'>
                 <div className='courts-grid-box__footer__left'>
-                  <span className='fa fa-star icon-star star-checked'></span>
-                  <span className='fa fa-star icon-star star-checked'></span>
-                  <span className='fa fa-star icon-star star-checked'></span>
-                  <span className='fa fa-star icon-star star-checked'></span>
-                  <span className='fa fa-star icon-star'></span>
+                  <div
+                    className='stars-rating'
+                    style={{
+                      '--rating': `${court.rating}`,
+                      '--star-size': '22px',
+                    }}
+                  ></div>
                 </div>
                 <div className='courts-grid-box__footer__right'>
                   3{' '}

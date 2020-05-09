@@ -7,10 +7,12 @@ const CourtsTable = (props) => {
     <div className='admin-page-table'>
       {courts.length > 0 ? (
         <>
-          <p className='heading-tertiary'>courts</p>
-          <p className='text-admin-page-totalcourts'>
-            {courts.length} total courts
-          </p>
+          <div className='admin-page-table-header'>
+            <p className='heading-tertiary'>courts</p>
+            <p className='text-admin-page-totalcourts'>
+              {courts.length} total courts
+            </p>
+          </div>
           <table className='admin-page-table-container' cellSpacing='0'>
             {courts.map((court) => (
               <tr key={court._id}>
@@ -26,10 +28,21 @@ const CourtsTable = (props) => {
                 <td>
                   {court.address.city}, {court.address.state}
                 </td>
-                <td>3 Reviews</td>
-                <td>Rating ****</td>
+                <td>{court.reviews.length} Reviews</td>
+                <td className='u-text-align-right'>
+                  <div
+                    className='stars-rating'
+                    style={{
+                      '--rating': `${court.rating}`,
+                      '--star-size': '19px',
+                    }}
+                  ></div>
+                </td>
                 <td className='u-padding-right-sm u-text-align-right'>
-                  action buttons
+                  <button className='btn btn-sm btn-sm--primary u-margin-right-xs'>
+                    Edit
+                  </button>
+                  <button className='btn btn-sm btn-sm--danger'>Delete</button>
                 </td>
               </tr>
             ))}

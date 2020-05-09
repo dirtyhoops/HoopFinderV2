@@ -1,6 +1,7 @@
 import React from 'react';
 
 const AddCourt = (props) => {
+  // toggleForm is just a toggler to show/hide the form
   const { toggleForm } = props;
   return (
     <div

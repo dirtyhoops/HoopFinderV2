@@ -29,6 +29,10 @@
     border: 1px solid rgba($color-black, 0.1);
     text-transform: capitalize;
 
+    &-header {
+      padding: 0 2rem;
+    }
+
     // The table <table>
     &-container {
       width: 100%;
@@ -43,6 +47,7 @@
         padding-top: 1.2rem;
         padding-bottom: 1.2rem;
         border-bottom: 8px solid $color-main-background-darker;
+        vertical-align: center;
       }
     }
   }
