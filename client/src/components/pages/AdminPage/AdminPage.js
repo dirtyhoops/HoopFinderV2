@@ -29,11 +29,13 @@ const AdminPage = ({ court: { courts }, getAllCourts }) => {
               className='btn btn--success'
               onClick={() => toggleHandler()}
             >
-              Add Court
+              {toggleForm ? 'Hide Form' : 'Add Court'}
             </button>
           </div>
         </div>
-        <AddCourt toggleForm={toggleForm} />
+        <div className={toggleForm ? 'showform' : 'hideform'}>
+          <AddCourt />
+        </div>
         <CourtsTable courts={courts} />
       </div>
     </div>
