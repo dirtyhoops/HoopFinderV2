@@ -11,7 +11,7 @@ const AdminPage = ({ court: { courts }, getAllCourts }) => {
     getAllCourts();
   }, []);
 
-  const [toggleForm, setToggleForm] = useState(false);
+  const [toggleForm, setToggleForm] = useState(true);
 
   const toggleHandler = () => {
     setToggleForm(!toggleForm);
@@ -24,6 +24,7 @@ const AdminPage = ({ court: { courts }, getAllCourts }) => {
           <div className='admin-page-header__left'>
             <p className='heading-primary'>admin content manager</p>
           </div>
+          <div className='admin-page-header__center'>SORT DO LATER</div>
           <div className='admin-page-header__right'>
             <button
               className='btn btn--success'

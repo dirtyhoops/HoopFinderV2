@@ -202,7 +202,56 @@
 // ADD COURT FORM
 .add-court {
   &-wrapper {
-    padding: 2rem;
+  }
+
+  &-form {
+    &__flex {
+      display: flex;
+
+      &-box {
+        flex: 0 0 33.3%;
+        border-right: 1px solid rgba($color-black, 0.1);
+        padding: 2rem;
+
+        // Takes out the border for the last child
+        &:last-child {
+          border-right: none;
+        }
+      }
+    }
+    &-group {
+      margin-bottom: 10px;
+
+      & label {
+        display: block;
+        font-size: 13px;
+        color: rgb(49, 45, 45);
+      }
+
+      & input {
+        width: 100%;
+        outline: none;
+        font-size: 13px;
+        border: 1px solid rgba($color-black, 0.1);
+        padding: 5px;
+      }
+
+      & textarea {
+        width: 100%;
+        resize: none;
+        outline: none;
+        font-size: 13px;
+        border: 1px solid rgba($color-black, 0.1);
+        padding: 5px;
+      }
+
+      // width 50% next to each other
+      &-50 {
+        width: 46%;
+        margin-right: 1rem; //maybe change this later
+        display: inline-block;
+      }
+    }
   }
 }
 
@@ -215,7 +264,7 @@
 }
 
 .showform {
-  height: 400px;
+  height: auto;
   opacity: 1;
   transition: all 0.5s ease;
   border: 1px solid rgba($color-black, 0.1);

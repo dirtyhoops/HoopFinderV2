@@ -73,6 +73,12 @@ router.post(
         state: req.body.state,
         zipcode: req.body.zipcode,
       },
+      surfaceType: req.body.surfaceType,
+      numberOfHoops: req.body.numberOfHoops,
+      rimHeight: req.body.rimHeight,
+      isIndoor: req.body.isIndoor,
+      isLighting: req.body.isLighting,
+      isPublic: req.body.isPublic,
     });
 
     try {

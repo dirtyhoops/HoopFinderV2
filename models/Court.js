@@ -10,7 +10,7 @@ const CourtSchema = new mongoose.Schema({
   },
   description: {
     type: String,
-    required: true,
+    default: 'N/A',
   },
   address: {
     street: {
@@ -93,6 +93,30 @@ const CourtSchema = new mongoose.Schema({
   dateCreated: {
     type: Date,
     default: Date.now,
+  },
+  surfaceType: {
+    type: String,
+    default: 'N/A',
+  },
+  numberOfHoops: {
+    type: Number,
+    default: 2,
+  },
+  rimHeight: {
+    type: String,
+    default: 'N/A',
+  },
+  isIndoor: {
+    type: String,
+    default: 'N/A',
+  },
+  isLighting: {
+    type: String,
+    default: 'N/A',
+  },
+  isPublic: {
+    type: String,
+    default: 'N/A',
   },
 });
 
