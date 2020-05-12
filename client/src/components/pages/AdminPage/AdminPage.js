@@ -27,7 +27,7 @@ const AdminPage = ({ court: { courts }, getAllCourts }) => {
           <div className='admin-page-header__center'>SORT DO LATER</div>
           <div className='admin-page-header__right'>
             <button
-              className='btn btn--success'
+              className='btn  btn-lg btn-lg--success'
               onClick={() => toggleHandler()}
             >
               {toggleForm ? 'Hide Form' : 'Add Court'}

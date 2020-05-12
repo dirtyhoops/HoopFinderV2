@@ -5,17 +5,26 @@
   font-family: 'Montserrat';
 }
 
-.btn {
+.btn-lg {
+  padding: 1rem 1.5rem;
+  color: $color-white;
+  border: none;
+  border-radius: 3px;
+  font-size: 14px;
+
   &--success {
     background: $color-success;
-    padding: 1rem 1.5rem;
-    color: $color-white;
-    border: none;
-    border-radius: 3px;
-    font-size: 14px;
 
     &:hover {
       background: $color-success-2;
+    }
+  }
+
+  &--secondary {
+    background: $color-secondary;
+
+    &:hover {
+      background: $color-secondary-2;
     }
   }
 }
