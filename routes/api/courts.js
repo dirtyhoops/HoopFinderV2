@@ -50,6 +50,7 @@ router.post(
     [
       check('name', 'Name is required').not().isEmpty(),
       check('description', 'Description is required').not().isEmpty(),
+      check('images', 'Atleast 1 image is required').not().isEmpty(),
       check('street', 'Street is required').not().isEmpty(),
       check('city', 'City is required').not().isEmpty(),
       check('state', 'Street name is required').not().isEmpty(),
@@ -63,10 +64,11 @@ router.post(
       return res.status(400).json({ errors: errors.array() });
     }
 
-    // Build new court object
+    // Build new court object -- images, separate the strings and push it to array
     const courtFields = new Court({
       name: req.body.name,
       description: req.body.description,
+      images: req.body.images.split(',').map((image) => image.trim()),
       address: {
         street: req.body.street,
         city: req.body.city,
@@ -80,6 +82,10 @@ router.post(
       isLighting: req.body.isLighting,
       isPublic: req.body.isPublic,
     });
+
+    // if (req.body.images) {
+    //   courtFields.images = images.split(',').map((image) => image.trim());
+    // }
 
     try {
       // Check if user is an admin (only admin can add courts)

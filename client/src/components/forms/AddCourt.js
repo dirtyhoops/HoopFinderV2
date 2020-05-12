@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
 
-const AddCourt = (props) => {
-  const { toggleForm } = props;
+import { createCourt } from '../../actions/court';
 
+const AddCourt = ({ props: { toggleForm }, createCourt }) => {
   const [formData, setFormData] = useState({
     name: '',
     description: '',
@@ -42,7 +43,7 @@ const AddCourt = (props) => {
   const onSubmit = (e) => {
     e.preventDefault();
     console.log(formData);
-    // createProfile({ formData });
+    createCourt({ formData });
   };
 
   return (
@@ -348,4 +349,8 @@ const AddCourt = (props) => {
   );
 };
 
-export default AddCourt;
+const mapStateToProps = (state, ownProps) => ({
+  props: ownProps,
+});
+
+export default connect(mapStateToProps, { createCourt })(AddCourt);

@@ -26,3 +26,25 @@ export const getAllCourts = () => async (dispatch) => {
 };
 
 // CREATE A CALL THAT ONLY PULLS UP 4 COURTS FOR LANDING PAGE
+
+// Create Court
+export const createCourt = ({ formData }) => async (dispatch) => {
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  };
+
+  try {
+    const res = await axios.post('/api/courts', formData, config);
+
+    dispatch({ type: CREATE_COURT, payload: res.data });
+  } catch (err) {
+    const errors = err.response.data.errors;
+
+    if (errors) {
+      // errors.forEach((error) => dispatch(setAelert(error.msg, 'danger')));
+      console.log(errors);
+    }
+  }
+};

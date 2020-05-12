@@ -15,6 +15,7 @@ const Courts = (props) => {
                   <img
                     src={court.images[0]}
                     className='courts-grid-box__image__img'
+                    alt='court_main_img'
                   />
                 </div>
               </Link>

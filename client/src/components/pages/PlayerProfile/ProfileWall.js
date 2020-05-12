@@ -6,9 +6,12 @@ import { createComment, likePost, unlikePost } from '../../../actions/post';
 
 import ProfileWallPostComments from './ProfileWallPostComments';
 
-const ProfileWall = ({ props, createComment, likePost, unlikePost }) => {
-  const { posts, loggedInUser, isUserProfileLoaded, selectPlayer } = props;
-
+const ProfileWall = ({
+  props: { posts, loggedInUser, isUserProfileLoaded, selectPlayer },
+  createComment,
+  likePost,
+  unlikePost,
+}) => {
   const [active, setActive] = useState(null);
 
   const onClickToggle = (i) => {

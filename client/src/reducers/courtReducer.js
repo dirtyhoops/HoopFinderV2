@@ -22,6 +22,11 @@ export default function (state = initialState, action) {
         ...state,
         courts: payload,
       };
+    case CREATE_COURT:
+      return {
+        ...state,
+        courts: [payload, ...state.courts],
+      };
     default:
       return state;
   }
