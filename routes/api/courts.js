@@ -55,6 +55,12 @@ router.post(
       check('city', 'City is required').not().isEmpty(),
       check('state', 'Street name is required').not().isEmpty(),
       check('zipcode', 'Zipcode is required').not().isEmpty(),
+      check('surfaceType', 'Surface Type is required').not().isEmpty(),
+      check('numberOfHoops', 'Number of Hoops is required').not().isEmpty(),
+      check('rimHeight', 'Rim Height is required').not().isEmpty(),
+      check('isIndoor', 'isIndoor is required').not().isEmpty(),
+      check('isLighting', 'isLighting is required').not().isEmpty(),
+      check('isPublic', 'isPublic is required').not().isEmpty(),
     ],
   ],
   async (req, res) => {
@@ -82,10 +88,6 @@ router.post(
       isLighting: req.body.isLighting,
       isPublic: req.body.isPublic,
     });
-
-    // if (req.body.images) {
-    //   courtFields.images = images.split(',').map((image) => image.trim());
-    // }
 
     try {
       // Check if user is an admin (only admin can add courts)
@@ -202,6 +204,100 @@ router.delete('/:id', auth, async (req, res) => {
     res.status(500).send('Server Error');
   }
 });
+
+// @route       PUT api/courts/:id
+// @desc        Update a court
+// @access      Private
+router.put(
+  '/:id',
+  [
+    auth,
+    [
+      check('name', 'Name is required').not().isEmpty(),
+      check('description', 'Description is required').not().isEmpty(),
+      check('images', 'Atleast 1 image is required').not().isEmpty(),
+      check('street', 'Street is required').not().isEmpty(),
+      check('city', 'City is required').not().isEmpty(),
+      check('state', 'Street name is required').not().isEmpty(),
+      check('zipcode', 'Zipcode is required').not().isEmpty(),
+      check('surfaceType', 'Surface Type is required').not().isEmpty(),
+      check('numberOfHoops', 'Number of Hoops is required').not().isEmpty(),
+      check('rimHeight', 'Rim Height is required').not().isEmpty(),
+      check('isIndoor', 'isIndoor is required').not().isEmpty(),
+      check('isLighting', 'isLighting is required').not().isEmpty(),
+      check('isPublic', 'isPublic is required').not().isEmpty(),
+    ],
+  ],
+  async (req, res) => {
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+
+    // Deconstruct
+    const {
+      name,
+      description,
+      street,
+      city,
+      state,
+      zipcode,
+      surfaceType,
+      numberOfHoops,
+      rimHeight,
+      isIndoor,
+      isLighting,
+      isPublic,
+      images,
+    } = req.body;
+
+    const courtFields = {};
+    if (name) courtFields.name = name;
+    if (description) courtFields.description = description;
+    if (street) courtFields.street = street;
+    if (city) courtFields.city = city;
+    if (state) courtFields.state = state;
+    if (zipcode) courtFields.zipcode = zipcode;
+    if (surfaceType) courtFields.surfaceType = surfaceType;
+    if (numberOfHoops) courtFields.numberOfHoops = numberOfHoops;
+    if (rimHeight) courtFields.rimHeight = rimHeight;
+    if (isIndoor) courtFields.isIndoor = isIndoor;
+    if (isLighting) courtFields.isLighting = isLighting;
+    if (isPublic) courtFields.isPublic = isPublic;
+    if (images) {
+      courtFields.images = images.split(',').map((image) => image.trim());
+    }
+
+    try {
+      // Check if user is an admin (only admin can add courts)
+      if (req.user.isAdmin === false) {
+        return res
+          .status(401)
+          .json({ msg: 'User is not an admin, not authorized to add a court' });
+      }
+
+      let court = await Court.findOne({ _id: req.params.id });
+
+      if (court) {
+        court = await Court.findOneAndUpdate(
+          { _id: req.params.id },
+          { $set: courtFields },
+          { new: true }
+        );
+
+        return res.json(court);
+      }
+    } catch (err) {
+      console.error(err.message);
+      if (err.name === 'CastError') {
+        res.status(400).json({ msg: 'Court not found' });
+      }
+
+      res.status(500).send('Server Error');
+    }
+  }
+);
 
 // CHECK IN PLAYERS POST ROUTE --- HANDLE IS LIKE A 'LIKE POST ROUTE'. ALSO ADD AN AUTO DELETE AFTER 2 HOURS
 // DELETE route - delete reviews along with it
