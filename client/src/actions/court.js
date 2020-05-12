@@ -54,6 +54,28 @@ export const createCourt = ({ formData }) => async (dispatch) => {
   }
 };
 
+// Delete court
+export const deleteCourt = (id) => async (dispatch) => {
+  try {
+    const res = await axios.delete(`/api/courts/${id}`);
+
+    dispatch({
+      type: DELETE_COURT,
+      payload: id,
+    });
+
+    // DISPATCH SUCCESS MESSAGE LATER
+    // dispatch(setAlert(res.data.msg, 'success'));
+  } catch (err) {
+    console.log('cant delete . fix this later - not an admin to delete');
+    // MAKE SURE TO CHANGE THIS.. ADD A DISPATCH
+    // dispatch({
+    //   type: DELETE_COURT_ERROR,
+    //   payload: { msg: err.response.statusText, status: err.response.status }
+    // });
+  }
+};
+
 // Just resets the addCourtSuccess - it clears the add court form
 export const clearAddCourtSuccess = () => async (dispatch) => {
   dispatch({ type: RESET_CREATE_COURT_SUCCESS });

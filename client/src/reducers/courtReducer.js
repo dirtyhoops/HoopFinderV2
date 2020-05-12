@@ -35,6 +35,11 @@ export default function (state = initialState, action) {
         ...state,
         addCourtSuccess: false,
       };
+    case DELETE_COURT:
+      return {
+        ...state,
+        courts: state.courts.filter((court) => court._id !== payload),
+      };
     default:
       return state;
   }

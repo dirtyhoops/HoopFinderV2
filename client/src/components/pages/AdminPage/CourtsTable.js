@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const CourtsTable = (props) => {
-  const { courts } = props;
+  const { courts, deleteCourt } = props;
   return (
     <div className='admin-page-table'>
       {courts.length > 0 ? (
@@ -43,7 +43,10 @@ const CourtsTable = (props) => {
                     <button className='btn btn-sm btn-sm--primary u-margin-right-xs'>
                       Edit
                     </button>
-                    <button className='btn btn-sm btn-sm--danger'>
+                    <button
+                      className='btn btn-sm btn-sm--danger'
+                      onClick={() => deleteCourt(court._id)}
+                    >
                       Delete
                     </button>
                   </td>
