@@ -4,6 +4,7 @@ import {
   ADD_COURT_REVIEW,
   GET_COURTS,
   GET_COURT,
+  RESET_CREATE_COURT_SUCCESS,
 } from '../actions/types';
 
 const initialState = {
@@ -11,6 +12,7 @@ const initialState = {
   featuredCourts: [],
   isCourtsLoaded: false,
   selectedCourt: null,
+  addCourtSuccess: false,
 };
 
 export default function (state = initialState, action) {
@@ -26,6 +28,12 @@ export default function (state = initialState, action) {
       return {
         ...state,
         courts: [payload, ...state.courts],
+        addCourtSuccess: true,
+      };
+    case RESET_CREATE_COURT_SUCCESS:
+      return {
+        ...state,
+        addCourtSuccess: false,
       };
     default:
       return state;

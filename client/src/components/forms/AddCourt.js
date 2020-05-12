@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 
-import { createCourt } from '../../actions/court';
+import { createCourt, clearAddCourtSuccess } from '../../actions/court';
 
-const AddCourt = ({ props: { toggleForm }, createCourt }) => {
+const AddCourt = ({ addCourtSuccess, createCourt, clearAddCourtSuccess }) => {
   const [formData, setFormData] = useState({
     name: '',
     description: '',
@@ -40,15 +40,43 @@ const AddCourt = ({ props: { toggleForm }, createCourt }) => {
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
+  // Resets the form
+  const resetForm = () => {
+    setFormData({
+      name: '',
+      description: '',
+      images: '',
+      street: '',
+      city: '',
+      state: '',
+      zipcode: '',
+      surfaceType: 'N/A',
+      numberOfHoops: '2',
+      rimHeight: '10 ft',
+      isIndoor: '',
+      isLighting: '',
+      isPublic: '',
+    });
+  };
+
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
     createCourt({ formData });
   };
 
+  // Reset the form after a successful creation of a new court
+  if (addCourtSuccess && name !== '') {
+    clearAddCourtSuccess();
+    resetForm();
+  }
+
   return (
     <div className='add-court-wrapper'>
-      <form className='add-court-form' onSubmit={(e) => onSubmit(e)}>
+      <form
+        className='add-court-form'
+        id='add-court-form'
+        onSubmit={(e) => onSubmit(e)}
+      >
         <div className='add-court-form__flex'>
           <div className='add-court-form__flex-box'>
             <div className='add-court-form-group'>
@@ -349,8 +377,10 @@ const AddCourt = ({ props: { toggleForm }, createCourt }) => {
   );
 };
 
-const mapStateToProps = (state, ownProps) => ({
-  props: ownProps,
+const mapStateToProps = (state) => ({
+  addCourtSuccess: state.court.addCourtSuccess,
 });
 
-export default connect(mapStateToProps, { createCourt })(AddCourt);
+export default connect(mapStateToProps, { createCourt, clearAddCourtSuccess })(
+  AddCourt
+);

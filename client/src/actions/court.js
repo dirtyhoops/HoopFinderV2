@@ -5,6 +5,7 @@ import {
   ADD_COURT_REVIEW,
   GET_COURTS,
   GET_COURT,
+  RESET_CREATE_COURT_SUCCESS,
 } from './types';
 
 // Get all courts
@@ -39,12 +40,21 @@ export const createCourt = ({ formData }) => async (dispatch) => {
     const res = await axios.post('/api/courts', formData, config);
 
     dispatch({ type: CREATE_COURT, payload: res.data });
+
+    // MAKE SURE TO DISPATCH ALERT FOR SUCCESSFUL ADD
   } catch (err) {
     const errors = err.response.data.errors;
+
+    // MAKE SURE TO DISPATCH ALERT
 
     if (errors) {
       // errors.forEach((error) => dispatch(setAelert(error.msg, 'danger')));
       console.log(errors);
     }
   }
+};
+
+// Just resets the addCourtSuccess - it clears the add court form
+export const clearAddCourtSuccess = () => async (dispatch) => {
+  dispatch({ type: RESET_CREATE_COURT_SUCCESS });
 };
