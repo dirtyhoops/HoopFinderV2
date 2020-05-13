@@ -276,6 +276,14 @@
 
       &-options {
         flex: 0 0 20%;
+
+        & input[type='radio'] {
+          vertical-align: middle;
+        }
+      }
+
+      &-label {
+        font-size: 13px;
       }
     }
   }

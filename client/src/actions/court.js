@@ -5,7 +5,10 @@ import {
   ADD_COURT_REVIEW,
   GET_COURTS,
   GET_COURT,
+  GET_COURT_TO_EDIT,
   RESET_CREATE_COURT_SUCCESS,
+  CLEAR_SELECTED_COURT,
+  RESET_EDIT_COURT,
 } from './types';
 
 // Get all courts
@@ -21,7 +24,61 @@ export const getAllCourts = () => async (dispatch) => {
     console.log('cant get posts ---fix this later');
 
     // dispatch({
-    //   type: GET_COURTS_FAIL,
+    //   type: COURT_ERROR,
+    // });
+  }
+};
+
+export const getCourtToEdit = (id) => async (dispatch) => {
+  try {
+    const res = await axios.get(`/api/courts/${id}`);
+    dispatch({
+      type: GET_COURT_TO_EDIT,
+      payload: res.data,
+    });
+  } catch (err) {
+    console.log('cant get posts ---fix this later');
+
+    // dispatch({
+    //   type: COURT_ERROR,
+    //   payload: {
+    //     status: err.response.status,
+    //     statusText: err.response.statusText,
+    //   },
+    // });
+  }
+};
+
+// MAYBE DELETE THIS LATER
+export const clearSelectedCourt = () => (dispatch) => {
+  dispatch({
+    type: CLEAR_SELECTED_COURT,
+  });
+};
+
+// MAYBE DELETE THIS LATER
+export const resetEditCourt = () => (dispatch) => {
+  dispatch({
+    type: RESET_EDIT_COURT,
+  });
+};
+
+export const getCourt = (id) => async (dispatch) => {
+  try {
+    const res = await axios.get(`/api/courts/${id}`);
+    dispatch({
+      type: GET_COURT,
+      payload: res.data,
+    });
+  } catch (err) {
+    console.log('cant get posts ---fix this later');
+
+    // dispatch({
+    //   type: COURT_ERROR,
+    //   payload: {
+    //     status: err.response.status,
+    //     statusText: err.response.statusText,
+    //   },
     // });
   }
 };

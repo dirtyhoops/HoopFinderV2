@@ -1,12 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 
-import { getAllCourts, deleteCourt } from '../../../actions/court';
+import {
+  getAllCourts,
+  deleteCourt,
+  getCourtToEdit,
+} from '../../../actions/court';
 
 import CourtsTable from './CourtsTable';
 import AddCourt from '../../forms/AddCourt';
 
-const AdminPage = ({ court: { courts }, getAllCourts, deleteCourt }) => {
+const AdminPage = ({
+  court: { courts },
+  getAllCourts,
+  deleteCourt,
+  getCourtToEdit,
+}) => {
   useEffect(() => {
     getAllCourts();
   }, []);
@@ -37,7 +46,11 @@ const AdminPage = ({ court: { courts }, getAllCourts, deleteCourt }) => {
         <div className={toggleForm ? 'showform' : 'hideform'}>
           <AddCourt />
         </div>
-        <CourtsTable courts={courts} deleteCourt={deleteCourt} />
+        <CourtsTable
+          courts={courts}
+          deleteCourt={deleteCourt}
+          getCourtToEdit={getCourtToEdit}
+        />
       </div>
     </div>
   );
@@ -47,6 +60,8 @@ const mapStateToProps = (state) => ({
   court: state.court,
 });
 
-export default connect(mapStateToProps, { getAllCourts, deleteCourt })(
-  AdminPage
-);
+export default connect(mapStateToProps, {
+  getAllCourts,
+  deleteCourt,
+  getCourtToEdit,
+})(AdminPage);

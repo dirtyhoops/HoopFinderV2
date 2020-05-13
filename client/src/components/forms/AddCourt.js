@@ -256,7 +256,9 @@ const AddCourt = ({ addCourtSuccess, createCourt, clearAddCourtSuccess }) => {
               </select>
             </div>
             <div className='add-court-form-group'>
-              <p>Is the court indoor?</p>
+              <p className='add-court-form-radio-box-label'>
+                Is the court indoor?
+              </p>
               <div className='add-court-form-radio-box'>
                 <div className='add-court-form-radio-box-options'>
                   <label>
@@ -287,7 +289,9 @@ const AddCourt = ({ addCourtSuccess, createCourt, clearAddCourtSuccess }) => {
               </div>
             </div>
             <div className='add-court-form-group'>
-              <p>Is there lighting at night?</p>
+              <p className='add-court-form-radio-box-label'>
+                Is there lighting at night?
+              </p>
               <div className='add-court-form-radio-box'>
                 <div className='add-court-form-radio-box-options'>
                   <label>
@@ -331,7 +335,9 @@ const AddCourt = ({ addCourtSuccess, createCourt, clearAddCourtSuccess }) => {
               </div>
             </div>
             <div className='add-court-form-group'>
-              <p>Is it open to public?</p>
+              <p className='add-court-form-radio-box-label'>
+                Is it open to public?
+              </p>
               <div className='add-court-form-radio-box'>
                 <div className='add-court-form-radio-box-options'>
                   <label>
