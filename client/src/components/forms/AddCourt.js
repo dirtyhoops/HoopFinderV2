@@ -3,7 +3,11 @@ import { connect } from 'react-redux';
 
 import { createCourt, clearAddCourtSuccess } from '../../actions/court';
 
-const AddCourt = ({ addCourtSuccess, createCourt, clearAddCourtSuccess }) => {
+const AddCourt = ({
+  court: { addCourtSuccess, selectedCourtToEdit, isEditing },
+  createCourt,
+  clearAddCourtSuccess,
+}) => {
   const [formData, setFormData] = useState({
     name: '',
     description: '',
@@ -384,9 +388,10 @@ const AddCourt = ({ addCourtSuccess, createCourt, clearAddCourtSuccess }) => {
 };
 
 const mapStateToProps = (state) => ({
-  addCourtSuccess: state.court.addCourtSuccess,
+  court: state.court,
 });
 
-export default connect(mapStateToProps, { createCourt, clearAddCourtSuccess })(
-  AddCourt
-);
+export default connect(mapStateToProps, {
+  createCourt,
+  clearAddCourtSuccess,
+})(AddCourt);

@@ -29,6 +29,26 @@ export const getAllCourts = () => async (dispatch) => {
   }
 };
 
+export const getCourt = (id) => async (dispatch) => {
+  try {
+    const res = await axios.get(`/api/courts/${id}`);
+    dispatch({
+      type: GET_COURT,
+      payload: res.data,
+    });
+  } catch (err) {
+    console.log('cant get posts ---fix this later');
+
+    // dispatch({
+    //   type: COURT_ERROR,
+    //   payload: {
+    //     status: err.response.status,
+    //     statusText: err.response.statusText,
+    //   },
+    // });
+  }
+};
+
 export const getCourtToEdit = (id) => async (dispatch) => {
   try {
     const res = await axios.get(`/api/courts/${id}`);
@@ -55,35 +75,6 @@ export const clearSelectedCourt = () => (dispatch) => {
     type: CLEAR_SELECTED_COURT,
   });
 };
-
-// MAYBE DELETE THIS LATER
-export const resetEditCourt = () => (dispatch) => {
-  dispatch({
-    type: RESET_EDIT_COURT,
-  });
-};
-
-export const getCourt = (id) => async (dispatch) => {
-  try {
-    const res = await axios.get(`/api/courts/${id}`);
-    dispatch({
-      type: GET_COURT,
-      payload: res.data,
-    });
-  } catch (err) {
-    console.log('cant get posts ---fix this later');
-
-    // dispatch({
-    //   type: COURT_ERROR,
-    //   payload: {
-    //     status: err.response.status,
-    //     statusText: err.response.statusText,
-    //   },
-    // });
-  }
-};
-
-// CREATE A CALL THAT ONLY PULLS UP 4 COURTS FOR LANDING PAGE
 
 // Create Court
 export const createCourt = ({ formData }) => async (dispatch) => {

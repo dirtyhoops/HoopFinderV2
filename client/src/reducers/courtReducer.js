@@ -17,7 +17,6 @@ const initialState = {
   selectedCourt: null,
   addCourtSuccess: false,
   selectedCourtToEdit: null,
-  isEditing: false,
 };
 
 export default function (state = initialState, action) {
@@ -50,11 +49,6 @@ export default function (state = initialState, action) {
       return {
         ...state,
         addCourtSuccess: false,
-      };
-    case RESET_EDIT_COURT:
-      return {
-        ...state,
-        isEditing: false,
       };
     case DELETE_COURT:
       return {
