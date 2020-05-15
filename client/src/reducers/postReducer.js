@@ -11,7 +11,6 @@ import {
 const initialState = {
   posts: [],
   postsHome: [],
-  isPostLoadedHome: false,
 };
 
 export default function (state = initialState, action) {
@@ -22,7 +21,6 @@ export default function (state = initialState, action) {
       return {
         ...state,
         postsHome: payload,
-        isPostLoadedHome: true,
       };
     case GET_POSTS_WITH_ID:
       return {

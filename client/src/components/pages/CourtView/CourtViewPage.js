@@ -1,6 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { getCourt } from '../../../actions/court';
 
-const CourtViewPage = () => {
+const CourtViewPage = ({
+  court: { selectedCourt },
+  getCourt,
+  match: {
+    params: { id },
+  },
+}) => {
+  useEffect(() => {
+    getCourt(id);
+  }, []);
+
   return (
     <div className='court-view-wrapper'>
       <div className='court-view container'>
@@ -26,4 +39,8 @@ const CourtViewPage = () => {
   );
 };
 
-export default CourtViewPage;
+const mapStateToProps = (state) => ({
+  court: state.court,
+});
+
+export default connect(mapStateToProps, { getCourt })(CourtViewPage);

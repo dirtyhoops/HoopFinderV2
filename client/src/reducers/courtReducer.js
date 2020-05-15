@@ -37,7 +37,6 @@ export default function (state = initialState, action) {
       return {
         ...state,
         selectedCourtToEdit: payload,
-        isEditing: true,
       };
     case CREATE_COURT:
       return {
