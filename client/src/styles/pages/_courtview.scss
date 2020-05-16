@@ -1,0 +1,74 @@
+.courtview {
+  &-wrapper {
+  }
+
+  &-info {
+    text-align: center;
+  }
+
+  &-properties {
+    text-align: center;
+    // background: red;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    padding: 1rem 0;
+
+    &__grid {
+      display: flex;
+      padding: 1rem;
+      // background: yellow;
+      justify-content: space-evenly;
+
+      &-box {
+        flex: 0 0 16%;
+        display: flex;
+        // background: pink;
+        // height: 80px;
+        align-items: center;
+
+        &--icon {
+          flex: 0 0 30%;
+          // background: green;
+
+          &-image {
+            width: 45px;
+          }
+        }
+
+        &--info {
+          flex: 0 0 70%;
+          padding-left: 8px;
+          // background: red;
+          text-align: left;
+        }
+      }
+    }
+  }
+
+  &-text {
+    &-name {
+      font-size: 4rem;
+      font-weight: 800;
+    }
+
+    &-address {
+      font-size: 1.7rem;
+    }
+
+    &-subheader {
+      font-size: 1.8rem;
+      font-weight: 600;
+    }
+
+    &-properties {
+      &--top {
+        font-size: 1.4rem;
+        font-weight: 700;
+      }
+
+      &--bottom {
+        font-size: 1.4rem;
+      }
+    }
+  }
+}
