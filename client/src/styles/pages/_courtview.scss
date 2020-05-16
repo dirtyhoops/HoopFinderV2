@@ -6,7 +6,9 @@
     text-align: center;
   }
 
-  &-properties {
+  // Properties and condition has the same style
+  &-properties,
+  &-condition {
     text-align: center;
     // background: red;
     border-top: 1px solid black;
@@ -60,7 +62,8 @@
       font-weight: 600;
     }
 
-    &-properties {
+    &-properties,
+    &-condition {
       &--top {
         font-size: 1.4rem;
         font-weight: 700;
@@ -68,6 +71,7 @@
 
       &--bottom {
         font-size: 1.4rem;
+        text-transform: capitalize;
       }
     }
   }
