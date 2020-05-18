@@ -9,6 +9,7 @@ import {
   RESET_CREATE_COURT_SUCCESS,
   CLEAR_SELECTED_COURT,
   RESET_EDIT_COURT,
+  GET_SELECTED_COURT_WEATHER,
 } from './types';
 
 // Get all courts
@@ -127,4 +128,25 @@ export const deleteCourt = (id) => async (dispatch) => {
 // Just resets the addCourtSuccess - it clears the add court form
 export const clearAddCourtSuccess = () => async (dispatch) => {
   dispatch({ type: RESET_CREATE_COURT_SUCCESS });
+};
+
+// Gets the Weather forecast for the selected court using WeatherAPI
+export const getWeather = (zipcode) => async (dispatch) => {
+  // const weatherAPI = `${process.env.REACT_APP_WEATHER_API_KEY}`;
+  try {
+    const res = await axios.get(
+      `http://api.openweathermap.org/data/2.5/weather?zip=${zipcode},us&appid=`
+    );
+
+    dispatch({
+      type: GET_SELECTED_COURT_WEATHER,
+      payload: res.data,
+    });
+  } catch (err) {
+    console.log('CANT WEATHER. MAYBE ZIPCODE IS INVALID ---fix this later');
+
+    // dispatch({
+    //   type: COURT_ERROR,
+    // });
+  }
 };

@@ -10,7 +10,7 @@ import iconsun from '../../../img/icon-sun.png';
 const CourtProperties = (props) => {
   const { selectedCourt } = props;
   return (
-    <div className='courtview-properties u-margin-top-md'>
+    <div className='courtview-properties u-margin-top-sm'>
       <p className='courtview-text-subheader  u-text-uppercase'>
         court properties
       </p>

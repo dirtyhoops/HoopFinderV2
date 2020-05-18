@@ -8,6 +8,7 @@ import {
   RESET_CREATE_COURT_SUCCESS,
   CLEAR_SELECTED_COURT,
   RESET_EDIT_COURT,
+  GET_SELECTED_COURT_WEATHER,
 } from '../actions/types';
 
 const initialState = {
@@ -17,6 +18,8 @@ const initialState = {
   selectedCourt: null,
   addCourtSuccess: false,
   selectedCourtToEdit: null,
+  selectedCourtWeather: null,
+  weatherLoaded: false,
 };
 
 export default function (state = initialState, action) {
@@ -32,6 +35,7 @@ export default function (state = initialState, action) {
       return {
         ...state,
         selectedCourt: payload,
+        weatherLoaded: false,
       };
     case GET_COURT_TO_EDIT:
       return {
@@ -53,6 +57,12 @@ export default function (state = initialState, action) {
       return {
         ...state,
         courts: state.courts.filter((court) => court._id !== payload),
+      };
+    case GET_SELECTED_COURT_WEATHER:
+      return {
+        ...state,
+        selectedCourtWeather: payload,
+        weatherLoaded: true,
       };
     default:
       return state;

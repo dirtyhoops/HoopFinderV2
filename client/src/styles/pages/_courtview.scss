@@ -75,4 +75,21 @@
       }
     }
   }
+
+  // courtview-image
+  &-image {
+    padding: 1rem;
+
+    &-main {
+      width: 60rem;
+      margin: 0 auto;
+
+      & img {
+        width: 100%;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+      }
+    }
+  }
 }

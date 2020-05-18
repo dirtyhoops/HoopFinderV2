@@ -6,12 +6,12 @@ import iconhumidity from '../../../img/icon-humidity.png';
 import icontime from '../../../img/icon-time.png';
 import iconwind from '../../../img/icon-wind.png';
 import iconweather from '../../../img/icon-weather.png';
-
-import iconsun from '../../../img/icon-sun.png';
+import { GET_SELECTED_COURT_WEATHER } from '../../../actions/types';
 
 const CourtCondition = (props) => {
+  const { selectedCourtWeather } = props;
   return (
-    <div className='courtview-condition u-margin-top-md'>
+    <div className='courtview-condition'>
       <p className='courtview-text-subheader  u-text-uppercase'>
         court condition
       </p>
@@ -25,7 +25,9 @@ const CourtCondition = (props) => {
           </div>
           <div className='courtview-condition__grid-box--info'>
             <p className='courtview-text-condition--top'>Weather</p>
-            <p className='courtview-text-condition--bottom'>Clear Sky</p>
+            <p className='courtview-text-condition--bottom'>
+              {selectedCourtWeather.weather[0].description}
+            </p>
           </div>
         </div>
         <div className='courtview-condition__grid-box'>
@@ -38,7 +40,7 @@ const CourtCondition = (props) => {
           <div className='courtview-condition__grid-box--info'>
             <p className='courtview-text-condition--top'>Temperature</p>
             <p className='courtview-text-condition--bottom'>
-              82&#176; degree F
+              {selectedCourtWeather.main.temp}&#176; F
             </p>
           </div>
         </div>
@@ -51,7 +53,9 @@ const CourtCondition = (props) => {
           </div>
           <div className='courtview-condition__grid-box--info'>
             <p className='courtview-text-condition--top'>Humidity</p>
-            <p className='courtview-text-condition--bottom'>45%</p>
+            <p className='courtview-text-condition--bottom'>
+              {selectedCourtWeather.main.humidity}%
+            </p>
           </div>
         </div>
         <div className='courtview-condition__grid-box'>
@@ -63,7 +67,9 @@ const CourtCondition = (props) => {
           </div>
           <div className='courtview-condition__grid-box--info'>
             <p className='courtview-text-condition--top'>Wind</p>
-            <p className='courtview-text-condition--bottom'>Light Breeze</p>
+            <p className='courtview-text-condition--bottom'>
+              {selectedCourtWeather.wind.speed}
+            </p>
           </div>
         </div>
         <div className='courtview-condition__grid-box'>
@@ -75,7 +81,9 @@ const CourtCondition = (props) => {
           </div>
           <div className='courtview-condition__grid-box--info'>
             <p className='courtview-text-condition--top'>Local Time</p>
-            <p className='courtview-text-condition--bottom'>10:20 AM</p>
+            <p className='courtview-text-condition--bottom'>
+              10:20 AM {selectedCourtWeather.sys.timezone}
+            </p>
           </div>
         </div>
         <div className='courtview-condition__grid-box'>
