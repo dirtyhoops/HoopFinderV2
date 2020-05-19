@@ -5,6 +5,7 @@ import { getCourt, getWeather } from '../../../actions/court';
 
 import CourtProperties from './CourtProperties';
 import CourtCondition from './CourtCondition';
+import CourtReviews from './CourtReviews';
 
 const CourtViewPage = ({
   court: { selectedCourt, weatherLoaded, selectedCourtWeather },
@@ -42,6 +43,8 @@ const CourtViewPage = ({
                 '--star-size': '27px',
               }}
             ></div>
+            <button className='btn u-margin-right-sm'>Check In</button>
+            <button className='btn'>Write a Review</button>
           </div>
 
           <CourtProperties selectedCourt={selectedCourt} />
@@ -54,6 +57,8 @@ const CourtViewPage = ({
           {selectedCourtWeather && (
             <CourtCondition selectedCourtWeather={selectedCourtWeather} />
           )}
+
+          <CourtReviews reviews={selectedCourt.reviews} />
         </div>
       ) : // change the null to a spinner that is saying COURT IS LOADING later
       null}

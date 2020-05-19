@@ -13,7 +13,6 @@ import {
 
 const initialState = {
   courts: [],
-  featuredCourts: [],
   isCourtsLoaded: false,
   selectedCourt: null,
   addCourtSuccess: false,
@@ -30,6 +29,7 @@ export default function (state = initialState, action) {
       return {
         ...state,
         courts: payload,
+        isCourtsLoaded: true,
       };
     case GET_COURT:
       return {

@@ -4,10 +4,14 @@ import { getAllCourts } from '../../../actions/court';
 
 import Courts from '../../courts/Courts';
 
-const CourtsListPage = ({ court: { courts }, getAllCourts }) => {
-  useEffect(() => {
+const CourtsListPage = ({
+  court: { courts, isCourtsLoaded },
+  getAllCourts,
+}) => {
+  // Loads all the courts if it's not loaded
+  if (!isCourtsLoaded) {
     getAllCourts();
-  }, []);
+  }
 
   return (
     <div className='courts-list-wrapper'>

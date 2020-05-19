@@ -70,13 +70,6 @@ export const getCourtToEdit = (id) => async (dispatch) => {
   }
 };
 
-// MAYBE DELETE THIS LATER
-export const clearSelectedCourt = () => (dispatch) => {
-  dispatch({
-    type: CLEAR_SELECTED_COURT,
-  });
-};
-
 // Create Court
 export const createCourt = ({ formData }) => async (dispatch) => {
   const config = {

@@ -7,11 +7,14 @@ const User = require('../../models/User');
 const Court = require('../../models/Court');
 
 // @route       GET api/courts
-// @desc        Get all courts
+// @desc        Get all courts. only return _id, name, address, rating, iamges, checkedInPlayers,
 // @access      Public
 router.get('/', async (req, res) => {
   try {
-    const courts = await Court.find().sort({ dateCreated: -1 });
+    const courts = await Court.find(
+      {},
+      { name: 1, address: 1, rating: 1, images: 1, checkedInPlayers: 1 }
+    ).sort({ dateCreated: -1 });
     res.json(courts);
   } catch (err) {
     console.error(err.message);
