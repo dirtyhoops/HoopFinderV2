@@ -141,6 +141,8 @@ router.post(
       user: req.user.id,
       firstName: profile.user.firstName,
       lastName: profile.user.lastName,
+      city: profile.city,
+      state: profile.state,
       avatar: profile.avatar,
       avatar_bg: profile.avatar_bg,
     };
@@ -156,11 +158,15 @@ router.post(
       court.reviews.unshift(reviewFields);
 
       // ADD THE RATING AND CALCULATE IT
-      const newRating =
-        (court.rating + parseInt(req.body.rating, 10)) / court.reviews.length;
+      if (court.reviews.length > 1) {
+        const newRating =
+          (court.rating * (court.reviews.length - 1) +
+            parseInt(req.body.rating)) /
+          court.reviews.length;
 
-      // Update the rating value
-      court.rating = newRating;
+        // Update the rating value
+        court.rating = newRating;
+      }
 
       await court.save();
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import Moment from 'react-moment';
 
 import iconsunset from '../../../img/icon-sunset.png';
 import icontemperature from '../../../img/icon-temperature.png';
@@ -10,6 +11,20 @@ import { GET_SELECTED_COURT_WEATHER } from '../../../actions/types';
 
 const CourtCondition = (props) => {
   const { selectedCourtWeather } = props;
+
+  // convert Kelvin to Farenheit
+  const convertKtoF = (kelvinValue) => {
+    return Math.round((kelvinValue - 273.15) * (9 / 5) + 32);
+  };
+
+  const convertTime = (dt) => {
+    return (
+      <Moment unix format='hh:mm A'>
+        {dt}
+      </Moment>
+    );
+  };
+
   return (
     <div className='courtview-condition'>
       <p className='courtview-text-subheader  u-text-uppercase'>
@@ -40,9 +55,7 @@ const CourtCondition = (props) => {
           <div className='courtview-condition__grid-box--info'>
             <p className='courtview-text-condition--top'>Temperature</p>
             <p className='courtview-text-condition--bottom'>
-              {Math.round(
-                (selectedCourtWeather.main.temp - 273.15) * (9 / 5) + 32
-              )}
+              {convertKtoF(selectedCourtWeather.main.temp)}
               &#176; F
             </p>
           </div>
@@ -71,7 +84,7 @@ const CourtCondition = (props) => {
           <div className='courtview-condition__grid-box--info'>
             <p className='courtview-text-condition--top'>Wind</p>
             <p className='courtview-text-condition--bottom'>
-              {selectedCourtWeather.wind.speed}
+              {selectedCourtWeather.wind.speed} MPH
             </p>
           </div>
         </div>
@@ -85,7 +98,7 @@ const CourtCondition = (props) => {
           <div className='courtview-condition__grid-box--info'>
             <p className='courtview-text-condition--top'>Local Time</p>
             <p className='courtview-text-condition--bottom'>
-              10:20 AM {selectedCourtWeather.sys.timezone}
+              {convertTime(selectedCourtWeather.dt)}
             </p>
           </div>
         </div>
@@ -97,8 +110,10 @@ const CourtCondition = (props) => {
             />
           </div>
           <div className='courtview-condition__grid-box--info'>
-            <p className='courtview-text-condition--top'>Time until Sunset</p>
-            <p className='courtview-text-condition--bottom'>00.49 hrs</p>
+            <p className='courtview-text-condition--top'>Time of Sunset</p>
+            <p className='courtview-text-condition--bottom'>
+              {convertTime(selectedCourtWeather.sys.sunset)}
+            </p>
           </div>
         </div>
       </div>

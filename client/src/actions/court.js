@@ -125,11 +125,12 @@ export const clearAddCourtSuccess = () => async (dispatch) => {
 
 // Gets the Weather forecast for the selected court using WeatherAPI
 export const getWeather = (zipcode) => async (dispatch) => {
-  // const weatherAPI = `${process.env.REACT_APP_WEATHER_API_KEY}`;
+  const weatherAPI = process.env.REACT_APP_WEATHER_API_KEY;
+
+  console.log('api', weatherAPI);
+
   try {
-    const res = await axios.get(
-      `http://api.openweathermap.org/data/2.5/weather?zip=${zipcode},us&appid=`
-    );
+    const res = await axios.get();
 
     dispatch({
       type: GET_SELECTED_COURT_WEATHER,

@@ -54,6 +54,12 @@ const CourtSchema = new mongoose.Schema({
       lastName: {
         type: String,
       },
+      city: {
+        type: String,
+      },
+      state: {
+        type: String,
+      },
       avatar: {
         type: String,
       },
