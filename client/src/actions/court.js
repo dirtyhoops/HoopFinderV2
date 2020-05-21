@@ -131,7 +131,7 @@ export const getWeather = (zipcode) => async (dispatch) => {
 
   try {
     const res = await axios.get(
-      `http://api.openweathermap.org/data/2.5/weather?zip=${zipcode},us&appid=9b1b3e3a7aeca410a9fccd080e5335d9`
+      `http://api.openweathermap.org/data/2.5/weather?zip=${zipcode},us&appid=`
     );
 
     dispatch({
