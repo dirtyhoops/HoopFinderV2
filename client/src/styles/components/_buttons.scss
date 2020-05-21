@@ -193,3 +193,17 @@
     background-color: $color-primary-2;
   }
 }
+
+// Button for Posting a  Review
+.btn-review {
+  padding: 1.2rem 4rem;
+  color: $color-white;
+  border: none;
+  border-radius: 3px;
+  font-size: 14px;
+  background: $color-danger;
+
+  &:hover {
+    background: $color-danger-2;
+  }
+}

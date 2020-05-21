@@ -6,9 +6,14 @@ const CourtReviews = (props) => {
     <div className='courtview-reviews'>
       {reviews.length > 0 ? (
         <div className='courtview-reviews-container'>
-          <p>
-            review by: {reviews[0].firstName} {reviews[0].lastName}
-          </p>
+          {reviews.map((review) => (
+            <div className='courtview-reviews-box'>
+              <p>{review.text}</p>
+              <p>
+                review by: {review.firstName} {review.lastName}
+              </p>
+            </div>
+          ))}
         </div>
       ) : (
         <p>no review</p>

@@ -14,6 +14,7 @@ import LandingPage from './components/pages/LandingPage/LandingPage';
 import CourtsListPage from './components/pages/CourtsList/CourtsListPage';
 import CourtViewPage from './components/pages/CourtView/CourtViewPage';
 import AdminPage from './components/pages/AdminPage/AdminPage';
+import WriteaReviewPage from './components/pages/WriteaReviewPage/WriteaReviewPage';
 
 // Import the sass styling
 import './styles/main.scss';
@@ -32,6 +33,7 @@ const App = () => (
           <Route exact path='/player/:id' component={PlayerPage} />
           <Route exact path='/courts' component={CourtsListPage} />
           <Route exact path='/court/:id' component={CourtViewPage} />
+          <Route exact path='/writeareview/:id' component={WriteaReviewPage} />
 
           {/* MAKE SURE isAdmin is true to go here */}
           <Route exact path='/account/admin' component={AdminPage} />

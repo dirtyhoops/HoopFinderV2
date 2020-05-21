@@ -40,7 +40,7 @@ const CourtViewPage = ({
               className='stars-rating u-margin-top-sm'
               style={{
                 '--rating': `${selectedCourt.rating}`,
-                '--star-size': '27px',
+                '--star-size': '25px',
               }}
             ></div>
             <button className='btn u-margin-right-sm'>Check In</button>
