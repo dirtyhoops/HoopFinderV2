@@ -44,6 +44,7 @@
     top: 0;
     right: 0;
     transition: all 0.7s ease;
+    padding: 0 1.5rem;
 
     @include respond(tab-portrait) {
       width: 0 !important;
@@ -72,6 +73,67 @@
       position: absolute;
       top: 20px;
       left: -20px;
+    }
+
+    // Container for the recent reviews
+    &-grid {
+      &-box {
+        margin-bottom: 1.5rem;
+
+        &__header {
+          display: flex;
+
+          &__image {
+            flex: 0 0 15%;
+            padding: 0.5rem;
+
+            &__img {
+              width: 100%;
+              border-radius: 5px;
+              border: 1px solid black;
+            }
+          }
+
+          &__info {
+            flex: 0 0 85%;
+            padding-left: 2px;
+          }
+        }
+
+        &__rating {
+          display: flex;
+
+          &__stars {
+            & img {
+            }
+          }
+
+          &__date {
+            padding-left: 1rem;
+            font-size: 1.3rem;
+            color: rgb(194, 159, 159);
+          }
+        }
+      }
+    }
+
+    // Text for current reviews
+    &-text {
+      &-name {
+        font-size: 1.5rem;
+        text-transform: capitalize;
+        font-weight: bold;
+      }
+
+      &-place {
+        font-size: 1.3rem;
+        text-transform: capitalize;
+        line-height: 10px;
+      }
+
+      &-review {
+        font-size: 1.3rem;
+      }
     }
   }
 }

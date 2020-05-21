@@ -44,7 +44,9 @@ const CourtViewPage = ({
               }}
             ></div>
             <button className='btn u-margin-right-sm'>Check In</button>
-            <button className='btn'>Write a Review</button>
+            <Link to={`/writeareview/${selectedCourt._id}`}>
+              <button className='btn'>Write a Review</button>
+            </Link>
           </div>
 
           <CourtProperties selectedCourt={selectedCourt} />
