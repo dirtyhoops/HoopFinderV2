@@ -2,6 +2,7 @@
   &-wrapper {
     background-color: $color-white;
     position: relative;
+    font-family: 'Roboto', sans-serif;
   }
 
   &-main {
@@ -13,7 +14,7 @@
     &-group {
       height: 100%;
       height: 400px;
-      border: 1px solid $color-border-2;
+      border: 1px solid $color-border-3;
       border-radius: 3px;
       padding: 1.8rem;
       margin-bottom: 2rem;
@@ -36,28 +37,32 @@
     }
   }
 
+  // ReventReview.js
   &-recentreviews {
     min-height: 100vh;
     // background: yellow;
-    border-left: 1px solid $color-border-2;
+    border-left: 1px solid $color-border-3;
     position: absolute;
     top: 0;
     right: 0;
     transition: all 0.7s ease;
-    padding: 0 1.5rem;
 
     @include respond(tab-portrait) {
-      width: 0 !important;
-      opacity: 0 !important;
+      display: none;
     }
 
     &-show {
-      width: 350px;
+      width: 330px;
     }
 
     &-hide {
       width: 0;
       border: none;
+    }
+
+    &-content {
+      padding: 0 1.5rem;
+      width: 330px;
     }
 
     // Toggler for the recent reviews
@@ -78,17 +83,19 @@
     // Container for the recent reviews
     &-grid {
       &-box {
-        margin-bottom: 1.5rem;
+        margin-bottom: 2rem;
 
         &__header {
           display: flex;
+          height: 40px;
+          align-items: top;
 
           &__image {
             flex: 0 0 15%;
-            padding: 0.5rem;
+            // padding: 0.5rem;
 
             &__img {
-              width: 100%;
+              width: 85%;
               border-radius: 5px;
               border: 1px solid black;
             }
@@ -96,7 +103,6 @@
 
           &__info {
             flex: 0 0 85%;
-            padding-left: 2px;
           }
         }
 
@@ -104,8 +110,6 @@
           display: flex;
 
           &__stars {
-            & img {
-            }
           }
 
           &__date {
@@ -113,6 +117,10 @@
             font-size: 1.3rem;
             color: rgb(194, 159, 159);
           }
+        }
+
+        &__text {
+          margin-top: 0.5rem;
         }
       }
     }
@@ -123,16 +131,18 @@
         font-size: 1.5rem;
         text-transform: capitalize;
         font-weight: bold;
+        line-height: 1;
       }
 
       &-place {
-        font-size: 1.3rem;
+        font-size: 1.4rem;
         text-transform: capitalize;
-        line-height: 10px;
+        line-height: 1.4;
       }
 
       &-review {
-        font-size: 1.3rem;
+        font-size: 1.4rem;
+        line-height: 1.4;
       }
     }
   }

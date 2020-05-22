@@ -77,25 +77,3 @@
     font-size: 1.3rem;
   }
 }
-
-// FOR THE COURT STAR RATINGS
-.stars-rating {
-  --star-color: rgb(240, 231, 231);
-  --star-background: rgb(219, 158, 43);
-  --percent: calc(var(--rating) / 5 * 100%);
-
-  font-size: var(--star-size);
-  font-family: Times; // make sure ★ appears correctly
-  line-height: 1;
-
-  &::before {
-    content: '★★★★★';
-    background: linear-gradient(
-      90deg,
-      var(--star-background) var(--percent),
-      var(--star-color) var(--percent)
-    );
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-}
