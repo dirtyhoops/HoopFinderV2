@@ -23,7 +23,9 @@ const RecentReviews = (props) => {
       ></div>
       <div className='writeareview-recentreviews-content'>
         <div className='writeareview-recentreviews-header'>
-          <p>Recent Reviews</p>
+          <p className='writeareview-recentreviews-header-text'>
+            Recent Reviews
+          </p>
         </div>
         <div className='writeareview-recentreviews-grid'>
           {reviews.map((review) => (
