@@ -52,6 +52,7 @@ const RecentReviews = (props) => {
                   className='writeareview-recentreviews-grid-box__rating__stars'
                   style={{
                     '--font-size': '13px',
+                    '--text-indent': '-5px',
                   }}
                 >
                   {/* {review.rating} */}
