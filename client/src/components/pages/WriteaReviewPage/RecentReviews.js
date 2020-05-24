@@ -44,7 +44,7 @@ const RecentReviews = (props) => {
                   <p className='writeareview-recentreviews-text-name'>
                     {review.firstName} {review.lastName}
                   </p>
-                  <p className='writeareview-recentreviews-text-place'>
+                  <p className='writeareview-recentreviews-text-location'>
                     {review.city}, {review.state}
                   </p>
                 </div>

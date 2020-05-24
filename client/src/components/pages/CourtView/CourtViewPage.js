@@ -59,8 +59,12 @@ const CourtViewPage = ({
           {selectedCourtWeather && (
             <CourtCondition selectedCourtWeather={selectedCourtWeather} />
           )}
-
-          <CourtReviews reviews={selectedCourt.reviews} />
+          <div className='courtview-flex'>
+            <div className='courtview-flex-left'>
+              <CourtReviews reviews={selectedCourt.reviews} />
+            </div>
+            <div className='courtview-flex-right'>FLEX RIGHT!!!</div>
+          </div>
         </div>
       ) : // change the null to a spinner that is saying COURT IS LOADING later
       null}
