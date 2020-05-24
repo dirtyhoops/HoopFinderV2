@@ -1,7 +1,6 @@
 // Variables
 $star-width: 1.5em;
 $star-is_inactive-color: #eee !default;
-$star-colors: #cc8b1f #dcb228 #f0991e #f26a2c #dd050b !default;
 
 .rating i {
   font-size: var(--font-size);
@@ -22,30 +21,29 @@ $star-colors: #cc8b1f #dcb228 #f0991e #f26a2c #dd050b !default;
 }
 
 /** Colors */
-@function stars-color($num, $star-colors: $star-colors) {
-  @return nth($star-colors, $num);
+
+@function stars-color($num) {
+  $colors: #cc8b1f #dcb228 #f0991e #f26a2c #dd050b;
+  @return if($num <= length($colors), nth($colors, $num), #333);
 }
 
-@for $i from 1 through 5 {
-  %rating-#{$i} {
-    border-color: stars-color($i);
-    background: stars-color($i);
-  }
+@for $i from 1 to 5 {
   @for $j from 1 through $i {
-    .rating-#{$i} .star-#{$j} {
-      @extend %rating-#{$i};
+    [data-rating^='#{$i}'] .star-#{$j} {
+      border-color: stars-color($i);
+      // set background to avoid tiny lines between borders in print.
+      background: stars-color($i);
     }
   }
-  @if 5 > $i {
-    .rating-#{$i} .is_half {
-      @extend %rating-#{$i};
-      @extend %half-rating;
-    }
+  [data-rating^='#{$i}.5'] .star-#{$i + 1} {
+    border-left-color: stars-color($i);
   }
 }
 
-%half-rating {
-  border-right-color: $star-is_inactive-color;
+[data-rating='5'] i {
+  $color: stars-color(5);
+  background: $color;
+  border-color: $color;
 }
 
 @media print {

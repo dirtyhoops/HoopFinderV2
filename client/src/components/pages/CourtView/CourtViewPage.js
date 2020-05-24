@@ -28,21 +28,43 @@ const CourtViewPage = ({
       {selectedCourt ? (
         <div className='courtview container'>
           <div className='courtview-info'>
-            <p className='courtview-text-name u-text-uppercase'>
-              {selectedCourt.name}
-            </p>
-            <p className='courtview-text-address u-text-capitalize'>
+            <p className='courtview-text-name'>{selectedCourt.name}</p>
+            <p className='courtview-text-address'>
               {selectedCourt.address.street}, {selectedCourt.address.city},{' '}
               {selectedCourt.address.state} {selectedCourt.address.zipcode}
             </p>
-            {/* <p>{selectedCourt.rating}</p> */}
-            <div
+            <div className='courtview-rating'>
+              <div
+                className='courtview-rating__stars'
+                style={{
+                  '--font-size': '14px',
+                  '--text-indent': '-6px',
+                }}
+              >
+                <div
+                  className='rating'
+                  data-rating={`${Math.ceil(selectedCourt.rating * 2) / 2}`}
+                >
+                  <i className='star-1'>★</i>
+                  <i className='star-2'>★</i>
+                  <i className='star-3'>★</i>
+                  <i className='star-4'>★</i>
+                  <i className='star-5'>★</i>
+                </div>
+              </div>
+              <div className='courtview-rating__count'>
+                {selectedCourt.reviews.length} reviews ----{' '}
+                {selectedCourt.rating}
+              </div>
+            </div>
+
+            {/* <div
               className='stars-rating u-margin-top-sm'
               style={{
                 '--rating': `${selectedCourt.rating}`,
                 '--star-size': '25px',
               }}
-            ></div>
+            ></div> */}
             <button className='btn u-margin-right-sm'>Check In</button>
             <Link to={`/writeareview/${selectedCourt._id}`}>
               <button className='btn'>Write a Review</button>

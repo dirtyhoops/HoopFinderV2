@@ -49,7 +49,7 @@ const WriteaReviewPage = ({
                         '--text-indent': '-8px',
                       }}
                     >
-                      <div className={`rating rating-${star}`}>
+                      <div className='rating' data-rating={`${star}`}>
                         <i
                           className='star-1'
                           onClick={() => onClickHandler(1)}

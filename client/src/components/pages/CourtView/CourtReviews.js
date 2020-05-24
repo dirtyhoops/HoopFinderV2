@@ -1,5 +1,6 @@
 import React from 'react';
 import Moment from 'react-moment';
+import { Link } from 'react-router-dom';
 
 const CourtReviews = (props) => {
   const { reviews } = props;
@@ -23,9 +24,11 @@ const CourtReviews = (props) => {
                       />
                     </div>
                     <div className='courtview-reviews__info'>
-                      <p className='courtview-reviews-text-name'>
-                        {review.firstName} {review.lastName}
-                      </p>
+                      <Link className='link' to={`/player/${review.user}`}>
+                        <p className='courtview-reviews-text-name'>
+                          {review.firstName} {review.lastName}
+                        </p>
+                      </Link>
                       <p className='courtview-reviews-text-location'>
                         {review.city}, {review.state}
                       </p>
@@ -41,7 +44,10 @@ const CourtReviews = (props) => {
                         '--text-indent': '-6px',
                       }}
                     >
-                      <div className={`rating rating-${review.rating}`}>
+                      <div
+                        className='rating'
+                        data-rating={`${Math.ceil(review.rating * 2) / 2}`}
+                      >
                         <i className='star-1'>★</i>
                         <i className='star-2'>★</i>
                         <i className='star-3'>★</i>

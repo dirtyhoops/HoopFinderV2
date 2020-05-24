@@ -58,7 +58,10 @@ const RecentReviews = (props) => {
                   }}
                 >
                   {/* {review.rating} */}
-                  <div className={`rating rating-${review.rating}`}>
+                  <div
+                    className='rating'
+                    data-rating={`${Math.ceil(review.rating * 2) / 2}`}
+                  >
                     <i className='star-1'>★</i>
                     <i className='star-2'>★</i>
                     <i className='star-3'>★</i>
