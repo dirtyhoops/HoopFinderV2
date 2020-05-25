@@ -8,6 +8,7 @@ import CourtProperties from './CourtProperties';
 import CourtCondition from './CourtCondition';
 import CourtReviews from './CourtReviews';
 import CourtLocation from './CourtLocation';
+import CheckedInPlayers from './CheckedInPlayers';
 
 const CourtViewPage = ({
   court: { selectedCourt, weatherLoaded, selectedCourtWeather },
@@ -47,6 +48,7 @@ const CourtViewPage = ({
             <div className='courtview-flex-right'>
               <div className='courtview-flex-right-container'>
                 <CourtLocation address={selectedCourt.address} />
+                <CheckedInPlayers />
               </div>
             </div>
           </div>
