@@ -18,10 +18,12 @@ const CourtReviews = (props) => {
                 <div className='courtview-reviews-box-flex-left'>
                   <div className='courtview-reviews-box-flex-left-flex'>
                     <div className='courtview-reviews__image'>
-                      <img
-                        src={review.avatar}
-                        className={`courtview-reviews__image__img ${review.avatar_bg}`}
-                      />
+                      <Link className='link' to={`/player/${review.user}`}>
+                        <img
+                          src={review.avatar}
+                          className={`courtview-reviews__image__img ${review.avatar_bg}`}
+                        />
+                      </Link>
                     </div>
                     <div className='courtview-reviews__info'>
                       <Link className='link' to={`/player/${review.user}`}>
@@ -57,7 +59,9 @@ const CourtReviews = (props) => {
                     </div>
                     <div className='courtview-reviews__rating__date'>
                       <p className='courtview-reviews-text-date'>
-                        <Moment format='MM/DD/YYY'>{review.dateCreated}</Moment>
+                        <Moment format='MM/DD/YYYY'>
+                          {review.dateCreated}
+                        </Moment>
                       </p>
                     </div>
                   </div>

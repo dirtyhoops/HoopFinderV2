@@ -27,6 +27,14 @@
       background: $color-secondary-2;
     }
   }
+
+  &--danger {
+    background: $color-danger;
+
+    &:hover {
+      background: $color-danger-2;
+    }
+  }
 }
 
 .btn-sm {
@@ -205,5 +213,18 @@
 
   &:hover {
     background: $color-danger-2;
+  }
+}
+
+// Get Direction button inside courtview
+.btn-get-direction {
+  padding: 0.7rem 1rem;
+  border: none;
+  border-radius: 3px;
+  background: $color-secondary;
+  color: $color-white;
+
+  &:hover {
+    background: $color-secondary-2;
   }
 }

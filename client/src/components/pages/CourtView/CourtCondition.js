@@ -27,7 +27,7 @@ const CourtCondition = (props) => {
 
   return (
     <div className='courtview-condition'>
-      <p className='courtview-text-subheader  u-text-uppercase'>
+      <p className='courtview-condition-text-header  u-text-uppercase'>
         court condition
       </p>
       <div className='courtview-condition__grid'>
@@ -39,8 +39,8 @@ const CourtCondition = (props) => {
             />
           </div>
           <div className='courtview-condition__grid-box--info'>
-            <p className='courtview-text-condition--top'>Weather</p>
-            <p className='courtview-text-condition--bottom'>
+            <p className='courtview-condition-text-subhheader'>Weather</p>
+            <p className='courtview-condition-text-info'>
               {selectedCourtWeather.weather[0].description}
             </p>
           </div>
@@ -53,8 +53,8 @@ const CourtCondition = (props) => {
             />
           </div>
           <div className='courtview-condition__grid-box--info'>
-            <p className='courtview-text-condition--top'>Temperature</p>
-            <p className='courtview-text-condition--bottom'>
+            <p className='courtview-condition-text-subhheader'>Temperature</p>
+            <p className='courtview-condition-text-info'>
               {convertKtoF(selectedCourtWeather.main.temp)}
               &#176; F
             </p>
@@ -68,8 +68,8 @@ const CourtCondition = (props) => {
             />
           </div>
           <div className='courtview-condition__grid-box--info'>
-            <p className='courtview-text-condition--top'>Humidity</p>
-            <p className='courtview-text-condition--bottom'>
+            <p className='courtview-condition-text-subhheader'>Humidity</p>
+            <p className='courtview-condition-text-info'>
               {selectedCourtWeather.main.humidity}%
             </p>
           </div>
@@ -82,8 +82,8 @@ const CourtCondition = (props) => {
             />
           </div>
           <div className='courtview-condition__grid-box--info'>
-            <p className='courtview-text-condition--top'>Wind</p>
-            <p className='courtview-text-condition--bottom'>
+            <p className='courtview-condition-text-subhheader'>Wind</p>
+            <p className='courtview-condition-text-info'>
               {selectedCourtWeather.wind.speed} MPH
             </p>
           </div>
@@ -96,8 +96,8 @@ const CourtCondition = (props) => {
             />
           </div>
           <div className='courtview-condition__grid-box--info'>
-            <p className='courtview-text-condition--top'>Local Time</p>
-            <p className='courtview-text-condition--bottom'>
+            <p className='courtview-condition-text-subhheader'>Local Time</p>
+            <p className='courtview-condition-text-info'>
               {convertTime(selectedCourtWeather.dt)}
             </p>
           </div>
@@ -110,8 +110,10 @@ const CourtCondition = (props) => {
             />
           </div>
           <div className='courtview-condition__grid-box--info'>
-            <p className='courtview-text-condition--top'>Time of Sunset</p>
-            <p className='courtview-text-condition--bottom'>
+            <p className='courtview-condition-text-subhheader'>
+              Time of Sunset
+            </p>
+            <p className='courtview-condition-text-info'>
               {convertTime(selectedCourtWeather.sys.sunset)}
             </p>
           </div>

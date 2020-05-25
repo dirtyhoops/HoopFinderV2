@@ -11,7 +11,7 @@ const CourtProperties = (props) => {
   const { selectedCourt } = props;
   return (
     <div className='courtview-properties u-margin-top-sm'>
-      <p className='courtview-text-subheader  u-text-uppercase'>
+      <p className='courtview-properties-text-header  u-text-uppercase'>
         court properties
       </p>
       <div className='courtview-properties__grid'>
@@ -23,8 +23,8 @@ const CourtProperties = (props) => {
             />
           </div>
           <div className='courtview-properties__grid-box--info'>
-            <p className='courtview-text-properties--top'>Surface Type</p>
-            <p className='courtview-text-properties--bottom'>
+            <p className='courtview-properties-text-subheader'>Surface Type</p>
+            <p className='courtview-properties-text-info'>
               {selectedCourt.surfaceType}
             </p>
           </div>
@@ -37,8 +37,8 @@ const CourtProperties = (props) => {
             />
           </div>
           <div className='courtview-properties__grid-box--info'>
-            <p className='courtview-text-properties--top'>No. of Hoops</p>
-            <p className='courtview-text-properties--bottom'>
+            <p className='courtview-properties-text-subheader'>No. of Hoops</p>
+            <p className='courtview-properties-text-info'>
               {selectedCourt.numberOfHoops}
             </p>
           </div>
@@ -51,8 +51,8 @@ const CourtProperties = (props) => {
             />
           </div>
           <div className='courtview-properties__grid-box--info'>
-            <p className='courtview-text-properties--top'>Rim Height</p>
-            <p className='courtview-text-properties--bottom'>
+            <p className='courtview-properties-text-subheader'>Rim Height</p>
+            <p className='courtview-properties-text-info'>
               {selectedCourt.rimHeight}.
             </p>
           </div>
@@ -65,8 +65,10 @@ const CourtProperties = (props) => {
             />
           </div>
           <div className='courtview-properties__grid-box--info'>
-            <p className='courtview-text-properties--top'>Indoor/Outdoor</p>
-            <p className='courtview-text-properties--bottom'>
+            <p className='courtview-properties-text-subheader'>
+              Indoor/Outdoor
+            </p>
+            <p className='courtview-properties-text-info'>
               {selectedCourt.isIndoor === 'yes' ? 'indoor' : 'outdoor'}
             </p>
           </div>
@@ -79,8 +81,8 @@ const CourtProperties = (props) => {
             />
           </div>
           <div className='courtview-properties__grid-box--info'>
-            <p className='courtview-text-properties--top'>Lighting</p>
-            <p className='courtview-text-properties--bottom'>
+            <p className='courtview-properties-text-subheader'>Lighting</p>
+            <p className='courtview-properties-text-info'>
               {selectedCourt.isLighting}
             </p>
           </div>
@@ -93,8 +95,8 @@ const CourtProperties = (props) => {
             />
           </div>
           <div className='courtview-properties__grid-box--info'>
-            <p className='courtview-text-properties--top'>Public</p>
-            <p className='courtview-text-properties--bottom'>
+            <p className='courtview-properties-text-subheader'>Public</p>
+            <p className='courtview-properties-text-info'>
               {selectedCourt.isPublic}
             </p>
           </div>
