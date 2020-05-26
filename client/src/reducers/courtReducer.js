@@ -19,6 +19,7 @@ const initialState = {
   selectedCourtToEdit: null,
   selectedCourtWeather: null,
   weatherLoaded: false,
+  addReviewSuccess: false,
 };
 
 export default function (state = initialState, action) {
@@ -36,6 +37,7 @@ export default function (state = initialState, action) {
         ...state,
         selectedCourt: payload,
         weatherLoaded: false,
+        addReviewSuccess: false,
       };
     case GET_COURT_TO_EDIT:
       return {
@@ -47,11 +49,6 @@ export default function (state = initialState, action) {
         ...state,
         courts: [payload, ...state.courts],
         addCourtSuccess: true,
-      };
-    case RESET_CREATE_COURT_SUCCESS:
-      return {
-        ...state,
-        addCourtSuccess: false,
       };
     case DELETE_COURT:
       return {
@@ -71,6 +68,12 @@ export default function (state = initialState, action) {
           ...state.selectedCourt,
           reviews: [payload, ...state.selectedCourt.reviews],
         },
+        addReviewSuccess: true,
+      };
+    case RESET_CREATE_COURT_SUCCESS:
+      return {
+        ...state,
+        addCourtSuccess: false,
       };
     default:
       return state;

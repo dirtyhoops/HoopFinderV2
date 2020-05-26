@@ -6,7 +6,7 @@ import { getCourt, addReview } from '../../../actions/court';
 import RecentReviews from './RecentReviews';
 
 const WriteaReviewPage = ({
-  court: { selectedCourt },
+  court: { selectedCourt, addReviewSuccess },
   match: {
     params: { id },
   },
@@ -59,10 +59,17 @@ const WriteaReviewPage = ({
   // Just reverts back to the clicked star
   const onHoverOut = () => setFormData({ ...formData, rating: ratingTemp });
 
+  // Call addReview on click of the submit
   const onSubmit = (e) => {
     e.preventDefault();
-    addReview(id, { formData });
+
+    // Checks if the user add a rating
+    if (rating !== 0) {
+      addReview(id, { formData });
+    }
   };
+
+  //ADDREVIEWSUCCESS, Thanks the user for writing a review
 
   return (
     <div className='writeareview-wrapper'>
@@ -70,49 +77,59 @@ const WriteaReviewPage = ({
         <>
           <div className='writeareview container'>
             <div className='writeareview-main'>
-              <h3 className='writeareview-text-name'>{selectedCourt.name}</h3>
-              <form onSubmit={(e) => onSubmit(e)}>
-                <div className='writeareview-form-group'>
-                  <div className='writeareview-form-group__rating'>
-                    <div
-                      className='writeareview-form-group__rating__stars'
-                      style={{
-                        '--font-size': '20px',
-                        '--text-indent': '-8px',
-                      }}
-                    >
-                      <div className='rating' data-rating={`${rating}`}>
-                        {loop.map((value, index) => (
-                          <i
-                            key={index}
-                            className={`star-${value}`}
-                            onClick={() => onClickHandler(`${value}`)}
-                            onMouseEnter={() => onHover(`${value}`)}
-                            onMouseLeave={() => onHoverOut()}
-                          >
-                            ★
-                          </i>
-                        ))}
+              <Link className='link' to={`/court/${selectedCourt._id}`}>
+                <h3 className='writeareview-text-name'>{selectedCourt.name}</h3>
+              </Link>
+              {!addReviewSuccess ? (
+                <>
+                  <form onSubmit={(e) => onSubmit(e)}>
+                    <div className='writeareview-form-group'>
+                      <div className='writeareview-form-group__rating'>
+                        <div
+                          className='writeareview-form-group__rating__stars'
+                          style={{
+                            '--font-size': '20px',
+                            '--text-indent': '-8px',
+                          }}
+                        >
+                          <div className='rating' data-rating={`${rating}`}>
+                            {loop.map((value, index) => (
+                              <i
+                                key={index}
+                                className={`star-${value}`}
+                                onClick={() => onClickHandler(`${value}`)}
+                                onMouseEnter={() => onHover(`${value}`)}
+                                onMouseLeave={() => onHoverOut()}
+                              >
+                                ★
+                              </i>
+                            ))}
+                          </div>
+                        </div>
+                        <div className='writeareview-form-group__rating__text'>
+                          <p>{ratingText[`${rating}`]}</p>
+                        </div>
                       </div>
+                      <textarea
+                        placeholder='Write a review'
+                        name={text}
+                        value={text}
+                        onChange={(e) => onChange(e)}
+                        required
+                      ></textarea>
                     </div>
-                    <div className='writeareview-form-group__rating__text'>
-                      <p>{ratingText[`${rating}`]}</p>
-                    </div>
-                  </div>
-                  <textarea
-                    placeholder='Write a review'
-                    name={text}
-                    value={text}
-                    onChange={(e) => onChange(e)}
-                    required
-                  ></textarea>
+                    <input
+                      className='btn btn-review'
+                      type='submit'
+                      value='Post Review'
+                    ></input>
+                  </form>
+                </>
+              ) : (
+                <div className='thankyou'>
+                  <p>Thank you for writing us a review.</p>
                 </div>
-                <input
-                  className='btn btn-review'
-                  type='submit'
-                  value='Post Review'
-                ></input>
-              </form>
+              )}
             </div>
           </div>
           <RecentReviews reviews={selectedCourt.reviews} />

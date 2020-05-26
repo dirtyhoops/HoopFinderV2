@@ -118,11 +118,6 @@ export const deleteCourt = (id) => async (dispatch) => {
   }
 };
 
-// Just resets the addCourtSuccess - it clears the add court form
-export const clearAddCourtSuccess = () => async (dispatch) => {
-  dispatch({ type: RESET_CREATE_COURT_SUCCESS });
-};
-
 // Gets the Weather forecast for the selected court using WeatherAPI
 export const getWeather = (zipcode) => async (dispatch) => {
   const weatherAPI = process.env.REACT_APP_WEATHER_API_KEY;
@@ -158,7 +153,7 @@ export const addReview = (id, { formData }) => async (dispatch) => {
   try {
     const res = await axios.post(`/api/courts/${id}/review`, formData, config);
 
-    dispatch({ type: ADD_COURT_REVIEW, payload: res.data });
+    dispatch({ type: ADD_COURT_REVIEW, payload: res.data.reviews[0] });
 
     // MAKE SURE TO DISPATCH ALERT FOR SUCCESSFUL ADD
   } catch (err) {
@@ -171,4 +166,9 @@ export const addReview = (id, { formData }) => async (dispatch) => {
       console.log(errors);
     }
   }
+};
+
+// Just resets the addCourtSuccess - it clears the add court form
+export const clearAddCourtSuccess = () => async (dispatch) => {
+  dispatch({ type: RESET_CREATE_COURT_SUCCESS });
 };

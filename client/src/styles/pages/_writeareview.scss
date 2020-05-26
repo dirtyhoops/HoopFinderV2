@@ -47,7 +47,13 @@
 
   &-text {
     &-name {
-      font-size: 3.4rem;
+      font-size: 3.6rem;
+      text-transform: capitalize;
+      color: $color-blueish;
+
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
 
