@@ -146,3 +146,29 @@ export const getWeather = (zipcode) => async (dispatch) => {
     // });
   }
 };
+
+// Create/add review
+export const addReview = (id, { formData }) => async (dispatch) => {
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  };
+
+  try {
+    const res = await axios.post(`/api/courts/${id}/review`, formData, config);
+
+    dispatch({ type: ADD_COURT_REVIEW, payload: res.data });
+
+    // MAKE SURE TO DISPATCH ALERT FOR SUCCESSFUL ADD
+  } catch (err) {
+    const errors = err.response.data.errors;
+
+    // MAKE SURE TO DISPATCH ALERT
+
+    if (errors) {
+      // errors.forEach((error) => dispatch(setAelert(error.msg, 'danger')));
+      console.log(errors);
+    }
+  }
+};

@@ -64,6 +64,14 @@ export default function (state = initialState, action) {
         selectedCourtWeather: payload,
         weatherLoaded: true,
       };
+    case ADD_COURT_REVIEW:
+      return {
+        ...state,
+        selectedCourt: {
+          ...state.selectedCourt,
+          reviews: [payload, ...state.selectedCourt.reviews],
+        },
+      };
     default:
       return state;
   }
