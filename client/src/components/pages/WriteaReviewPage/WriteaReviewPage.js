@@ -85,14 +85,15 @@ const WriteaReviewPage = ({
                   <form onSubmit={(e) => onSubmit(e)}>
                     <div className='writeareview-form-group'>
                       <div className='writeareview-form-group__rating'>
-                        <div
-                          className='writeareview-form-group__rating__stars'
-                          style={{
-                            '--font-size': '20px',
-                            '--text-indent': '-8px',
-                          }}
-                        >
-                          <div className='rating' data-rating={`${rating}`}>
+                        <div className='writeareview-form-group__rating__stars'>
+                          <div
+                            className='rating'
+                            style={{
+                              '--font-size': '20px',
+                              '--text-indent': '-8px',
+                            }}
+                            data-rating={`${rating}`}
+                          >
                             {loop.map((value, index) => (
                               <i
                                 key={index}

@@ -30,13 +30,22 @@ const Courts = (props) => {
               </div>
               <div className='courts-grid-box__footer'>
                 <div className='courts-grid-box__footer__left'>
-                  <div
-                    className='stars-rating'
-                    style={{
-                      '--rating': `${court.rating}`,
-                      '--star-size': '22px',
-                    }}
-                  ></div>
+                  <div>
+                    <div
+                      className='rating'
+                      style={{
+                        '--font-size': '13px',
+                        '--text-indent': '-5px',
+                      }}
+                      data-rating={`${Math.ceil(court.rating * 2) / 2}`}
+                    >
+                      <i className='star-1'>★</i>
+                      <i className='star-2'>★</i>
+                      <i className='star-3'>★</i>
+                      <i className='star-4'>★</i>
+                      <i className='star-5'>★</i>
+                    </div>
+                  </div>
                 </div>
                 <div className='courts-grid-box__footer__right'>
                   3{' '}

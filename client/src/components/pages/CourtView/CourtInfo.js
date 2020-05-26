@@ -11,15 +11,13 @@ const CourtInfo = (props) => {
         {selectedCourt.address.state} {selectedCourt.address.zipcode}
       </p> */}
       <div className='courtview-info-rating'>
-        <div
-          className='courtview-info-rating__stars'
-          style={{
-            '--font-size': '20px',
-            '--text-indent': '-8px',
-          }}
-        >
+        <div className='courtview-info-rating__stars'>
           <div
             className='rating'
+            style={{
+              '--font-size': '20px',
+              '--text-indent': '-8px',
+            }}
             data-rating={`${Math.ceil(selectedCourt.rating * 2) / 2}`}
           >
             <i className='star-1'>★</i>
@@ -29,14 +27,14 @@ const CourtInfo = (props) => {
             <i className='star-5'>★</i>
           </div>
         </div>
-        <p className='courtview-info-rating-text-count'>
+        <p className='courtview-info-text-count'>
           {selectedCourt.reviews.length} reviews
         </p>
       </div>
 
       <Link to={`/writeareview/${selectedCourt._id}`}>
         <button className='btn btn-lg btn-lg--danger u-margin-top-sm'>
-          Write a Review
+          ★ Write a Review
         </button>
       </Link>
     </div>

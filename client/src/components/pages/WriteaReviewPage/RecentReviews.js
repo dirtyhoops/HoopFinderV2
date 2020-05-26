@@ -50,16 +50,13 @@ const RecentReviews = (props) => {
                 </div>
               </div>
               <div className='writeareview-recentreviews-grid-box__rating'>
-                <div
-                  className='writeareview-recentreviews-grid-box__rating__stars'
-                  style={{
-                    '--font-size': '13px',
-                    '--text-indent': '-5px',
-                  }}
-                >
-                  {/* {review.rating} */}
+                <div className='writeareview-recentreviews-grid-box__rating__stars'>
                   <div
                     className='rating'
+                    style={{
+                      '--font-size': '13px',
+                      '--text-indent': '-5px',
+                    }}
                     data-rating={`${Math.ceil(review.rating * 2) / 2}`}
                   >
                     <i className='star-1'>★</i>

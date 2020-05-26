@@ -39,15 +39,13 @@ const CourtReviews = (props) => {
                 </div>
                 <div className='courtview-reviews-box-flex-right'>
                   <div className='courtview-reviews__rating'>
-                    <div
-                      className='courtview-reviews__rating__stars'
-                      style={{
-                        '--font-size': '14px',
-                        '--text-indent': '-6px',
-                      }}
-                    >
+                    <div className='courtview-reviews__rating__stars'>
                       <div
                         className='rating'
+                        style={{
+                          '--font-size': '14px',
+                          '--text-indent': '-6px',
+                        }}
                         data-rating={`${Math.ceil(review.rating * 2) / 2}`}
                       >
                         <i className='star-1'>★</i>
