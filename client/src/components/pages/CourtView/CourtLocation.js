@@ -5,10 +5,7 @@ const CourtLocation = (props) => {
 
   return (
     <div className='courtview-location'>
-      <div
-        className='courtview-location-map'
-        id='courtview-location-map1'
-      ></div>
+      <div className='courtview-location-map'></div>
       <div className='courtview-location-address'>
         <div className='courtview-location-address-left'>
           <p className='courtview-location-text'>{address.street}</p>

@@ -154,6 +154,17 @@ router.post(
         return res.status(404).json({ msg: 'Court not found' });
       }
 
+      // Check the user if it has a previous review.
+      for (var i = 0; i < court.reviews.length; i++) {
+        // console.log(req.user.id);
+        // console.log('here is the review user', court.reviews[i].user);
+        if (court.reviews[i].user.equals(req.user.id)) {
+          return res
+            .status(401)
+            .json({ msg: 'User already left a review for this court.' });
+        }
+      }
+
       // Add the review in front of the reviews array inside the court
       court.reviews.unshift(reviewFields);
 
@@ -166,6 +177,8 @@ router.post(
 
         // Update the rating value
         court.rating = newRating;
+      } else {
+        court.rating = req.body.rating;
       }
 
       await court.save();
