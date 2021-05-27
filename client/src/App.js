@@ -16,8 +16,8 @@ import CourtViewPage from './components/pages/CourtView/CourtViewPage';
 import AdminPage from './components/pages/AdminPage/AdminPage';
 import WriteaReviewPage from './components/pages/WriteaReviewPage/WriteaReviewPage';
 
-import CheckIn from './components/checkin/CheckIn';
-import AdminCheckIn from './components/checkin/AdminCheckIn';
+// import CheckIn from './components/checkin/CheckIn';
+// import AdminCheckIn from './components/checkin/AdminCheckIn';
 
 // Import the sass styling
 import './styles/main.scss';
@@ -38,8 +38,8 @@ const App = () => (
           <Route exact path='/court/:id' component={CourtViewPage} />
           <Route exact path='/writeareview/:id' component={WriteaReviewPage} />
 
-          <Route exact path='/checkin' component={CheckIn} />
-          <Route exact path='/admincheckin' component={AdminCheckIn} />
+          {/* <Route exact path='/checkin' component={CheckIn} /> */}
+          {/* <Route exact path='/admincheckin' component={AdminCheckIn} /> */}
 
           {/* MAKE SURE isAdmin is true to go here */}
           <Route exact path='/account/admin' component={AdminPage} />
