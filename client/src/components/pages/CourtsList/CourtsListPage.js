@@ -13,6 +13,8 @@ const CourtsListPage = ({
     getAllCourts();
   }
 
+  // HAVE A GETCOURT WITH CITY
+
   return (
     <div className='courts-list-wrapper'>
       <div className='courts-list container'>

@@ -105,3 +105,17 @@ export const getProfile = (id) => async (dispatch) => {
 export const resetProfileLoaded = () => async (dispatch) => {
   dispatch({ type: RESET_PROFILE_LOADED });
 };
+
+// Load Profiles
+export const getProfilesChecked = () => async (dispatch) => {
+  try {
+    const res = await axios.get('/api/profile/checkedin');
+
+    dispatch({
+      type: GET_PROFILES,
+      payload: res.data,
+    });
+  } catch (err) {
+    console.log('error change this later');
+  }
+};

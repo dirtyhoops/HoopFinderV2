@@ -30,6 +30,7 @@ const LandingPage = ({
   return (
     <div className='landing-page-wrapper'>
       <HeroHeader />
+      {/* GRID OF MAIN USE CASE FOR THE SITE(FIND COURTS, SOCIALIZE WITH OTHERS, FIND REVIEWS, FIND PLAYERS) */}
 
       {/* FEATURED BASKETBALL LOCATIONS pass props of courts */}
       <FeaturedCourts courts={courts} />

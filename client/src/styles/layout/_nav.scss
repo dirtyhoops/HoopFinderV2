@@ -1,0 +1,9 @@
+.navbar {
+  & ul {
+    display: flex;
+
+    & li {
+      margin: 0 3rem;
+    }
+  }
+}

@@ -30,6 +30,7 @@ export const getAllCourts = () => async (dispatch) => {
   }
 };
 
+// Get a court with id
 export const getCourt = (id) => async (dispatch) => {
   try {
     const res = await axios.get(`/api/courts/${id}`);
@@ -50,6 +51,7 @@ export const getCourt = (id) => async (dispatch) => {
   }
 };
 
+// Get a court to edit with and ID
 export const getCourtToEdit = (id) => async (dispatch) => {
   try {
     const res = await axios.get(`/api/courts/${id}`);
@@ -126,7 +128,7 @@ export const getWeather = (zipcode) => async (dispatch) => {
 
   try {
     const res = await axios.get(
-      `http://api.openweathermap.org/data/2.5/weather?zip=${zipcode},us&appid=`
+      `http://api.openweathermap.org/data/2.5/weather?zip=${zipcode},us&appid=9b1b3e3a7aeca410a9fccd080e5335d9`
     );
 
     dispatch({
