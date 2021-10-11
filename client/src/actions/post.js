@@ -6,18 +6,18 @@ import {
   CREATE_COMMENT,
   DELETE_COMMENT,
   CLEAR_WALL_POSTS_WITH_ID,
-  UPDATE_LIKES,
+  UPDATE_LIKES
 } from './types';
 
 // Get all the posts(12 this time)
-export const getAllPosts = () => async (dispatch) => {
+export const getAllPosts = () => async dispatch => {
   try {
     const res = await axios.get('/api/posts');
 
     // sort it the newest one on top - fix this in the api route date:-1
     dispatch({
       type: GET_POSTS_FOR_HOMEPAGE,
-      payload: res.data,
+      payload: res.data
     });
   } catch (err) {
     console.log('cant get posts ---fix this later');
@@ -29,7 +29,7 @@ export const getAllPosts = () => async (dispatch) => {
 };
 
 // Get all the posts in the player's wall
-export const getAllWallPosts = (user_id) => async (dispatch) => {
+export const getAllWallPosts = user_id => async dispatch => {
   // Clear all the post before loading all posts for a user with the given ID
   dispatch({ type: CLEAR_WALL_POSTS_WITH_ID });
 
@@ -39,7 +39,7 @@ export const getAllWallPosts = (user_id) => async (dispatch) => {
     // sort it the newest one on top - fix this in the api route date:-1
     dispatch({
       type: GET_POSTS_WITH_ID,
-      payload: res.data,
+      payload: res.data
     });
   } catch (err) {
     console.log('cant get posts ---fix this later');
@@ -51,55 +51,59 @@ export const getAllWallPosts = (user_id) => async (dispatch) => {
 };
 
 // Create Post
-export const createPost = (user_id, { text }) => async (dispatch) => {
-  const config = {
-    headers: {
-      'Content-Type': 'application/json',
-    },
+export const createPost =
+  (user_id, { text }) =>
+  async dispatch => {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    };
+
+    try {
+      const res = await axios.post(`/api/posts/${user_id}`, { text }, config);
+      dispatch({ type: CREATE_POST, payload: res.data });
+    } catch (err) {
+      const errors = err.response.data.errors;
+
+      if (errors) {
+        // errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
+        console.log(errors);
+      }
+    }
   };
 
-  try {
-    const res = await axios.post(`/api/posts/${user_id}`, { text }, config);
-    dispatch({ type: CREATE_POST, payload: res.data });
-  } catch (err) {
-    const errors = err.response.data.errors;
+export const createComment =
+  (post_id, { text }) =>
+  async dispatch => {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    };
 
-    if (errors) {
-      // errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
-      console.log(errors);
+    try {
+      const res = await axios.post(
+        `/api/posts/${post_id}/comment`,
+        { text },
+        config
+      );
+      dispatch({
+        type: CREATE_COMMENT,
+        payload: { post_id, comments: res.data }
+      });
+    } catch (err) {
+      const errors = err.response.data.errors;
+
+      if (errors) {
+        // errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
+        console.log(errors);
+      }
     }
-  }
-};
-
-export const createComment = (post_id, { text }) => async (dispatch) => {
-  const config = {
-    headers: {
-      'Content-Type': 'application/json',
-    },
   };
-
-  try {
-    const res = await axios.post(
-      `/api/posts/${post_id}/comment`,
-      { text },
-      config
-    );
-    dispatch({
-      type: CREATE_COMMENT,
-      payload: { post_id, comments: res.data },
-    });
-  } catch (err) {
-    const errors = err.response.data.errors;
-
-    if (errors) {
-      // errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
-      console.log(errors);
-    }
-  }
-};
 
 // Like a post
-export const likePost = (post_id) => async (dispatch) => {
+export const likePost = post_id => async dispatch => {
   try {
     const res = await axios.put(`/api/posts/${post_id}/like`);
 
@@ -115,7 +119,7 @@ export const likePost = (post_id) => async (dispatch) => {
 };
 
 // Unlike a post
-export const unlikePost = (post_id) => async (dispatch) => {
+export const unlikePost = post_id => async dispatch => {
   try {
     const res = await axios.put(`/api/posts/${post_id}/unlike`);
 
